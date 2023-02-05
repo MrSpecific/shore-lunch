@@ -17,7 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang={process.env.NEXT_PUBLIC_LANG || 'en'}>
         <Head>
-          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/images/favicon.png" />
           <FontImports />
           <KlaviyoScriptTag />
         </Head>
