@@ -20,10 +20,7 @@ export default {
       title: 'Link',
       info: 'Only 1 selection is allowed',
       type: 'array',
-      of: [
-        { type: 'link' },
-        { type: 'reference', to: [{ type: 'page' }, { type: 'room' }, { type: 'allShowsPage' }] },
-      ],
+      of: [{ type: 'link' }, { type: 'reference', to: [{ type: 'page' }, { type: 'product' }] }],
       validation: (Rule) => Rule.length(1),
     },
   ],

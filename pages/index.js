@@ -14,22 +14,13 @@ export default function HomePage({ intro }) {
 
   return (
     <Page title={title} headerClass="header-overlay">
-      <div className={styles.heroWrapper}>
-        <Image alt="Hero Image" src={heroImage} className={styles.heroImage} />
-      </div>
-      {intro && (
-        <section className="content content-y">
-          <div className={styles.introWrapper}>
-            <h1>
-              {title}
-              <br />
-              <span className="h2">{intro.meta.title}</span>
-            </h1>
+      <section className="content content-y">
+        <div className={styles.introWrapper}>
+          <h1>{title}</h1>
 
-            <Content markdown={intro} className={styles.introParagraph} />
-          </div>
-        </section>
-      )}
+          {intro && <Content markdown={intro} className={styles.introParagraph} />}
+        </div>
+      </section>
     </Page>
   );
 }

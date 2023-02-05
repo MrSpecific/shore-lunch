@@ -4,8 +4,8 @@ import { type StructureResolver } from 'sanity/desk';
 
 // https://www.sanity.io/docs/set-up-structure-builder-to-override-the-default-list-view
 
-const pages = ['frontPage', 'rooms', 'allShowsPage', 'productCollection'];
-const documents = ['event', 'faq', 'product'];
+const pages = ['frontPage', 'productCollection'];
+const documents = ['faq', 'product'];
 const settings = ['siteSettings'];
 const defined = pages.concat(documents, settings);
 
@@ -19,10 +19,6 @@ export const deskStructure = (typeDef: DocumentDefinition): StructureResolver =>
           .icon(HomeIcon)
           .child(S.document().schemaType('frontPage').documentId('frontPage')),
         ...S.documentTypeListItems().filter((item) => !defined.includes(item.getId())),
-        S.listItem()
-          .title('All Shows Page')
-          .icon(RobotIcon)
-          .child(S.document().schemaType('allShowsPage').documentId('allShowsPage')),
         S.listItem()
           .title('Collection')
           .icon(TagIcon)
