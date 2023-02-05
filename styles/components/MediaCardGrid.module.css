@@ -1,0 +1,54 @@
+@import "../settings/breakpoints";
+
+.mediaCardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--spacer-s);
+  margin-top: calc(var(--spacer-l) * -1);
+  margin-bottom: var(--spacer-xl);
+
+  @media (--medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mediaCard {
+  background-color: lavender;
+  position: relative;
+  aspect-ratio: 5 / 4;
+}
+
+.mediaCardLink {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary-color);
+    opacity: 0.6;
+    transition: opacity 250ms ease;
+  }
+
+  &:hover::before {
+    opacity: 0.8;
+  }
+
+  &:hover .mediaCardButton {
+    background-color: transparent;
+    color: var(--soft-white);
+  }
+}
+
+.mediaCardButton {
+  background-color: var(--soft-white);
+  border: 1px solid var(--soft-white);
+  padding: var(--spacer-xs) 18px;
+  pointer-events: none;
+  position: relative;
+  transition: all 250ms ease;
+}

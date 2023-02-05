@@ -1,0 +1,40 @@
+.container {
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  padding-left: var(--edge-space);
+  padding-right: var(--edge-space);
+}
+
+.content-y {
+  padding-top: var(--spacer-xlarge);
+  padding-bottom: var(--spacer-xlarge);
+}
+
+.content-no-hero {
+  padding-top: var(--spacer-large);
+  padding-bottom: var(--spacer-large);
+}
+
+:root {
+  --breakpoint: small;
+
+  @media (--medium) {
+    --breakpoint: medium;
+  }
+
+  @media (--large) {
+    --breakpoint: large;
+  }
+
+  @media (--xlarge) {
+    --breakpoint: xlarge;
+  }
+
+  @media (--xxlarge) {
+    --breakpoint: xxlarge;
+  }
+}

@@ -1,0 +1,48 @@
+:root {
+  /* Color Principals */
+  --white: hsl(0, 0%, 100%);
+  --soft-white: #f9f6e8;
+  --light-grey: #f5f3f3;
+  --medium-grey: #939393;
+  --dark-grey: #6c6c6c;
+  --black: #2f2b2b;
+
+  /* Brand Colors */
+  --cream: hsl(61, 26%, 89%);
+  --moss: hsl(72, 30%, 67%);
+  --olive: hsl(71, 39%, 19%);
+  --dark-olive: hsla(112, 20%, 20%, 0.51);
+  --overlay: hsla(39, 100%, 8%, 0.6);
+
+  /* Color Implementation */
+  --primary-color: var(--purple-navy);
+  --secondary-color: var(--turquoise);
+  --tertiary-color: var(--magic-mint);
+
+  --error-color: var(--red);
+  --success-color: var(--soft-white);
+  --active-color: var(--primary);
+
+  --header-background-color: var(--secondary-color);
+  --header-logo-color: var(--white);
+  --header-component-color: var(--white);
+
+  --body-bg: var(--cream);
+  --body-color: var(--black);
+
+  --link-color: var(--primary-color);
+  --link-color-hover: var(--secondary-color);
+  --link-color-active: var(--body-color);
+
+  --button-accent: var(--primary-color);
+  --button-hover-color: var(--soft-white);
+  --button-active-color: var(--primary-color);
+
+  --heading-color: var(--primary-color);
+
+  --footer-text-color: var(--soft-white);
+  --footer-background-color: var(--olive);
+
+  --selection-background-color: var(--green);
+  --selection-color: var(--soft-white);
+}

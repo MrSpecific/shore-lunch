@@ -1,0 +1,12 @@
+.textBlock {
+  max-width: 710px;
+  padding: 0px var(--spacer-m);
+  margin: auto;
+  margin-top: var(--spacer-xl);
+  margin-bottom: var(--spacer-xl);
+  text-align: center;
+}
+
+.headline {
+  margin-bottom: var(--spacer-m);
+}

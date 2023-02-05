@@ -1,0 +1,33 @@
+:root {
+  --spacer-xsmall: 12px;
+  --spacer-small: 24px;
+  --spacer-medium: 36px;
+  --spacer-large: 72px;
+  --spacer-xlarge: 150px;
+
+  --spacer-xs: var(--spacer-xsmall);
+  --spacer-s: var(--spacer-small);
+  --spacer-m: var(--spacer-medium);
+  --spacer-l: var(--spacer-large);
+  --spacer-xl: var(--spacer-xlarge);
+
+  --edge-space: var(--spacer-medium);
+  @media (--medium) {
+    --edge-space: 122px;
+  }
+
+  --container-spaces: var(--spacer-l) var(--edge-space) var(--spacer-xl);
+  --container-width: 1200px;
+
+  --header-z-index--mobile: 2;
+  --header-z-index: 3;
+
+  --transition-duration: 150ms;
+  --transition-timing-function: ease;
+
+  --global-transition: var(--transition-duration) var(--transition-timing-function);
+  --form-transition: var(--transition-duration) var(--transition-timing-function);
+
+  --border-width: 1.5px;
+  --button-border-radius: 100px;
+}

@@ -1,0 +1,118 @@
+form {
+  --form-spacer: var(--spacer-xs);
+  --form-spacer-half: calc(var(--form-spacer) / 2);
+
+  --input-padding-y: var(--form-spacer);
+  --input-padding-x: var(--form-spacer);
+  --input-padding: var(--input-padding-y) var(--input-padding-x);
+  --input-margin: var(--input-padding-y) var(--input-padding-x);
+  --input-border-size: var(--border-width);
+  --input-border-radius: 0px;
+
+  --input-background: transparent;
+  --input-placeholder-color: transparent;
+
+  --label-top: -4px;
+  --label-top-compact: -18px;
+
+  font-family: var(--font-family-primary);
+
+  /*& > * + * {
+    margin-top: var(--form-spacer);
+  }*/
+}
+
+input,
+textarea,
+select {
+  &,
+  &[type="text"],
+  &[type="email"],
+  &[type="tel"],
+  &[type="password"],
+  &[type="search"] {
+    width: 100%;
+    padding: var(--input-padding);
+    border-radius: var(--input-border-radius);
+    border: solid var(--input-border-size);
+    outline: none;
+    outline-width: 0;
+    background-color: var(--input-background);
+    letter-spacing: var(--footer-letter-spacing);
+
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
+
+    &:focus {
+      border-color: var(--active-color);
+    }
+
+    &:hover,
+    &:hover + label {
+      color: var(--active-color);
+      cursor: text;
+    }
+  }
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  grid-row-gap: var(--form-spacer);
+}
+
+.input-wrapper {
+  position: relative;
+  caret-color: var(--active-color);
+
+  & * {
+    text-transform: uppercase;
+    transition: color var(--form-transition);
+    transition: border var(--form-transition);
+  }
+
+  & select {
+    &:hover,
+    &:hover + label {
+      color: var(--active-color);
+      cursor: pointer;
+    }
+  }
+
+  & label {
+    position: absolute;
+    transform: translateY(50%);
+    left: calc(var(--input-padding-x) + var(--input-border-size));
+    padding-top: calc(var(--input-padding-y) - 10lpx);
+    padding-bottom: calc(var(--input-padding-y) - 9px);
+    letter-spacing: var(--form-letter-spacing);
+    transition: all var(--form-transition);
+    user-select: none;
+  }
+
+  /* move label up & make small */
+  & input:focus + label,
+  & input:not(:placeholder-shown) + label,
+  & .errorLabel,
+  & select + label {
+    transform: translateY(40%);
+    font-size: var(--form-font-size-label);
+  }
+
+  & .errorInput {
+    color: var(--error-color);
+    border-color: var(--error-color);
+    &:focus {
+      color: var(--error-color);
+    }
+  }
+
+  & input,
+  & select {
+    padding-top: calc(var(--input-padding-y) + 4px);
+    padding-bottom: calc(var(--input-padding-y) - 4px);
+  }
+}

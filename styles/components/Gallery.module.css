@@ -1,0 +1,29 @@
+@import "../settings/breakpoints";
+
+.galleryWrapper {
+  display: grid;
+
+  @media (--medium) {
+    padding-left: var(--edge-space);
+    padding-right: var(--edge-space);
+    padding-bottom: var(--edge-space);
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--spacer-s);
+
+    & :nth-child(1),
+    & :nth-child(4n) {
+      grid-column: 1 / span 2;
+    }
+  }
+}
+
+.galleryTitle {
+  margin: var(--spacer-xs);
+  white-space: none;
+  text-transform: uppercase;
+
+  @media (--medium) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

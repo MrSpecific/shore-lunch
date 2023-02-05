@@ -1,0 +1,46 @@
+@import "./breakpoints";
+
+:root {
+  --lora: "Lora", "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+  --work-sans: "Work Sans", Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-overline: 700;
+
+  --font-family-primary: var(--work-sans);
+  --font-family-secondary: var(--work-sans);
+  --font-family-tertiary: var(--lora);
+
+  --overline-font-family: var(--work-sans);
+  --heading-font-family: var(--font-family-secondary);
+  --body-font-family: var(--font-family-primary);
+  --button-font-family: var(--font-family-primary);
+
+  --font-size-h1: 60px;
+  --font-size-h2: 48px;
+  --font-size-h3: 38px;
+  --font-size-h4: 24px;
+  --font-size-h5: 18px;
+  --font-size-h6: 16px;
+  --font-size-overline: 14px;
+
+  @media (--medium) {
+    --font-size-h1: 80px;
+  }
+
+  --body-font-size: 16px;
+  --body-large-font-size: 20px;
+
+  --footer-font-size: var(--body-font-size);
+  --footer-font-size-overline: var(--font-size-overline);
+  --footer-letter-spacing: 0.5px;
+  --footer-letter-spacing-overline: 2px;
+
+  --form-font-size-input: var(--body-font-size);
+  --form-font-size-label: 10px;
+  --form-letter-spacing: 0.5px;
+
+  --button-font-size: 14px;
+}

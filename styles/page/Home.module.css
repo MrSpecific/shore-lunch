@@ -1,0 +1,47 @@
+@import "../settings/breakpoints";
+
+.heroImage {
+  height: auto;
+}
+
+.heroWrapper {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--overlay);
+    background-blend-mode: overlay;
+  }
+}
+
+.homepageHero {
+  --hero-content-max-width: 100%;
+  --hero-content-padding: var(--spacer-l) var(--edge-space);
+  --hero-image-max-height: 650px;
+  --link-color-hover: var(--yellow);
+
+  @media (--medium) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.introWrapper {
+  display: grid;
+  grid-gap: var(--spacer-s);
+}
+
+.introParagraph {
+  font-size: var(--body-large-font-size);
+}
+
+.contactBlock {
+  & h3 {
+    font-size: 24px;
+  }
+
+  & p {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,93 @@
+@import "../settings/breakpoints";
+
+.footer {
+  --hover-color: var(--active-color);
+
+  width: 100%;
+  padding: var(--container-spaces);
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+  font-size: var(--footer-font-size);
+  letter-spacing: var(--footer-letter-spacing);
+  text-transform: uppercase;
+  z-index: 9999;
+
+  & h3 {
+    margin-bottom: var(--spacer-m);
+    color: var(--footer-text-color);
+  }
+
+  & a {
+    color: var(--footer-text-color);
+
+    &:hover {
+      color: var(--hover-color);
+    }
+  }
+}
+
+.logo {
+  max-width: 100px;
+  fill: var(--footer-text-color);
+}
+
+.submarineLogo {
+  width: 200px;
+  height: auto;
+  margin: var(--spacer-m) auto;
+}
+
+.footerItems {
+  display: flex;
+  margin-top: var(--spacer-m);
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacer-s);
+
+  @media (--medium) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.footerItem {
+  margin-top: var(--spacer-m);
+  & ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  & li {
+    margin-top: var(--spacer-s);
+  }
+}
+
+#legalContent {
+  & li {
+    margin-top: var(--spacer-xs);
+  }
+
+  & svg {
+    max-width: 45px;
+    margin-left: 0.5em;
+    vertical-align: middle;
+    fill: var(--footer-text-color);
+
+    &:hover {
+      fill: var(--hover-color);
+    }
+  }
+}
+
+.footerLogos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacer-m);
+  border-top: 1px solid var(--moss);
+  padding-top: var(--spacer-m);
+
+  & img {
+    height: auto;
+  }
+}
