@@ -4,6 +4,10 @@
   --link-color: var(--white);
 }
 
+.header-overlay {
+  position: absolute;
+}
+
 .headerInner {
   display: flex;
   gap: var(--spacer-xs);

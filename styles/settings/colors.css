@@ -14,8 +14,13 @@
   --dark-olive: hsla(112, 20%, 20%, 0.51);
   --overlay: hsla(39, 100%, 8%, 0.6);
 
+  --dark-teal: hsl(191, 23%, 28%);
+  --cream: hsl(192, 11%, 91%);
+  --goldenrod: hsl(37, 100%, 72%);
+  --pink: hsl(343, 76%, 62%);
+
   /* Color Implementation */
-  --primary-color: var(--purple-navy);
+  --primary-color: var(--dark-teal);
   --secondary-color: var(--turquoise);
   --tertiary-color: var(--magic-mint);
 
@@ -28,7 +33,7 @@
   --header-component-color: var(--white);
 
   --body-bg: var(--cream);
-  --body-color: var(--black);
+  --body-color: var(--dark-teal);
 
   --link-color: var(--primary-color);
   --link-color-hover: var(--secondary-color);
@@ -40,9 +45,9 @@
 
   --heading-color: var(--primary-color);
 
-  --footer-text-color: var(--soft-white);
-  --footer-background-color: var(--olive);
+  --footer-background-color: var(--cream);
+  --footer-text-color: var(--dark-teal);
 
-  --selection-background-color: var(--green);
+  --selection-background-color: var(--pink);
   --selection-color: var(--soft-white);
 }

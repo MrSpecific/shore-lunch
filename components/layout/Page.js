@@ -17,12 +17,12 @@ export const GlobalStyles = () => {
   );
 };
 
-export default function Page({ title, metaTags, headerClass, children }) {
+export default function Page({ title, metaTags, header = true, headerClass, children }) {
   return (
     <Layout metaTags={metaTags} pageTitle={title}>
       <GlobalStyles />
       <SkipLink />
-      <Header className={headerClass} />
+      {header && <Header className={headerClass} />}
       <main id="main">{children}</main>
       <Footer />
     </Layout>
