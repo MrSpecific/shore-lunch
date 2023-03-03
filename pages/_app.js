@@ -14,6 +14,11 @@ const AppData = ({ data }) => {
 };
 
 function MyApp({ Component, pageProps, data }) {
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: '{{CLIENT_SECRET}}',
+  };
+
   return (
     <AppContextProvider>
       <Head>
