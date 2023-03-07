@@ -1,4 +1,5 @@
-import { Stripe, loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Stripe from 'stripe';
 
 // Load Stripe Script
 let stripePromise = null;
@@ -12,6 +13,11 @@ const getStripe = () => {
 };
 
 export default getStripe;
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  // https://github.com/stripe/stripe-node#configuration
+  apiVersion: '2020-08-27',
+});
 
 export function formatAmountForDisplay(amount: number, currency: string): string {
   let numberFormat = new Intl.NumberFormat(['en-US'], {

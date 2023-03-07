@@ -13,16 +13,16 @@ export default {
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
-    // {
-    //   title: 'Slug',
-    //   name: 'slug',
-    //   type: 'slug',
-    //   options: {
-    //     source: 'title',
-    //     maxLength: 96,
-    //   },
-    //   validation: (Rule) => Rule.required(),
-    // },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    },
     // {
     //   title: 'Image',
     //   name: 'image',
@@ -34,7 +34,7 @@ export default {
       name: 'images',
       type: 'array',
       of: [{ type: 'image' }],
-      validation: (Rule) => Rule.required().min(1).max(5),
+      validation: (Rule) => Rule.required().min(1).max(10),
     },
     {
       title: 'Description',
@@ -42,26 +42,33 @@ export default {
       type: 'text',
       rows: '4',
     },
+    // {
+    //   title: 'Vote',
+    //   name: 'vote',
+    //   type: 'string',
+    //   options: {
+    //     layout: 'grid',
+    //     list: ['yes', 'no', 'maybe'],
+    //   },
+    // },
+    // {
+    //   title: 'Vote Count',
+    //   name: 'voteCount',
+    //   type: 'number',
+    //   initialValue: 0,
+    //   validation: (Rule) => Rule.required().min(0),
+    // },
     {
-      title: 'Vote',
-      name: 'vote',
-      type: 'string',
-      options: {
-        layout: 'grid',
-        list: ['yes', 'no', 'maybe'],
-      },
-    },
-    {
-      title: 'Vote Count',
-      name: 'voteCount',
-      type: 'number',
+      title: 'Price',
+      name: 'price',
+      type: 'currency',
       initialValue: 0,
       validation: (Rule) => Rule.required().min(0),
     },
   ],
-  initialValue: {
-    voteCount: 0,
-  },
+  // initialValue: {
+  //   voteCount: 0,
+  // },
   preview: {
     select: {
       media: 'images.0',

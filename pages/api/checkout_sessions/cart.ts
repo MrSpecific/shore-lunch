@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
 
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from
@@ -12,7 +13,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { validateCartItems } from 'use-shopping-cart/utilities';
 import inventory from '@data/products';
 
-import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: '2020-08-27',
