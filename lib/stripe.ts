@@ -59,3 +59,30 @@ export function formatAmountFromStripe(amount: number, currency: string): number
   }
   return zeroDecimalCurrency ? amount : Math.round(amount / 100);
 }
+
+export const fetchProducts = async () => {
+  let products = [];
+
+  getProducts: try {
+    // const result = await stripe.products.list({
+    //   limit: 3,
+    // });
+    const result = await stripe.products.list();
+
+    if (!result || !result.data || !result.data.length) break getProducts;
+
+    const productArray = result.data;
+
+    products = await Promise.all(
+      result.data.map(async (product: object) => {
+        // console.log('product', product);
+        const price = await stripe.prices.retrieve(product.default_price);
+        return { ...product, default_price: price };
+      })
+    );
+  } catch {
+    console.error('Problem fetching products');
+  }
+
+  return products;
+};
