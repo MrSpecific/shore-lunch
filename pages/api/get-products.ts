@@ -13,18 +13,22 @@ async function handler(req, res) {
     //   limit: 3,
     // });
     const result = await stripe.products.list();
-    // console.log('result is ', result);
-    if (!result.length) break getProducts;
+    console.log('result is ', result);
+    if (!result || !result.data || !result.data.length) break getProducts;
+
+    const productArray = result.data;
+    // console.log(productArray);
+
+    console.log('Products loop...');
 
     products = await Promise.all(
       result.data.map(async (product) => {
-        console.log('product', product);
+        // console.log('product', product);
         const price = await stripe.prices.retrieve(product.default_price);
-        return { ...product, price };
+        return { ...product, default_price: price };
       })
     );
 
-    // products = result.json;
     console.log(products);
   } catch {
     console.error('Problem fetching products');
