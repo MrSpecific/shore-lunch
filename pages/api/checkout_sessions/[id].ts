@@ -13,6 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!id.startsWith('cs_')) {
       throw Error('Incorrect CheckoutSession ID.');
     }
+
     const checkout_session: Stripe.Checkout.Session = await stripe.checkout.sessions.retrieve(id, {
       expand: ['payment_intent'],
     });

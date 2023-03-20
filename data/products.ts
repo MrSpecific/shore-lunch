@@ -18,5 +18,14 @@ const product = [
     attribution: 'Photo by Jonathan Pielmayer on Unsplash',
     currency: 'USD',
   },
-]
-export default product
+  {
+    name: 'Tester',
+    id: 'sku_tester',
+    price: 500,
+    image:
+      'https://images.unsplash.com/photo-1618914730126-9d4fe79d24e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    attribution: 'Photo by Jonathan Pielmayer on Unsplash',
+    currency: 'USD',
+  },
+];
+export default product;
