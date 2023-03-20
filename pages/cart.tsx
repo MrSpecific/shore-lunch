@@ -1,9 +1,9 @@
-import { NextPage } from 'next'
+import { NextPage } from 'next';
 import { Page } from '@layout';
 
-import Cart from '@commerce/Cart'
-import CartSummary from '@commerce/CartSummary'
-import Products from '@commerce/Products'
+import Cart from '@commerce/Cart';
+import CartSummary from '@commerce/CartSummary';
+import Products from '@commerce/Products';
 
 const DonatePage: NextPage = () => {
   return (
@@ -11,18 +11,17 @@ const DonatePage: NextPage = () => {
       <div className="page-container">
         <h1>Shopping Cart</h1>
         <p>
-          Powered by the{' '}
-          <a href="https://useshoppingcart.com">use-shopping-cart</a> React
-          hooks library.
+          Powered by the <a href="https://useshoppingcart.com">use-shopping-cart</a> React hooks
+          library.
         </p>
-        <Cart>
-          <Products />
-          <hr />
-          <CartSummary />
-        </Cart>
+        {/* <Cart> */}
+        <Products />
+        <hr />
+        <CartSummary />
+        {/* </Cart> */}
       </div>
     </Page>
-  )
-}
+  );
+};
 
-export default DonatePage
+export default DonatePage;

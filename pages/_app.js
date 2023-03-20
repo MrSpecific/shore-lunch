@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { AppContext, AppContextProvider } from '@context';
 import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
 import AnalyticsTags from '@lib/analytics';
+import Cart from '@commerce/Cart';
 import '../styles/globals.css';
 
 const AppData = ({ data }) => {
@@ -26,7 +27,9 @@ function MyApp({ Component, pageProps, data }) {
       </Head>
       <AnalyticsTags />
       <AppData data={data} />
-      <Component {...pageProps} />
+      <Cart>
+        <Component {...pageProps} />
+      </Cart>
       <KlaviyoEmbedOriginal formId="QTmyHD" />
     </AppContextProvider>
   );
