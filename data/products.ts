@@ -28,4 +28,5 @@ const product = [
     currency: 'USD',
   },
 ];
+
 export default product;
