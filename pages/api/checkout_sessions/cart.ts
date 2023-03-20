@@ -12,7 +12,8 @@ import Stripe from 'stripe';
 // import { validateCartItems } from 'use-shopping-cart/utilities/serverless';
 import { validateCartItems } from 'use-shopping-cart/utilities';
 import inventory from '@data/products';
-import { API_VERSION } from '@config';
+import getShippingRates from '@lib/shipping';
+import { ALLOWED_COUNTRIES, API_VERSION } from '@config';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -28,14 +29,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return !!item.price_data.recurring;
       });
 
+      const shipping_options = getShippingRates();
+
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
         submit_type: 'pay',
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA'],
+          allowed_countries: ALLOWED_COUNTRIES,
         },
+        shipping_options,
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/cart`,

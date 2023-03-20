@@ -1,5 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js';
 import Stripe from 'stripe';
+import { API_VERSION } from '@config';
 
 // Load Stripe Script
 let stripePromise = null;
@@ -16,7 +17,7 @@ export default getStripe;
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2020-08-27',
+  apiVersion: API_VERSION,
 });
 
 export function formatAmountForDisplay(amount: number, currency: string): string {
@@ -85,4 +86,16 @@ export const fetchProducts = async () => {
   }
 
   return products;
+};
+
+export const fetchShippingRates = async () => {
+  let shippingRates = [];
+
+  getProducts: try {
+    shippingRates = await stripe.shippingRates.list();
+  } catch {
+    console.error('Problem fetching shipping rates');
+  }
+
+  return shippingRates;
 };

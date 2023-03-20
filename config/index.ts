@@ -5,4 +5,5 @@ export const MIN_AMOUNT = 10.0;
 export const MAX_AMOUNT = 5000.0;
 export const AMOUNT_STEP = 5.0;
 
+export const ALLOWED_COUNTRIES = ['US', 'CA'];
 export const API_VERSION = '2020-08-27';
