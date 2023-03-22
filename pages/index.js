@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';
+import CartItems from '@commerce/CartItems';
 import { Page } from '@layout';
 import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/IMG_2854.jpg';
@@ -28,6 +29,8 @@ export default function HomePage({ intro }) {
           {intro && <Content markdown={intro} className={styles.introParagraph} />}
         </div>
       </section>
+
+      <CartItems />
     </Page>
   );
 }
