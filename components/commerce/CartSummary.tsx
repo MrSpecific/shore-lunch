@@ -4,36 +4,36 @@ import StripeTestCards from '@commerce/StripeTestCards';
 
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '@utils/apiHelpers';
+import { useCheckout } from '@hooks';
 
 const CartSummary = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState('');
   const [cartEmpty, setCartEmpty] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
 
+  const { loading, errorMessage, handleCheckout } = useCheckout();
+
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
-  const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setErrorMessage('');
+  // const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+  //   setErrorMessage('');
 
-    const response = await fetchPostJSON('/api/checkout_sessions/cart', cartDetails);
+  //   const response = await fetchPostJSON('/api/checkout_sessions/cart', cartDetails);
 
-    if (response.statusCode > 399) {
-      console.error(response.message);
-      setErrorMessage(response.message);
-      setLoading(false);
-      return;
-    }
+  //   if (response.statusCode > 399) {
+  //     // console.error(response.message);
+  //     setErrorMessage(response.message);
+  //     setLoading(false);
+  //     return;
+  //   }
 
-    console.log('cartCount is ', cartCount);
-    console.log('handleCheckout', response.id, typeof response.id);
-
-    // redirectToCheckout({ sessionId: response.id.toString() });
-    redirectToCheckout(response.id);
-  };
+  //   // redirectToCheckout({ sessionId: response.id.toString() });
+  //   redirectToCheckout(response.id);
+  // };
 
   return (
     <form onSubmit={handleCheckout}>
