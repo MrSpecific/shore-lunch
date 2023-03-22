@@ -88,6 +88,15 @@ export const fetchProducts = async () => {
   return products;
 };
 
+const sortShippingRates = (a, b) => {
+  const rateA = a?.shipping_rate_data?.fixed_amount?.amount;
+  const rateB = b?.shipping_rate_data?.fixed_amount?.amount;
+
+  if (rateA < rateB) return -1;
+  if (rateA > rateB) return 1;
+  return 0;
+};
+
 export const fetchShippingRates = async () => {
   let shippingRates = [];
 
@@ -96,7 +105,24 @@ export const fetchShippingRates = async () => {
 
     if (!stripeShippingRates.data) break getRates;
 
-    shippingRates = stripeShippingRates.data;
+    shippingRates = stripeShippingRates.data.map(
+      ({ active, type, fixed_amount, display_name, delivery_estimate }) => {
+        if (!active) return;
+
+        return {
+          shipping_rate_data: {
+            type,
+            fixed_amount,
+            display_name,
+            delivery_estimate,
+          },
+        };
+      }
+    );
+
+    shippingRates.sort(sortShippingRates);
+
+    // shippingRates = sortShippingRates(shippingRatesObj);
   } catch {
     console.error('Problem fetching shipping rates');
   }

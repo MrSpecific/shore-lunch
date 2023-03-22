@@ -1,6 +1,7 @@
 @import "./breakpoints";
 
 :root {
+  --uncut-sans: "Uncut Sans Var", sans-serif;
   --lora: "Lora", "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
   --work-sans: "Work Sans", Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, sans-serif;
 
@@ -9,9 +10,9 @@
   --font-weight-bold: 700;
   --font-weight-overline: 700;
 
-  --font-family-primary: var(--work-sans);
-  --font-family-secondary: var(--work-sans);
-  --font-family-tertiary: var(--lora);
+  --font-family-primary: var(--uncut-sans);
+  --font-family-secondary: var(--uncut-sans);
+  --font-family-tertiary: var(--uncut-sans);
 
   --overline-font-family: var(--work-sans);
   --heading-font-family: var(--font-family-secondary);

@@ -9,6 +9,9 @@ const FontImports = () => {
         href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@400;500&display=swap"
         rel="stylesheet"
       />
+
+      <link rel="preconnect" href="https://uncuttype.wtf/" />
+      <link rel="stylesheet" href="https://uncuttype.wtf/typefaces/uncut-sans/uncut-sans.css" />
     </>
   );
 };
