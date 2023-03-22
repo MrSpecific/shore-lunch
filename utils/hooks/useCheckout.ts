@@ -15,13 +15,11 @@ const useCheckout = (callBack = () => {}) => {
     const response = await fetchPostJSON('/api/checkout_sessions/cart', cartDetails);
 
     if (response.statusCode > 399) {
-      // console.error(response.message);
       setErrorMessage(response.message);
       setLoading(false);
       return;
     }
 
-    // redirectToCheckout({ sessionId: response.id.toString() });
     redirectToCheckout(response.id);
   };
 

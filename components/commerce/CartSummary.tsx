@@ -7,8 +7,6 @@ import { fetchPostJSON } from '@utils/apiHelpers';
 import { useCheckout } from '@hooks';
 
 const CartSummary = () => {
-  // const [loading, setLoading] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState('');
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
@@ -16,24 +14,6 @@ const CartSummary = () => {
   const { loading, errorMessage, handleCheckout } = useCheckout();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
-
-  // const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-  //   setErrorMessage('');
-
-  //   const response = await fetchPostJSON('/api/checkout_sessions/cart', cartDetails);
-
-  //   if (response.statusCode > 399) {
-  //     // console.error(response.message);
-  //     setErrorMessage(response.message);
-  //     setLoading(false);
-  //     return;
-  //   }
-
-  //   // redirectToCheckout({ sessionId: response.id.toString() });
-  //   redirectToCheckout(response.id);
-  // };
 
   return (
     <form onSubmit={handleCheckout}>
