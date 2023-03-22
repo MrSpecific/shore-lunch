@@ -91,8 +91,12 @@ export const fetchProducts = async () => {
 export const fetchShippingRates = async () => {
   let shippingRates = [];
 
-  getProducts: try {
-    shippingRates = await stripe.shippingRates.list();
+  getRates: try {
+    const stripeShippingRates = await stripe.shippingRates.list();
+
+    if (!stripeShippingRates.data) break getRates;
+
+    shippingRates = stripeShippingRates.data;
   } catch {
     console.error('Problem fetching shipping rates');
   }

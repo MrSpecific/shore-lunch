@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return !!item.price_data.recurring;
       });
 
-      const shipping_options = getShippingRates();
+      const shipping_options = await getShippingRates();
 
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
