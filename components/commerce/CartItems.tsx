@@ -11,7 +11,8 @@ const CartLine = ({ id, image, name, quantity, formattedValue, formattedPrice })
 
   return (
     <li>
-      <img src={image} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image} className="" />
       <h3>{name}</h3>
 
       <div className="">
@@ -52,8 +53,7 @@ const CartItems = () => {
   return (
     <section>
       <form onSubmit={handleCheckout} suppressHydrationWarning>
-        <h2>Your Cart</h2>
-        {JSON.stringify(cartDetails, null, 2)}
+        {/* {JSON.stringify(cartDetails, null, 2)} */}
         <ul>
           {Object.values(cartDetails).map((item) => (
             <CartLine key={item.id} {...item} />
