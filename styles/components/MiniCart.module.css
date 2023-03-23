@@ -1,0 +1,7 @@
+.miniCart {
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  max-width: 600px;
+  padding: var(--spacer-s);
+  background-color: var(--white);
+}

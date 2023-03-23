@@ -10,10 +10,6 @@ const DonatePage: NextPage = () => {
     <Page title="Shopping Cart | Next.js + TypeScript Example">
       <div className="page-container">
         <h1>Shopping Cart</h1>
-        <p>
-          Powered by the <a href="https://useshoppingcart.com">use-shopping-cart</a> React hooks
-          library.
-        </p>
         {/* <Cart> */}
         <Products />
         <hr />
