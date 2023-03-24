@@ -25,7 +25,7 @@
   /* Color Implementation */
   --primary-color: var(--dark-teal);
   --secondary-color: var(--teal);
-  --tertiary-color: var(--magic-mint);
+  --tertiary-color: var(--pink);
 
   --error-color: var(--red);
   --success-color: var(--soft-white);
@@ -40,7 +40,7 @@
 
   --link-color: var(--primary-color);
   --link-color-hover: var(--secondary-color);
-  --link-color-active: var(--body-color);
+  --link-color-active: var(--tertiary-color);
 
   --button-background-color: var(--teal);
   --button-background-color-hover: var(--dark-teal);

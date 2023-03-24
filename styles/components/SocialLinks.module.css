@@ -1,0 +1,7 @@
+.socialLinks {
+  list-style: none;
+
+  & svg {
+    fill: currentColor;
+  }
+}

@@ -1,8 +1,6 @@
 @import "../settings/breakpoints";
 
 .footer {
-  --hover-color: var(--active-color);
-
   width: 100%;
   padding: var(--container-spaces);
   background-color: var(--footer-background-color);
@@ -15,14 +13,6 @@
   & h3 {
     margin-bottom: var(--spacer-m);
     color: var(--footer-text-color);
-  }
-
-  & a {
-    color: var(--footer-text-color);
-
-    &:hover {
-      color: var(--hover-color);
-    }
   }
 }
 

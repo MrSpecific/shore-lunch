@@ -1,10 +1,22 @@
 import siteInfo from '@lib/siteInfo.js';
+import InstagramIcon from '@svg/instagram.svg';
+import styles from '@styles/components/SocialLinks.module.css';
+
+const renderIcon = (name) => {
+  switch (name.toLowerCase()) {
+    case 'instagram':
+      return <InstagramIcon />;
+    default:
+      return name;
+  }
+};
 
 const SocialLink = ({ name, href }) => {
   return (
     <li>
       <a href={href} target="_blank" rel="noopener noreferrer">
-        {name}
+        <span className="visually-hidden">{name}</span>
+        {renderIcon(name)}
       </a>{' '}
     </li>
   );
@@ -12,12 +24,13 @@ const SocialLink = ({ name, href }) => {
 
 const socials = siteInfo?.social;
 const socialLinks = [];
+
 for (const social in socials) {
   socialLinks.push(<SocialLink name={social} href={socials[social]} key={social} />);
 }
 
 const SocialLinks = () => {
-  return <ul>{socialLinks}</ul>;
+  return <ul className={styles.socialLinks}>{socialLinks}</ul>;
 };
 
 export default SocialLinks;
