@@ -49,11 +49,11 @@ const MiniCart = () => {
   const { handleCartClick, shouldDisplayCart } = useShoppingCart();
 
   return (
-    <AnimatePresence>
-      <button onClick={() => handleCartClick(true)}>Toggle Cart</button>
+    <>
+      <button onClick={() => handleCartClick()}>Toggle Cart</button>
 
-      {shouldDisplayCart && <MiniCartContents />}
-    </AnimatePresence>
+      <AnimatePresence>{shouldDisplayCart && <MiniCartContents />}</AnimatePresence>
+    </>
   );
 };
 

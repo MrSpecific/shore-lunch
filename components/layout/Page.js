@@ -1,6 +1,6 @@
 import { useAppContext } from '@lib/context/app';
 import { Header, Footer, Layout, SkipLink } from '@layout';
-import MiniCart from '@components/MiniCart';
+import MiniCart from '@commerce/MiniCart';
 
 const { log } = console;
 

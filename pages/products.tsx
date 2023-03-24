@@ -11,7 +11,9 @@ const DonatePage: NextPage = () => {
       <div className="content content-y">
         <h1>Merchandise</h1>
         {/* <Cart> */}
-        <Products />
+        <div style={{ marginTop: 'var(--spacer-m)', marginBottom: 'var(--spacer-m)' }}>
+          <Products />
+        </div>
         <hr />
         <CartSummary />
         {/* </Cart> */}
