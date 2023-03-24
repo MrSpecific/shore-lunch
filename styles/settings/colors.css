@@ -42,9 +42,12 @@
   --link-color-hover: var(--secondary-color);
   --link-color-active: var(--body-color);
 
-  --button-accent: var(--primary-color);
+  --button-background-color: var(--teal);
+  --button-background-color-hover: var(--dark-teal);
+  --button-background-color-active: var(--light-teal);
+  --button-color: var(--soft-white);
   --button-hover-color: var(--soft-white);
-  --button-active-color: var(--primary-color);
+  --button-active-color: var(--soft-white);
 
   --heading-color: var(--primary-color);
 

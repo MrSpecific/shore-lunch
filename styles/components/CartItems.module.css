@@ -1,6 +1,9 @@
 .cartLines {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacer-xs);
 }
 
 .cartLine {

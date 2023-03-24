@@ -5,6 +5,7 @@ import StripeTestCards from '@commerce/StripeTestCards';
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '@utils/apiHelpers';
 import { useCheckout } from '@hooks';
+import styles from '@styles/components/CartSummary.module.css';
 
 const CartSummary = () => {
   const [cartEmpty, setCartEmpty] = useState(true);
@@ -29,12 +30,14 @@ const CartSummary = () => {
 
       {/* Redirects the user to Stripe */}
       <StripeTestCards />
-      <button className="button" type="submit" disabled={cartEmpty || loading}>
-        Checkout
-      </button>
-      <button className="cart-style-background" type="button" onClick={clearCart}>
-        Clear Cart
-      </button>
+      <div className={styles.cartActions}>
+        <button className="button" type="submit" disabled={cartEmpty || loading}>
+          Checkout
+        </button>
+        <button className="button-link" type="button" onClick={clearCart}>
+          Clear Cart
+        </button>
+      </div>
     </form>
   );
 };

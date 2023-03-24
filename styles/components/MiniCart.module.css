@@ -13,6 +13,22 @@
   background-color: var(--white);
 }
 
+.closeCart {
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cartBody {
   overflow: auto;
 }

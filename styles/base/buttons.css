@@ -3,23 +3,23 @@
   padding: var(--spacer-xs) 24px;
   border: var(--border-width) solid var(--button-accent);
   border-radius: var(--button-border-radius);
-  background-color: transparent;
+  background-color: var(--button-background-color);
   font-family: var(--button-font-family);
   font-weight: 400;
   font-size: var(--button-font-size);
-  color: var(--button-accent);
+  color: var(--button-color);
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
   transition-property: color, background-color, border-color;
 
   &:hover {
-    background-color: var(--button-accent);
+    background-color: var(--button-background-color-hover);
     color: var(--button-hover-color);
   }
 
   &:active {
-    background-color: transparent;
+    background-color: var(--button-background-color-active);
     color: var(--button-active-color);
   }
 
@@ -29,6 +29,7 @@
 
   &:disabled {
     background-color: var(--light-grey);
+    color: var(--dark-grey);
   }
 
   &.secondary {
@@ -54,5 +55,20 @@
       height: 2px;
       background-color: var(--underline-color);
     }
+  }
+}
+
+.button-link {
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+
+  &:active {
+    color: var(--link-color-active);
   }
 }

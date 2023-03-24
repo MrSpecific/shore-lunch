@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';
-import MiniCart from '@components/MiniCart';
 import { Page } from '@layout';
 import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/IMG_2854.jpg';
@@ -36,8 +35,6 @@ export default function HomePage({ intro }) {
           {intro && <Content markdown={intro} className={styles.introParagraph} />}
         </div>
       </section>
-
-      <MiniCart />
     </Page>
   );
 }
