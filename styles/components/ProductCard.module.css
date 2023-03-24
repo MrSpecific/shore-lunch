@@ -1,4 +1,7 @@
 .productCard {
+  border: 1px solid var(--medium-grey);
+  border-radius: 10px;
+  padding: var(--spacer-xs);
 }
 
 .cardImage {

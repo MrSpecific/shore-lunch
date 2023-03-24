@@ -9,7 +9,7 @@ const DonatePage: NextPage = () => {
   return (
     <Page title="Shopping Cart | Next.js + TypeScript Example">
       <div className="content content-y">
-        <h1>Shopping Cart</h1>
+        <h1>Merchandise</h1>
         {/* <Cart> */}
         <Products />
         <hr />

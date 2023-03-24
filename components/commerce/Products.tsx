@@ -9,7 +9,7 @@ const Products = () => {
   return (
     <section
       className="products"
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}
+      style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--spacer-s)' }}
     >
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
