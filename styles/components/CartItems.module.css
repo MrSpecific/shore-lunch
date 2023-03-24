@@ -1,0 +1,10 @@
+.cartLines {
+  list-style: none;
+  padding: 0;
+}
+
+.cartLine {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: var(--spacer-small);
+}

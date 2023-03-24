@@ -5,39 +5,43 @@ import { useShoppingCart } from 'use-shopping-cart';
 import { Page } from '@layout';
 import Cart from '@commerce/Cart';
 import { useCheckout } from '@hooks';
+import styles from '@styles/components/CartItems.module.css';
 
 const CartLine = ({ id, image, name, quantity, formattedValue, formattedPrice }) => {
   const { decrementItem, incrementItem } = useShoppingCart();
 
   return (
-    <li>
+    <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={image} className="" />
-      <h3>{name}</h3>
 
-      <div className="">
-        <button
-          type="button"
-          onClick={() => {
-            decrementItem(id, { count: 1 });
-          }}
-          aria-label={`Subtract one ${name} from your cart`}
-        >
-          -
-        </button>
-        {quantity}
-        <button
-          type="button"
-          onClick={() => {
-            incrementItem(id, { count: 1 });
-          }}
-          aria-label={`Add ${name} to your cart`}
-        >
-          +
-        </button>
+      <div>
+        <h3>{name}</h3>
+
+        <div className="">
+          <button
+            type="button"
+            onClick={() => {
+              decrementItem(id, { count: 1 });
+            }}
+            aria-label={`Subtract one ${name} from your cart`}
+          >
+            -
+          </button>
+          {quantity}
+          <button
+            type="button"
+            onClick={() => {
+              incrementItem(id, { count: 1 });
+            }}
+            aria-label={`Add ${name} to your cart`}
+          >
+            +
+          </button>
+        </div>
+
+        <span>{formattedPrice}</span>
       </div>
-
-      <span>{formattedPrice}</span>
     </li>
   );
 };
@@ -54,7 +58,7 @@ const CartItems = () => {
     <section>
       <form onSubmit={handleCheckout} suppressHydrationWarning>
         {/* {JSON.stringify(cartDetails, null, 2)} */}
-        <ul>
+        <ul className={styles.cartLines}>
           {Object.values(cartDetails).map((item) => (
             <CartLine key={item.id} {...item} />
           ))}
@@ -68,10 +72,10 @@ const CartItems = () => {
           <strong>Total:</strong> {formattedTotalPrice}
         </p>
 
-        <button className="cart-style-background" type="submit" disabled={cartEmpty || loading}>
+        <button className="button" type="submit" disabled={cartEmpty || loading}>
           Checkout
         </button>
-        <button className="cart-style-background" type="button" onClick={clearCart}>
+        <button className="text-button" type="button" onClick={clearCart}>
           Clear Cart
         </button>
       </form>
