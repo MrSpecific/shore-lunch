@@ -17,7 +17,7 @@ const CartSummary = () => {
 
   return (
     <form onSubmit={handleCheckout}>
-      <h2>Cart summary</h2>
+      <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
       {/* This is where we'll render our cart */}
       <p suppressHydrationWarning>

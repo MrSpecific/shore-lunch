@@ -28,7 +28,7 @@
   --font-size-overline: 14px;
 
   @media (--medium) {
-    --font-size-h1: 80px;
+    --font-size-h1: 90px;
   }
 
   --body-font-size: 16px;

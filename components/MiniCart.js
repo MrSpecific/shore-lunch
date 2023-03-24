@@ -34,8 +34,12 @@ const MiniCart = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 100 }}
         >
-          <h2>Your Cart</h2>
-          <CartItems />
+          <div className={styles.cartHeader}>
+            <h2>Your Cart</h2>
+          </div>
+          <div className={styles.cartBody}>
+            <CartItems />
+          </div>
           <CartSummary />
         </motion.section>
       )}

@@ -52,7 +52,7 @@ h1,
   font-family: var(--font-family-tertiary);
   font-size: var(--font-size-h1);
   line-height: 1;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   white-space: pre-wrap;
 }
 

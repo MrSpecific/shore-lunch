@@ -24,7 +24,11 @@ export default function HomePage({ intro }) {
       </section>
       <section className="content content-y">
         <div className={styles.introWrapper}>
-          <h1>{title}</h1>
+          <h1>
+            PDX Coffee
+            <br />
+            Outside
+          </h1>
           <div>
             A loose collective of like-minded individuals that enjoy brewing coffee al fresco.
           </div>
