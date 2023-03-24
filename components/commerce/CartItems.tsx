@@ -50,35 +50,18 @@ const CartItems = () => {
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
-  const { loading, errorMessage, handleCheckout } = useCheckout();
+  const { loading, handleCheckout } = useCheckout();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
   return (
     <section>
-      <form onSubmit={handleCheckout} suppressHydrationWarning>
-        {/* {JSON.stringify(cartDetails, null, 2)} */}
-        <ul className={styles.cartLines}>
-          {Object.values(cartDetails).map((item) => (
-            <CartLine key={item.id} {...item} />
-          ))}
-        </ul>
-        {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
-        {/* This is where we'll render our cart */}
-        <p suppressHydrationWarning>
-          <strong>Number of Items:</strong> {cartCount}
-        </p>
-        <p suppressHydrationWarning>
-          <strong>Total:</strong> {formattedTotalPrice}
-        </p>
-
-        <button className="button" type="submit" disabled={cartEmpty || loading}>
-          Checkout
-        </button>
-        <button className="text-button" type="button" onClick={clearCart}>
-          Clear Cart
-        </button>
-      </form>
+      {/* {JSON.stringify(cartDetails, null, 2)} */}
+      <ul className={styles.cartLines}>
+        {Object.values(cartDetails).map((item) => (
+          <CartLine key={item.id} {...item} />
+        ))}
+      </ul>
     </section>
   );
 };

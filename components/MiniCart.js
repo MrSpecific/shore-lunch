@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useShoppingCart } from 'use-shopping-cart';
 import { motion, AnimatePresence } from 'framer-motion';
 import CartItems from '@commerce/CartItems';
+import CartSummary from '@commerce/CartSummary';
 import styles from '@styles/components/MiniCart.module.css';
 
 const MiniCart = () => {
@@ -35,6 +36,7 @@ const MiniCart = () => {
         >
           <h2>Your Cart</h2>
           <CartItems />
+          <CartSummary />
         </motion.section>
       )}
     </AnimatePresence>

@@ -29,7 +29,7 @@ const CartSummary = () => {
 
       {/* Redirects the user to Stripe */}
       <StripeTestCards />
-      <button className="cart-style-background" type="submit" disabled={cartEmpty || loading}>
+      <button className="button" type="submit" disabled={cartEmpty || loading}>
         Checkout
       </button>
       <button className="cart-style-background" type="button" onClick={clearCart}>
