@@ -9,6 +9,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={product.image} alt={name} className={styles.cardImage} />
       <h2>{name}</h2>
       <p className="price">

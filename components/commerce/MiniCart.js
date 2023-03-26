@@ -21,7 +21,7 @@ const MiniCartContents = () => {
     return () => {
       document.removeEventListener('keydown', escapeKeyHandler);
     };
-  }, []);
+  }, [handleCloseCart]);
 
   return (
     <motion.section

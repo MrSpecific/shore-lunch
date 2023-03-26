@@ -75,7 +75,7 @@ export const fetchProducts = async () => {
     const productArray = result.data;
 
     products = await Promise.allSettled(
-      result.data.map(async (product: object) => {
+      result.data.map(async (product: Stripe.Product) => {
         // console.log('product', product);
         const price = await stripe.prices.retrieve(product.default_price);
         return { ...product, default_price: price };

@@ -7,13 +7,14 @@ import Cart from '@commerce/Cart';
 import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
-const CartLine = ({ id, image, name, quantity, formattedValue, formattedPrice }) => {
+const CartLine = (props) => {
+  const { id, image, name, quantity, formattedValue, formattedPrice } = props;
   const { decrementItem, incrementItem } = useShoppingCart();
 
   return (
     <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} className="" />
+      <img src={image} className="" alt="" />
 
       <div>
         <h3>{name}</h3>
