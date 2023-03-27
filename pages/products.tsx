@@ -10,6 +10,7 @@ import { useAppContext } from '@context';
 
 const ProductsPage: NextPage = () => {
   // const products = await availableProducts();
+  // @ts-ignore
   const { products } = useAppContext();
 
   // console.log(products);
