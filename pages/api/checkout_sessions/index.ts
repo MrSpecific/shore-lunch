@@ -18,21 +18,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
         throw new Error('Invalid amount.');
       }
+
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
         submit_type: 'donate',
         payment_method_types: ['card'],
         line_items: [
           {
-            name: 'Custom amount donation',
-            amount: formatAmountForStripe(amount, CURRENCY),
-            currency: CURRENCY,
+            // description: 'Custom amount donation',
+            price: formatAmountForStripe(amount, CURRENCY).toString(),
+            // currency: CURRENCY as any,
             quantity: 1,
           },
         ],
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/donate-with-checkout`,
       };
+
       const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
         params
       );

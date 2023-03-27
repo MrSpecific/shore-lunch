@@ -37,7 +37,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
         shipping_address_collection: {
-          allowed_countries: ALLOWED_COUNTRIES,
+          allowed_countries: ALLOWED_COUNTRIES as any,
+          // allowed_countries: ['US', 'CA'],
         },
         shipping_options,
         line_items,

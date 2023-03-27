@@ -18,7 +18,13 @@ export const GlobalStyles = () => {
   );
 };
 
-export default function Page({ title, metaTags, header = true, headerClass, children }) {
+export default function Page({
+  title = null,
+  metaTags = {},
+  header = true,
+  headerClass = null,
+  children = null,
+}) {
   return (
     <Layout metaTags={metaTags} pageTitle={title}>
       <GlobalStyles />
