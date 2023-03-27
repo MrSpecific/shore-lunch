@@ -3,8 +3,6 @@ import getStripe, { stripe, formatAmountForDisplay, fetchProducts } from '@lib/s
 async function handler(req, res) {
   // if (req.method !== 'POST') return res.status(400).send('Bad request');
 
-  // const body = req.body;
-
   const products = await fetchProducts();
 
   return res.status(200).send(products);

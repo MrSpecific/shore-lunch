@@ -37,6 +37,7 @@ export function formatAmountForStripe(amount: number, currency: string): number 
   });
   const parts = numberFormat.formatToParts(amount);
   let zeroDecimalCurrency: boolean = true;
+
   for (const part of parts) {
     if (part.type === 'decimal') {
       zeroDecimalCurrency = false;
@@ -74,15 +75,26 @@ export const fetchProducts = async () => {
 
     const productArray = result.data;
 
-    products = await Promise.allSettled(
-      result.data.map(async (product: Stripe.Product) => {
-        // console.log('product', product);
+    const pricingResult = await Promise.allSettled(
+      productArray.map(async (product: Stripe.Product) => {
         const price = await stripe.prices.retrieve(product.default_price.toString());
-        return { ...product, default_price: price };
+        console.log(price);
+
+        return {
+          ...product,
+          default_price: price,
+          image: product.images[0],
+          price: price.unit_amount,
+        };
       })
     );
-  } catch {
-    console.error('Problem fetching products');
+
+    products = pricingResult.reduce((acc, result) => {
+      if (result.status != 'fulfilled') return acc;
+      return [...acc, result.value];
+    }, []);
+  } catch (error) {
+    console.error('Problem fetching products', error);
   }
 
   return products;

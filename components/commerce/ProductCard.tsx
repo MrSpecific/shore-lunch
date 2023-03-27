@@ -1,6 +1,5 @@
-import products from '@data/products';
-import { formatCurrencyString } from 'use-shopping-cart';
-import { useShoppingCart } from 'use-shopping-cart';
+import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
+import * as config from '@config';
 import styles from '@styles/components/ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
@@ -18,7 +17,7 @@ const ProductCard = ({ product }) => {
         <div className={styles.price}>
           {formatCurrencyString({
             value: price,
-            currency: currency,
+            currency: currency || config.CURRENCY,
           })}
         </div>
         <div className={styles.cardDescription}>{description}</div>

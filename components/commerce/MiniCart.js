@@ -46,7 +46,7 @@ const MiniCartContents = () => {
 };
 
 const MiniCart = () => {
-  const { handleCartClick, shouldDisplayCart } = useShoppingCart();
+  const { shouldDisplayCart } = useShoppingCart();
 
   return <AnimatePresence>{shouldDisplayCart && <MiniCartContents />}</AnimatePresence>;
 };

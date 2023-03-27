@@ -7,6 +7,7 @@ import { Page, Header } from '@layout';
 import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/IMG_2854.jpg';
 import { CoffeeOutsideSticker } from '@svg';
+// import { useAppContext } from '@context/app';
 
 const { log } = console;
 

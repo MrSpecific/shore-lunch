@@ -1,4 +1,6 @@
-const product = [
+import { fetchProducts } from '@lib/stripe';
+
+const testProducts = [
   {
     name: 'Bananas',
     description: 'Yummy yellow fruit',
@@ -29,4 +31,13 @@ const product = [
   },
 ];
 
-export default product;
+export const availableProducts = async () => {
+  const stripeProducts = await fetchProducts();
+
+  // console.log(stripeProducts);
+  return stripeProducts;
+};
+
+const products = testProducts;
+
+export default products;
