@@ -101,13 +101,17 @@ h6,
 }
 
 .body-copy {
-  font-size: 16px;
+  font-size: var(--body-font-size);
   letter-spacing: 0.5px;
   line-height: 1.5;
 
   & > p {
     margin-bottom: var(--gap-s);
   }
+}
+
+.body-copy-large {
+  font-size: var(--body-large-font-size);
 }
 
 ::selection {

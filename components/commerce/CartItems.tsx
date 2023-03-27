@@ -1,47 +1,70 @@
 import { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { useShoppingCart } from 'use-shopping-cart';
+import classNames from 'classnames';
 
 import { Page } from '@layout';
 import Cart from '@commerce/Cart';
 import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
+const QuantityControls = ({ id, quantity }) => {
+  const { decrementItem, incrementItem, removeItem } = useShoppingCart();
+
+  return (
+    <div className={styles.quantityControlWrapper}>
+      <div className={styles.quantityControls}>
+        <button
+          type="button"
+          onClick={() => {
+            decrementItem(id, { count: 1 });
+          }}
+          aria-label={`Subtract one ${name} from your cart`}
+          className={styles.decrement}
+        >
+          -
+        </button>
+        <span className={styles.quantity}>{quantity}</span>
+        <button
+          type="button"
+          onClick={() => {
+            incrementItem(id, { count: 1 });
+          }}
+          aria-label={`Add ${name} to your cart`}
+          className={styles.increment}
+        >
+          +
+        </button>
+      </div>
+      <button
+        className={classNames('button-link', [styles.removeLine])}
+        onClick={() => removeItem(id)}
+      >
+        Remove
+      </button>
+    </div>
+  );
+};
+
 const CartLine = (props) => {
   const { id, image, name, quantity, formattedValue, formattedPrice } = props;
-  const { decrementItem, incrementItem } = useShoppingCart();
 
   return (
     <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} className="" alt="" />
+      <img src={image} className={styles.lineImage} alt="" />
 
-      <div>
-        <h3>{name}</h3>
-
-        <div className="">
-          <button
-            type="button"
-            onClick={() => {
-              decrementItem(id, { count: 1 });
-            }}
-            aria-label={`Subtract one ${name} from your cart`}
-          >
-            -
-          </button>
-          {quantity}
-          <button
-            type="button"
-            onClick={() => {
-              incrementItem(id, { count: 1 });
-            }}
-            aria-label={`Add ${name} to your cart`}
-          >
-            +
-          </button>
+      <div className={styles.lineContent}>
+        <div>
+          <h3 className={styles.lineHeadline}>{name}</h3>
+          <span className={styles.itemPrice}>{formattedPrice}</span>
         </div>
 
-        <span>{formattedPrice}</span>
+        <QuantityControls id={id} quantity={quantity} />
+      </div>
+
+      <div className={styles.lineSummary}>
+        <span className={styles.lineTotal}>{formattedValue}</span>
       </div>
     </li>
   );

@@ -1,6 +1,5 @@
 .cartControl {
-  background-color: unset;
-  border: unset;
-  line-height: 1;
-  cursor: pointer;
+  & svg {
+    fill: currentColor;
+  }
 }

@@ -10,8 +10,8 @@
 }
 
 .content-y {
-  padding-top: var(--spacer-xlarge);
-  padding-bottom: var(--spacer-xlarge);
+  padding-top: var(--spacer-large);
+  padding-bottom: var(--spacer-large);
 }
 
 .content-no-hero {

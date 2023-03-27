@@ -36,7 +36,8 @@
   --header-component-color: var(--dark-teal);
 
   --body-bg: var(--cream);
-  --body-color: var(--dark-teal);
+  --body-color: var(--black);
+  --heading-color: var(--black);
 
   --link-color: var(--primary-color);
   --link-color-hover: var(--secondary-color);
@@ -48,8 +49,6 @@
   --button-color: var(--soft-white);
   --button-hover-color: var(--soft-white);
   --button-active-color: var(--soft-white);
-
-  --heading-color: var(--primary-color);
 
   --footer-background-color: var(--cream);
   --footer-text-color: var(--dark-teal);

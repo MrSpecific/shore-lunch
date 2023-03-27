@@ -25,15 +25,10 @@ export default function HomePage({ intro }) {
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>
-            PDX Coffee
-            <br />
-            Outside
+            We&apos;re A loose collective of like-minded individuals that enjoy brewing coffee al
+            fresco.
           </h1>
-          <div>
-            A loose collective of like-minded individuals that enjoy brewing coffee al fresco.
-          </div>
-
-          {intro && <Content markdown={intro} className={styles.introParagraph} />}
+          {intro && <Content markdown={intro} className="body-copy-large" />}
         </div>
       </section>
     </Page>

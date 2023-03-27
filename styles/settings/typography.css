@@ -27,12 +27,13 @@
   --font-size-h6: 16px;
   --font-size-overline: 14px;
 
-  @media (--medium) {
-    --font-size-h1: 90px;
-  }
-
   --body-font-size: 16px;
   --body-large-font-size: 20px;
+
+  @media (--medium) {
+    --font-size-h1: 90px;
+    --body-large-font-size: 24px;
+  }
 
   --footer-font-size: var(--body-font-size);
   --footer-font-size-overline: var(--font-size-overline);

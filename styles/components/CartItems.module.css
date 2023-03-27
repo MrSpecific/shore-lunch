@@ -8,6 +8,81 @@
 
 .cartLine {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 25% 3fr 1fr;
   gap: var(--spacer-small);
+}
+
+.lineImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lineContent {
+}
+
+.lineHeadline {
+  font-size: var(--font-size-h4);
+  line-height: 1;
+}
+
+.quantityControlWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quantityControls {
+  display: flex;
+  font-weight: 700;
+  --corner-radius: 40px;
+}
+
+.decrement,
+.increment {
+  background-color: unset;
+  border: 2px solid var(--teal);
+  padding: 4px 10px;
+  cursor: pointer;
+  line-height: 1;
+
+  &:hover {
+    color: var(--soft-white);
+    background-color: var(--teal);
+  }
+}
+
+.decrement {
+  border-top-left-radius: var(--corner-radius);
+  border-bottom-left-radius: var(--corner-radius);
+  border-right: unset;
+}
+
+.increment {
+  border-top-right-radius: var(--corner-radius);
+  border-bottom-right-radius: var(--corner-radius);
+  border-left: unset;
+}
+
+.quantity {
+  padding: 4px 10px;
+  border: 2px solid var(--teal);
+  min-width: 60px;
+  text-align: center;
+}
+
+.removeLine {
+  font-size: 0.75em;
+}
+
+.itemPrice {
+  font-size: 0.9em;
+  color: var(--dark-grey);
+  line-height: 1;
+  position: relative;
+  bottom: 0.2em;
+}
+
+.lineTotal {
+  font-weight: 550;
 }

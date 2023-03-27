@@ -19,16 +19,13 @@ const ProductCard = ({ product }) => {
         })}
       </p>
       <button
-        className="cart-style-background"
+        className="button"
         onClick={() => {
           addItem(product);
           handleCartHover();
         }}
       >
         Add to cart
-      </button>
-      <button className="cart-style-background" onClick={() => removeItem(product.id)}>
-        Remove
       </button>
     </div>
   );
