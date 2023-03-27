@@ -74,7 +74,6 @@ const Header = ({ className, children }) => {
             {children && <div>{children}</div>}
             <NavToggle />
             <CartControl />
-            YO
           </div>
         </section>
       </header>
