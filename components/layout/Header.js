@@ -68,10 +68,11 @@ const Header = ({ className, children }) => {
               <CoffeeOutsideLogoHoriz className={styles.headerLogo} />
               <span className="visually-hidden">{siteInfo.title}</span>
             </Link>
-            {breakpoint !== 'small' && (
-              <Nav className={styles.desktopNav} breakpoint={breakpoint} />
-            )}
-            {children && <div>{children}</div>}
+            <div className={styles.headerMiddle}>
+              {children && <div>{children}</div>}
+
+              <Nav />
+            </div>
             <NavToggle />
             <CartControl />
           </div>

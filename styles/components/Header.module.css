@@ -1,7 +1,7 @@
 @import "../settings/breakpoints";
 
 .header {
-  --link-color: var(--white);
+  /* --link-color: var(--white); */
 }
 
 .header-overlay {
@@ -33,4 +33,11 @@
   font-size: 0;
   line-height: 1;
   margin: 4px;
+}
+
+.headerMiddle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

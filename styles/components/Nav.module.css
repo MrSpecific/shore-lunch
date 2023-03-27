@@ -1,7 +1,6 @@
 @import "../settings/breakpoints";
 
 .nav {
-  --nav-underline-color: var(--primary-color);
   font-weight: var(--font-weight-medium);
 }
 
@@ -35,9 +34,9 @@
   composes: nav;
   /* flex: 1; */
 
-  --link-color: var(--soft-white);
+  /* --link-color: var(--soft-white);
   --link-color-hover: var(--soft-white);
-  --link-color-active: var(--soft-white);
+  --link-color-active: var(--soft-white); */
 }
 
 .navItem {
@@ -56,23 +55,11 @@
 }
 
 .navItemTopLevel {
-  padding: var(--spacer-xs);
-
-  &:hover {
-    background-color: var(--tertiary-color);
-  }
-
-  @media (--header-breakpoint-down) {
-    &:not(:last-child) {
-      width: 100%;
-      padding-bottom: var(--spacer-s);
-      border-bottom: 2px solid var(--soft-white);
-    }
-  }
 }
 
 .navItemInner {
   position: relative;
+  text-decoration: none;
 }
 
 .navToggle {

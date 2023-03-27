@@ -17,16 +17,24 @@
   background-color: unset;
   border: unset;
   cursor: pointer;
+  line-height: 1;
+  color: var(--dark-grey);
+
+  &:hover {
+    color: var(--pink);
+  }
 
   & svg {
     width: 20px;
     height: 20px;
+    fill: currentColor;
   }
 }
 
 .cartHeader {
   display: flex;
   justify-content: space-between;
+  gap: var(--spacer-s);
 }
 
 .cartBody {

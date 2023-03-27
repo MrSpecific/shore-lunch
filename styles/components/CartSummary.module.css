@@ -1,4 +1,5 @@
 .cartActions {
   display: flex;
   gap: var(--spacer-xs);
+  padding-top: var(--spacer-xs);
 }

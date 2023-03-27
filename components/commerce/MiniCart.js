@@ -32,7 +32,7 @@ const MiniCartContents = () => {
       exit={{ opacity: 0, y: 100 }}
     >
       <div className={styles.cartHeader}>
-        <h2>Your Cart</h2>
+        <h2>Your Cart.</h2>
         <button className={styles.closeCart} onClick={() => handleCloseCart()}>
           <CloseIcon />
         </button>
