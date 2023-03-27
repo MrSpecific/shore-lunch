@@ -1,4 +1,7 @@
 .productCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-xs);
   border: 1px solid var(--medium-grey);
   border-radius: 10px;
   padding: var(--spacer-xs);
@@ -8,4 +11,18 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+.cardDetails {
+  flex: 1;
+}
+
+.cardDescription {
+}
+
+.cardActions {
+}
+
+.price {
+  color: var(--pink);
 }
