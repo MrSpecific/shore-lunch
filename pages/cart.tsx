@@ -3,7 +3,7 @@ import { Page } from '@layout';
 
 import Cart from '@commerce/Cart';
 import CartSummary from '@commerce/CartSummary';
-import Products from '@commerce/Products';
+import ProductGrid from '@components/commerce/ProductGrid';
 
 const DonatePage: NextPage = () => {
   return (
@@ -11,7 +11,7 @@ const DonatePage: NextPage = () => {
       <div className="content content-y">
         <h1>Shopping Cart</h1>
         {/* <Cart> */}
-        <Products />
+        <ProductGrid />
         <hr />
         <CartSummary />
         {/* </Cart> */}

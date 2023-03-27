@@ -70,7 +70,6 @@ const Header = ({ className, children }) => {
             </Link>
             <div className={styles.headerMiddle}>
               {children && <div>{children}</div>}
-
               <Nav />
             </div>
             <NavToggle />
@@ -78,7 +77,7 @@ const Header = ({ className, children }) => {
           </div>
         </section>
       </header>
-      {breakpoint === 'small' && <Nav className={styles.mobileNav} />}
+      {/* {breakpoint === 'small' && <Nav className={styles.mobileNav} />} */}
     </>
   );
 };

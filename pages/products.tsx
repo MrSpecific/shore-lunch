@@ -3,7 +3,7 @@ import { Page } from '@layout';
 
 import Cart from '@commerce/Cart';
 import CartSummary from '@commerce/CartSummary';
-import Products from '@commerce/Products';
+import ProductGrid from '@components/commerce/ProductGrid';
 
 const DonatePage: NextPage = () => {
   return (
@@ -12,7 +12,7 @@ const DonatePage: NextPage = () => {
         <h1>Merchandise</h1>
         {/* <Cart> */}
         <div style={{ marginTop: 'var(--spacer-m)', marginBottom: 'var(--spacer-m)' }}>
-          <Products />
+          <ProductGrid />
         </div>
         <hr />
         <CartSummary />

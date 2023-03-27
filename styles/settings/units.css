@@ -13,7 +13,7 @@
 
   --edge-border: 20px;
 
-  --edge-space: var(--spacer-medium);
+  --edge-space: 0;
   @media (--medium) {
     --edge-space: 122px;
   }
