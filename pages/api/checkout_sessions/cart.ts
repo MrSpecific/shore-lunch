@@ -11,7 +11,7 @@ import Stripe from 'stripe';
  */
 // import { validateCartItems } from 'use-shopping-cart/utilities/serverless';
 import { validateCartItems } from 'use-shopping-cart/utilities';
-import inventory from '@data/products';
+import { availableProducts } from '@data/products';
 import getShippingRates from '@lib/shipping';
 import { ALLOWED_COUNTRIES, API_VERSION } from '@config';
 
@@ -21,6 +21,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const inventory = await availableProducts();
+
   if (req.method === 'POST') {
     try {
       // Validate the cart details that were sent from the client.

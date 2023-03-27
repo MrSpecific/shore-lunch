@@ -78,13 +78,14 @@ export const fetchProducts = async () => {
     const pricingResult = await Promise.allSettled(
       productArray.map(async (product: Stripe.Product) => {
         const price = await stripe.prices.retrieve(product.default_price.toString());
-        console.log(price);
+        // console.log(price);
 
         return {
           ...product,
           default_price: price,
           image: product.images[0],
           price: price.unit_amount,
+          currency: price.currency,
         };
       })
     );
