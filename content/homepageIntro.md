@@ -2,4 +2,3 @@
 title: Coffee
 ---
 
-Coffee Time
