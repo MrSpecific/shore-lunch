@@ -1,11 +1,13 @@
 import siteInfo from '@lib/siteInfo.js';
-import InstagramIcon from '@svg/instagram.svg';
+import { TwitterIcon, InstagramIcon } from '@svg';
 import styles from '@styles/components/SocialLinks.module.css';
 
 const renderIcon = (name) => {
   switch (name.toLowerCase()) {
     case 'instagram':
       return <InstagramIcon />;
+    case 'twitter':
+      return <TwitterIcon />;
     default:
       return name;
   }

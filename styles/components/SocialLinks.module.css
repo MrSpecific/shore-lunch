@@ -1,7 +1,12 @@
 .socialLinks {
   list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacer-s);
 
   & svg {
     fill: currentColor;
+    height: var(--social-icon-size);
+    width: var(--social-icon-size);
   }
 }

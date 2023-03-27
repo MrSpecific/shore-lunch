@@ -8,6 +8,7 @@
   font-size: var(--footer-font-size);
   letter-spacing: var(--footer-letter-spacing);
   text-transform: uppercase;
+  text-align: center;
   z-index: 9999;
 
   & h3 {
@@ -41,8 +42,10 @@
   }
 }
 
+.socialContent,
 .footerItem {
   margin-top: var(--spacer-m);
+
   & ul {
     list-style-type: none;
     padding: 0;
@@ -51,6 +54,12 @@
   & li {
     margin-top: var(--spacer-s);
   }
+}
+
+#socialContent {
+  /* display: flex; */
+  /* justify-content: center; */
+  margin: 0 auto;
 }
 
 #legalContent {

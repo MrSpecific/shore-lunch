@@ -11,7 +11,7 @@ import styles from '@styles/components/Footer.module.css';
 const SocialContent = () => {
   return (
     <div className={styles.footerItem} id={styles.socialContent}>
-      <h3 className="overline">Social</h3>
+      <h3 className="overline">Get Social</h3>
       <SocialLinks />
     </div>
   );
