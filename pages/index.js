@@ -25,8 +25,8 @@ export default function HomePage({ intro }) {
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>
-            We&apos;re A loose collective of like-minded individuals that enjoy brewing coffee al
-            fresco.
+            We&apos;re a loose collective of like-minded individuals that enjoy brewing coffee{' '}
+            <span style={{ whiteSpace: 'nowrap' }}>al fresco.</span>
           </h1>
           {intro && <Content markdown={intro} className="body-copy-large" />}
         </div>
