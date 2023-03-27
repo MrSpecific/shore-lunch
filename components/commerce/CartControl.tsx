@@ -8,7 +8,7 @@ const CartControl = () => {
   return (
     <button onClick={() => handleCartClick()} className={styles.cartControl}>
       <CartIcon style={{ height: '30px', width: '30px' }} />
-      <span className="visually-hidden">Toggle Cart</span>
+      <span className="visually-hidden">{shouldDisplayCart ? 'Close' : 'Open'} Cart</span>
     </button>
   );
 };
