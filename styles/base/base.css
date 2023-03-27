@@ -5,6 +5,10 @@ body {
   color: var(--body-color);
 }
 
+body {
+  padding: var(--edge-border);
+}
+
 a {
   color: var(--link-color);
   /* text-decoration: none; */

@@ -13,3 +13,7 @@ export default function TermsConditions({ pressItems }) {
     </Page>
   );
 }
+
+export async function getStaticProps() {
+  return { props: {} };
+}

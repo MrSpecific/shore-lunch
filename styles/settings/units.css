@@ -11,6 +11,8 @@
   --spacer-l: var(--spacer-large);
   --spacer-xl: var(--spacer-xlarge);
 
+  --edge-border: 20px;
+
   --edge-space: var(--spacer-medium);
   @media (--medium) {
     --edge-space: 122px;

@@ -8,7 +8,7 @@
 
 .heroWrapper {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - calc(var(--edge-border) * 2));
   display: flex;
   justify-content: center;
   align-items: center;

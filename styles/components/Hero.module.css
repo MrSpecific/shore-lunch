@@ -8,7 +8,7 @@
   --heading-color: var(--soft-white);
   --hero-content-max-width: 460px;
   --hero-content-padding: var(--spacer-large) var(--spacer-m);
-  --hero-image-max-height: 800px;
+  --hero-image-max-height: calc(100v - calc(--edge-border * 2));
   --link-color: var(--soft-white);
   --link-color-hover: var(--dark-grey);
 

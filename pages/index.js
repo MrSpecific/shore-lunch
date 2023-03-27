@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';
-import { Page } from '@layout';
+import { Page, Header } from '@layout';
 import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/IMG_2854.jpg';
 import { CoffeeOutsideSticker } from '@svg';
@@ -21,6 +21,7 @@ export default function HomePage({ intro }) {
           <CoffeeOutsideSticker className={styles.heroLogo} />
         </div>
       </section>
+      <Header />
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>
