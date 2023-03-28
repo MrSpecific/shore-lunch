@@ -6,7 +6,7 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import siteInfo from '@lib/siteInfo';
 import { useAppContext } from '@context/app';
 import { useBreakpoint } from '@hooks';
-import { Nav, NavToggle } from '@components/layout';
+import { Nav, NavOverlay, NavToggle } from '@components/nav';
 import CartControl from '@commerce/CartControl';
 import { CoffeeOutsideLogoHoriz } from '@svg';
 import styles from '@styles/components/Header.module.css';
@@ -77,6 +77,7 @@ const Header = ({ className, children }) => {
           </div>
         </section>
       </header>
+      <NavOverlay />
       {/* {breakpoint === 'small' && <Nav className={styles.mobileNav} />} */}
     </>
   );

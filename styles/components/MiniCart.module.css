@@ -1,16 +1,22 @@
+@import "../settings/breakpoints";
+
 .miniCart {
   position: fixed;
-  inset: var(--spacer-m) var(--spacer-m) auto auto;
+  inset: var(--edge-border);
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  /* border: 2px solid var(--primary-color); */
   border: 1px solid var(--shadow-color);
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 10px;
-  max-width: min(500px, 80vw);
+  max-width: 100%;
   padding: var(--spacer-s);
   background-color: var(--white);
+
+  @media (--medium) {
+    inset: var(--edge-border) var(--edge-border) auto auto;
+    max-width: min(500px, 80vw);
+  }
 }
 
 .closeCart {

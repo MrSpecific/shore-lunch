@@ -1,7 +1,26 @@
 @import "../../settings/breakpoints";
 
-.nav {
+.navOverLay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--pink);
+  padding: var(--edge-border);
   font-weight: var(--font-weight-medium);
+
+  --link-color: var(--soft-white);
+  --link-color-hover: var(--soft-white);
+  --link-color-active: var(--soft-white);
+}
+
+.navClose {
+  /* background-color: unset;
+  border: unset;
+  cursor: pointer; */
+
+  & svg {
+    width: 30px;
+    fill: currentColor;
+  }
 }
 
 .navList {
@@ -11,20 +30,9 @@
   gap: var(--spacer-s);
   list-style: none;
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
   margin: 0;
   padding: var(--spacer-m);
   color: var(--soft-white);
-}
-
-.primaryNavList {
-  composes: navList;
-  height: 100%;
-  overflow-y: auto;
-}
-
-.primaryNav {
-  composes: nav;
-  --link-color: var(--soft-white);
-  --link-color-hover: var(--soft-white);
-  --link-color-active: var(--soft-white);
 }
