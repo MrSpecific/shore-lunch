@@ -8,9 +8,9 @@ import CartSummary from '@commerce/CartSummary';
 import ProductGrid from '@components/commerce/ProductGrid';
 import { useAppContext } from '@context';
 
-const ProductsPage: NextPage = ({ products }) => {
+const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
   return (
-    <Page title="Shopping Cart | Next.js + TypeScript Example">
+    <Page title="Merchandise">
       <div className="content content-y">
         <h1>Merchandise</h1>
         <div style={{ marginTop: 'var(--spacer-m)', marginBottom: 'var(--spacer-m)' }}>
