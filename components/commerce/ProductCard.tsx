@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
       </div>
       <div className={styles.cardActions}>
         <button
-          className="button"
+          className="button secondary"
           onClick={() => {
             addItem(product);
             handleCartHover();

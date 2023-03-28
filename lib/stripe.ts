@@ -1,5 +1,5 @@
-import { loadStripe } from '@stripe/stripe-js';
 import Stripe from 'stripe';
+import { loadStripe } from '@stripe/stripe-js';
 import { API_VERSION } from '@config';
 
 // Load Stripe Script
@@ -69,7 +69,9 @@ export const fetchProducts = async () => {
     // const result = await stripe.products.list({
     //   limit: 3,
     // });
+    console.log('trying to fetch using: ', process.env.STRIPE_SECRET_KEY);
     const result = await stripe.products.list();
+    console.log('tripe.products.list complete');
 
     if (!result || !result.data || !result.data.length) break getProducts;
 
@@ -78,6 +80,7 @@ export const fetchProducts = async () => {
     const pricingResult = await Promise.allSettled(
       productArray.map(async (product: Stripe.Product) => {
         const price = await stripe.prices.retrieve(product.default_price.toString());
+        console.log('stripe.prices.retrieve complete', product.default_price);
         // console.log(price);
 
         return {

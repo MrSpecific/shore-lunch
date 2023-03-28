@@ -3,17 +3,16 @@ import Head from 'next/head';
 import { AppContext, AppContextProvider } from '@context';
 import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
 import AnalyticsTags from '@lib/analytics';
-import { availableProducts } from '@data/products';
+// import { availableProducts } from '@data/products';
 import Cart from '@commerce/Cart';
 import '../styles/globals.css';
 
-const AppData = ({ data, products }) => {
-  const { setGlobalData, setProducts } = useContext(AppContext);
+const AppData = ({ data }) => {
+  const { setGlobalData } = useContext(AppContext);
 
   useEffect(() => {
     if (data) setGlobalData(data);
-    if (products) setProducts(products);
-  }, [setGlobalData, data, setProducts, products]);
+  }, [setGlobalData, data]);
 };
 
 function MyApp({ Component, pageProps, data, products }) {
@@ -37,10 +36,17 @@ function MyApp({ Component, pageProps, data, products }) {
   );
 }
 
+export async function getServerSideProps() {
+  const products = await availableProducts();
+
+  console.log('Products are: ', products);
+
+  return { props: { products } };
+}
+
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   // NOTE: Fetch data here:
   const data = {};
-  const products = await availableProducts();
 
   let pageProps = {};
 
@@ -48,7 +54,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
     pageProps = await Component.getInitialProps(ctx);
   }
 
-  return { pageProps, data, products };
+  return { pageProps, data };
 };
 
 export default MyApp;

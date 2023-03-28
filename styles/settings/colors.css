@@ -20,7 +20,9 @@
   --cream: hsl(192, 11%, 91%);
   --goldenrod: hsl(37, 100%, 72%);
   --dark-goldenrod: hsl(37, 64%, 29%);
+  --light-pink: hsl(343, 76%, 72%);
   --pink: hsl(343, 76%, 62%);
+  --dark-pink: hsl(343, 76%, 32%);
 
   /* Color Implementation */
   --primary-color: var(--dark-teal);
