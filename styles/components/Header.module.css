@@ -26,12 +26,14 @@
 }
 
 .headerLogo {
-  height: 80px;
-  width: intrinsic;
+  /* width: min(320px, 40vw); */
+  width: min(320px, 60%);
+  height: intrinsic;
   fill: currentColor;
   font-size: 0;
   line-height: 1;
   margin: 4px;
+  flex: 1;
 }
 
 .headerMiddle {

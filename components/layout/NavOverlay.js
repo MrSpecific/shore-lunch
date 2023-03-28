@@ -8,8 +8,7 @@ import { useAppContext } from '@lib/context/app';
 import { NavItem } from '@layout';
 import styles from '@styles/components/layout/NavOverlay.module.css';
 
-// Top-level Nav component
-const NavOverlay = ({ className, breakpoint }) => {
+const Overlay = () => {
   const { navIsActive, setNavIsActive } = useAppContext();
 
   const navClass = classNames({
@@ -41,7 +40,7 @@ const NavOverlay = ({ className, breakpoint }) => {
       document.removeEventListener('keydown', escapeKeyHandler);
       window.removeEventListener('resize', resizeHandler);
     };
-  }, [navIsActive, setNavIsActive, breakpoint]);
+  }, [navIsActive, setNavIsActive]);
 
   return (
     <FocusTrap active={navIsActive} focusTrapOptions={{ allowOutsideClick: true }}>
@@ -61,6 +60,17 @@ const NavOverlay = ({ className, breakpoint }) => {
         </ol>
       </nav>
     </FocusTrap>
+  );
+};
+
+// Top-level Nav component
+const NavOverlay = ({ className, breakpoint }) => {
+  const { navIsActive, setNavIsActive } = useAppContext();
+
+  return (
+    <div>
+      <Overlay />
+    </div>
   );
 };
 

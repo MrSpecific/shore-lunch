@@ -19,7 +19,7 @@
   --body-font-family: var(--font-family-primary);
   --button-font-family: var(--font-family-primary);
 
-  --font-size-h1: 60px;
+  --font-size-h1: 50px;
   --font-size-h2: 48px;
   --font-size-h3: 38px;
   --font-size-h4: 24px;
@@ -28,7 +28,7 @@
   --font-size-overline: 14px;
 
   --body-font-size: 16px;
-  --body-large-font-size: 20px;
+  --body-large-font-size: 22px;
 
   @media (--medium) {
     --font-size-h1: 90px;
