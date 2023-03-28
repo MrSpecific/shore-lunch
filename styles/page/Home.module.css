@@ -23,13 +23,12 @@
 }
 
 .heroInner {
-  /* position: absolute;
-  inset: 0; */
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacer-large);
+  padding: var(--spacer-s);
+  max-width: 100%;
 }
 
 .heroLogo {

@@ -3,22 +3,30 @@
 .navOverLay {
   position: fixed;
   inset: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   background-color: var(--pink);
   padding: var(--edge-border);
-  font-weight: var(--font-weight-medium);
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 
   --link-color: var(--soft-white);
   --link-color-hover: var(--soft-white);
   --link-color-active: var(--soft-white);
 }
 
-.navClose {
-  /* background-color: unset;
-  border: unset;
-  cursor: pointer; */
+.overlayTop {
+  text-align: right;
+  padding-bottom: var(--spacer-xs);
+  border-bottom: 1px solid var(--soft-white);
+  margin-bottom: var(--spacer-s);
+}
 
+.navClose {
   & svg {
-    width: 30px;
+    width: max(30px, 8vw);
     fill: currentColor;
   }
 }
@@ -27,12 +35,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacer-s);
+  gap: var(--spacer-xs);
   list-style: none;
-  width: 100%;
-  height: 100%;
+  max-height: 100%;
   overflow-y: auto;
   margin: 0;
-  padding: var(--spacer-m);
+  padding: 0;
   color: var(--soft-white);
+  font-size: max(18px, 10vw);
+  font-weight: 700;
 }

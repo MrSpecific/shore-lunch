@@ -34,9 +34,11 @@ const Overlay = () => {
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
       >
-        <button className={classNames('button-link', [styles.navClose])} onClick={closeNav}>
-          <Close />
-        </button>
+        <div className={styles.overlayTop}>
+          <button className={classNames('button-link', [styles.navClose])} onClick={closeNav}>
+            <Close />
+          </button>
+        </div>
 
         <NavList className={styles.navList} itemClassName={styles.navItemTopLevel} />
       </motion.nav>
