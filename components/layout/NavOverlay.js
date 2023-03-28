@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
+import FocusTrap from 'focus-trap-react';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import siteInfo from '@lib/siteInfo';
 import { useAppContext } from '@lib/context/app';
 import { NavItem } from '@layout';
-import styles from '@styles/components/layout/Nav.module.css';
+import styles from '@styles/components/layout/NavOverlay.module.css';
 
 // Top-level Nav component
-const Nav = ({ className, breakpoint }) => {
+const NavOverlay = ({ className, breakpoint }) => {
   const { navIsActive, setNavIsActive } = useAppContext();
 
   const navClass = classNames({
@@ -43,18 +44,24 @@ const Nav = ({ className, breakpoint }) => {
   }, [navIsActive, setNavIsActive, breakpoint]);
 
   return (
-    <nav className={navClass}>
-      <ol className={styles.primaryNavList}>
-        {siteInfo.nav.map((item, index) => {
-          return (
-            <NavItem path={item.path} className={styles.navItemTopLevel} key={`nav-item-${index}`}>
-              {item.label}
-            </NavItem>
-          );
-        })}
-      </ol>
-    </nav>
+    <FocusTrap active={navIsActive} focusTrapOptions={{ allowOutsideClick: true }}>
+      <nav className={navClass}>
+        <ol className={styles.primaryNavList}>
+          {siteInfo.nav.map((item, index) => {
+            return (
+              <NavItem
+                path={item.path}
+                className={styles.navItemTopLevel}
+                key={`nav-item-${index}`}
+              >
+                {item.label}
+              </NavItem>
+            );
+          })}
+        </ol>
+      </nav>
+    </FocusTrap>
   );
 };
 
-export default Nav;
+export default NavOverlay;

@@ -1,0 +1,30 @@
+@import "../../settings/breakpoints";
+
+.nav {
+  font-weight: var(--font-weight-medium);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacer-s);
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: var(--spacer-m);
+  color: var(--soft-white);
+}
+
+.primaryNavList {
+  composes: navList;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.primaryNav {
+  composes: nav;
+  --link-color: var(--soft-white);
+  --link-color-hover: var(--soft-white);
+  --link-color-active: var(--soft-white);
+}

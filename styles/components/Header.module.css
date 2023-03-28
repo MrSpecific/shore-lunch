@@ -13,7 +13,6 @@
   gap: var(--spacer-xs);
   justify-content: space-between;
   padding-top: var(--spacer-m);
-  /* align-items: center; */
 
   @media (--header-breakpoint) {
     gap: var(--spacer-m);
@@ -40,4 +39,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (--header-breakpoint-down) {
+    display: none;
+  }
 }

@@ -1,0 +1,23 @@
+@import "../../settings/breakpoints";
+
+.nav {
+  font-weight: var(--font-weight-medium);
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-s);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.primaryNavList {
+  composes: navList;
+  height: 100%;
+}
+
+.primaryNav {
+  composes: nav;
+}

@@ -1,0 +1,24 @@
+@import "../../settings/breakpoints";
+
+.navItem {
+  --location-nav-underline-opacity: 0;
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+
+  & svg {
+    fill: currentColor;
+    height: 26px;
+    width: auto;
+  }
+}
+
+.navItemTopLevel {
+}
+
+.navItemInner {
+  position: relative;
+  text-decoration: none;
+}

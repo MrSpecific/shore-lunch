@@ -6,7 +6,7 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import siteInfo from '@lib/siteInfo';
 import { useAppContext } from '@context/app';
 import { useBreakpoint } from '@hooks';
-import Nav, { NavToggle } from '@components/layout/Nav';
+import { Nav, NavToggle } from '@components/layout';
 import CartControl from '@commerce/CartControl';
 import { CoffeeOutsideLogoHoriz } from '@svg';
 import styles from '@styles/components/Header.module.css';
@@ -72,8 +72,8 @@ const Header = ({ className, children }) => {
               {children && <div>{children}</div>}
               <Nav />
             </div>
-            <NavToggle />
             <CartControl />
+            <NavToggle />
           </div>
         </section>
       </header>
