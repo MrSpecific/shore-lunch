@@ -5,6 +5,7 @@ import { Page } from '@layout';
 import { availableProducts } from '@data/products';
 import Cart from '@commerce/Cart';
 import CartSummary from '@commerce/CartSummary';
+import CheckoutButton from '@commerce/CheckoutButton';
 import ProductGrid from '@components/commerce/ProductGrid';
 import { useAppContext } from '@context';
 

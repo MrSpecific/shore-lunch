@@ -3,7 +3,7 @@
 .productGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacer-s);
+  gap: var(--spacer-xs);
 
   @media (--medium) {
     grid-template-columns: repeat(3, 1fr);

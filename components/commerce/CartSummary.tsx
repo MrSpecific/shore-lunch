@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-
 import { useShoppingCart } from 'use-shopping-cart';
+
 import { fetchPostJSON } from '@utils/apiHelpers';
 import { useCheckout } from '@hooks';
+import CheckoutButton from '@commerce/CheckoutButton';
 import StripeTestCards from '@commerce/StripeTestCards';
 import styles from '@styles/components/CartSummary.module.css';
 
@@ -31,13 +32,7 @@ const CartSummary = () => {
       {/* Redirects the user to Stripe */}
       {/* <StripeTestCards /> */}
       <div className={styles.cartActions}>
-        <button
-          className={classNames('button', styles.checkoutButton)}
-          type="submit"
-          disabled={cartEmpty || loading}
-        >
-          Checkout
-        </button>
+        <CheckoutButton className={styles.checkoutButton} />
         <button className="button-link" type="button" onClick={clearCart}>
           Clear Cart
         </button>
