@@ -3,3 +3,7 @@
   gap: var(--spacer-xs);
   padding-top: var(--spacer-xs);
 }
+
+.checkoutButton {
+  min-width: 50%;
+}

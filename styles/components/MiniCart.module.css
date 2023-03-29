@@ -45,4 +45,5 @@
 
 .cartBody {
   overflow: auto;
+  flex: 1;
 }

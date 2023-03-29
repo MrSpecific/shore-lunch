@@ -24,6 +24,7 @@
 .lineHeadline {
   font-size: var(--font-size-h4);
   line-height: 1;
+  margin-bottom: var(--spacer-xs);
 }
 
 .quantityControlWrapper {
@@ -75,14 +76,18 @@
   font-size: 0.75em;
 }
 
+.lineSummary {
+}
+
+.lineTotal {
+  display: block;
+  font-weight: 550;
+}
+
 .itemPrice {
-  font-size: 0.9em;
+  font-size: 11px;
   color: var(--dark-grey);
   line-height: 1;
   position: relative;
   bottom: 0.2em;
-}
-
-.lineTotal {
-  font-weight: 550;
 }

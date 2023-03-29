@@ -57,7 +57,6 @@ const CartLine = (props) => {
       <div className={styles.lineContent}>
         <div>
           <h3 className={styles.lineHeadline}>{name}</h3>
-          <span className={styles.itemPrice}>{formattedPrice}</span>
         </div>
 
         <QuantityControls id={id} quantity={quantity} />
@@ -65,6 +64,7 @@ const CartLine = (props) => {
 
       <div className={styles.lineSummary}>
         <span className={styles.lineTotal}>{formattedValue}</span>
+        <span className={styles.itemPrice}>{formattedPrice} each</span>
       </div>
     </li>
   );
