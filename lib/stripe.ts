@@ -69,9 +69,7 @@ export const fetchProducts = async () => {
     // const result = await stripe.products.list({
     //   limit: 3,
     // });
-    console.log('trying to fetch using: ', process.env.STRIPE_SECRET_KEY);
     const result = await stripe.products.list();
-    console.log('tripe.products.list complete');
 
     if (!result || !result.data || !result.data.length) break getProducts;
 
@@ -80,8 +78,6 @@ export const fetchProducts = async () => {
     const pricingResult = await Promise.allSettled(
       productArray.map(async (product: Stripe.Product) => {
         const price = await stripe.prices.retrieve(product.default_price.toString());
-        console.log('stripe.prices.retrieve complete', product.default_price);
-        // console.log(price);
 
         return {
           ...product,
@@ -143,7 +139,6 @@ export const fetchShippingRates = async () => {
       (rate) => rate.shipping_rate_data.fixed_amount?.amount > 0
     );
 
-    console.log(shippingRates);
     // shippingRates = sortShippingRates(shippingRatesObj);
   } catch {
     console.error('Problem fetching shipping rates');
