@@ -137,7 +137,13 @@ export const fetchShippingRates = async () => {
     );
 
     shippingRates.sort(sortShippingRates);
+    console.log(shippingRates);
 
+    shippingRates = shippingRates.filter(
+      (rate) => rate.shipping_rate_data.fixed_amount?.amount > 0
+    );
+
+    console.log(shippingRates);
     // shippingRates = sortShippingRates(shippingRatesObj);
   } catch {
     console.error('Problem fetching shipping rates');
