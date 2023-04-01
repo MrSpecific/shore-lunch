@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 import { useCheckout } from '@hooks';
@@ -17,14 +18,16 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ clas
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
   return (
-    <button
+    <motion.button
       className={classNames('button', className)}
       type="button"
       onClick={(event) => handleCheckout(event)}
       disabled={cartEmpty || loading}
+      animate={loading ? { x: [0, 4, 0] } : {}}
+      transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
     >
-      Checkout
-    </button>
+      {!loading ? 'Checkout' : 'Loading...'}
+    </motion.button>
   );
 };
 
