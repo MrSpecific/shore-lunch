@@ -1,9 +1,12 @@
+@import "../settings/breakpoints";
+
 .cartActions {
   display: flex;
   gap: var(--spacer-xs);
   padding-top: var(--spacer-xs);
 
-  @container (max-width: 400px) {
+  /* @container (max-width: 600px) { */
+  @media (--small-only) {
     flex-direction: column;
   }
 }

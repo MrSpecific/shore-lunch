@@ -43,7 +43,9 @@ const MiniCartContents = () => {
         <div className={styles.cartBody}>
           <CartItems />
         </div>
-        <CartSummary />
+        <div className={styles.cartFooter}>
+          <CartSummary />
+        </div>
       </motion.section>
     </FocusTrap>
   );
