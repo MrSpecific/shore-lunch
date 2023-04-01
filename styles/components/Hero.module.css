@@ -3,6 +3,7 @@
 .hero {
   --aspect-ratio: 390 / 283;
   --object-position: center;
+  margin: var(--spacer-s) 0;
 
   @media (--large) {
     --aspect-ratio: 1440 / 600;

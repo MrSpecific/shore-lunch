@@ -1,10 +1,11 @@
 /* @import "../../settings/breakpoints"; */
 
-.textBlock.centered {
-  &.copy {
-    padding-left: var(--spacer-2);
-    padding-right: var(--spacer-2);
-  }
+.textBlock {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-m);
+  margin: var(--spacer-m) /;
 }
 
 .overline {
