@@ -18,7 +18,8 @@ const CartSummary = () => {
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
   return (
-    <form onSubmit={handleCheckout}>
+    // <form onSubmit={handleCheckout}>
+    <div>
       <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
       {/* This is where we'll render our cart */}
@@ -37,7 +38,7 @@ const CartSummary = () => {
           Clear Cart
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

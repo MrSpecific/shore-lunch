@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 import { useCheckout } from '@hooks';
 
-const CheckoutButton = ({ className }) => {
+interface CheckoutButtonInterface {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className: string;
+}
+
+const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ className }) => {
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
@@ -15,7 +20,7 @@ const CheckoutButton = ({ className }) => {
     <button
       className={classNames('button', className)}
       type="button"
-      onClick={handleCheckout}
+      onClick={(event) => handleCheckout(event)}
       disabled={cartEmpty || loading}
     >
       Checkout

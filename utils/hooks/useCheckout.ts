@@ -7,7 +7,8 @@ const useCheckout = (callBack = () => {}) => {
   const [errorMessage, setErrorMessage] = useState('');
   const { cartDetails, redirectToCheckout } = useShoppingCart();
 
-  const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
+  // const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
+  const handleCheckout: any = async (event) => {
     event.preventDefault();
     setLoading(true);
     setErrorMessage('');
