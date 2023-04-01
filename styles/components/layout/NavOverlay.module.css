@@ -3,6 +3,7 @@
 .navOverLay {
   position: fixed;
   inset: 0;
+  z-index: var(--nav-z-index);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;

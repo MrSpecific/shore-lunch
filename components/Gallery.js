@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import classNames from 'classnames';
-import { Image } from 'react-datocms';
+import Image from 'next/image';
+
 import styles from '@styles/components/Gallery.module.css';
 
 const Gallery = (props) => {

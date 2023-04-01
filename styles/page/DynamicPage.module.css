@@ -1,0 +1,43 @@
+@import "../settings/breakpoints";
+
+.dynamicPage {
+  --headline-padding: var(--spacer-4);
+
+  @media (--medium) {
+    --headline-padding: var(--spacer-5);
+  }
+
+  @media (--large) {
+    --headline-padding: var(--spacer-6);
+  }
+}
+
+.headline {
+  padding-top: var(--headline-padding);
+  padding-bottom: var(--headline-padding);
+  text-align: center;
+  line-height: 1;
+}
+
+.headline + .contentBlock {
+  padding-top: var(--headline-padding);
+}
+
+.dynamicPage[data-template="storytelling"] {
+  --block-spacing: var(--spacer-10);
+
+  @media (--large) {
+    --block-spacing: 128px;
+  }
+
+  & .contentBlock + .contentBlock {
+    padding-top: var(--block-spacing);
+  }
+}
+
+.dynamicPage[data-template="informational"] {
+  & .contentBlock {
+    border-bottom: var(--divider);
+    padding: var(--spacer-4) 0;
+  }
+}

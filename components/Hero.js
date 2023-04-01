@@ -1,71 +1,54 @@
-/* eslint-disable jsx-a11y/alt-text */
-import Link from 'next/link';
-import { Image } from 'react-datocms';
 import classNames from 'classnames';
-
-import { useAppContext } from '@lib/context/app';
-import FlagIcon from './svg/flag.svg';
+import { urlForImage } from '@lib/sanity';
+import SanityImage from '@components/SanityImage';
+import { SiteLogo } from '@components/svg';
 import styles from '@styles/components/Hero.module.css';
 
-export const Overline = ({ text }) => {
-  if (!text) return null;
-  return <span className="overline">{text}</span>;
-};
-
-const LocationTitle = ({ location }) => {
-  if (!location) return null;
-  return (
-    <span className={styles.locationTitle}>
-      <FlagIcon className={styles.flagIcon} /> {location.title}
-    </span>
-  );
-};
-
-const CtaLink = ({ cta }) => {
-  if (!cta || !cta.url || !cta.label) return null;
+const HeroDecorations = ({ headline, cta }) => {
+  if (!headline && !cta) return null;
 
   return (
-    <Link href={cta.url} className="button secondary">
-      {cta.label}
-    </Link>
+    <div className={classNames(styles.decorations, 'content')}>
+      <div className={styles.decorationsInner}>
+        <SiteLogo className={styles.logo} />
+        <div className={classNames(styles.headline, 'body-copy--mono')}>{headline}</div>
+      </div>
+    </div>
   );
-};
-
-const HeroImageAttribution = ({ attribution, attributionLink }) => {
-  if (!attribution) return null;
-
-  const inner = attributionLink ? <Link href={attributionLink}>{attribution}</Link> : attribution;
-  return <div className={styles.imageAttribution}>{inner}</div>;
 };
 
 const Hero = (props) => {
-  const { image, headline, paragraph, cta, className, imageAttribution, imageAttributionLink } =
-    props;
-  let { overline } = props;
-  const heroClass = classNames([styles.hero, { [className]: !!className }]);
+  console.log(props);
+  const { className, asset, image, alt, caption, headline, cta } = props;
+  // Decorated Hero has an image (and cta + headline)
+  // Undecorated has an asset
+  if (!asset && !image) return null;
+
+  const source = urlForImage(asset || image)
+    .auto('format')
+    .fit('max')
+    .width(1800)
+    .url();
+
+  const HeroClass = classNames({
+    [styles.hero]: asset,
+    [styles.decoratedHero]: image,
+    [className]: !!className,
+  });
 
   return (
-    <section className={styles.heroWrapper}>
-      <div className={heroClass}>
-        {image && (
-          <Image
-            data={image.responsiveImage}
-            className={styles.heroImage}
-            fadeInDuration={400}
-            lazyLoad={true}
-          />
-        )}
-        <div className={styles.heroContent}>
-          <div className={styles.heroContentInner}>
-            <Overline text={overline} />
-            {headline && <h1>{headline}</h1>}
-            {paragraph && <div className={styles.heroParagraph}>{paragraph}</div>}
-            <CtaLink cta={cta} />
-          </div>
-        </div>
+    <div className={HeroClass}>
+      <div className={styles.imageWrapper}>
+        {/* Asset: {JSON.stringify(asset)}
+        {imageBuilder.image(asset).url()}
+        <hr></hr>
+        Image: {JSON.stringify(image)} */}
+        {/* <SanityImage src={asset || image} alt={alt || ''} fill /> */}
+        <img src={source} className={styles.image} alt={alt || 'Hero image'} />
+        {/* {image && <HeroDecorations headline={headline} cta={cta} />} */}
       </div>
-      <HeroImageAttribution attribution={imageAttribution} attributionLink={imageAttributionLink} />
-    </section>
+      {caption && <div className={classNames('caption content', styles.caption)}>{caption}</div>}
+    </div>
   );
 };
 

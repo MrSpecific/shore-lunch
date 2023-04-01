@@ -1,0 +1,12 @@
+/* @import "../../settings/breakpoints"; */
+
+.textBlock.centered {
+  &.copy {
+    padding-left: var(--spacer-2);
+    padding-right: var(--spacer-2);
+  }
+}
+
+.overline {
+  padding-bottom: 1em;
+}

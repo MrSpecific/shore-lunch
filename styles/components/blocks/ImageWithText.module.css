@@ -1,0 +1,86 @@
+@import "../../settings/breakpoints";
+
+.imageWithText {
+  --row-gap: var(--spacer-2);
+  --column-gap: var(--spacer-3);
+  --text-padding: 0;
+  --copy-padding: var(--row-gap) 0;
+
+  position: relative;
+  width: 100%;
+  display: grid;
+  row-gap: var(--row-gap);
+  align-items: center;
+  justify-content: center;
+
+  @media (--medium) {
+    --text-padding: var(--spacer-3);
+
+    &.right,
+    &.left {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var(--column-gap);
+
+      & .textWrapper {
+        padding: var(--text-padding);
+      }
+    }
+
+    &.right {
+      & .textWrapper {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      & .imageWrapper {
+        grid-row: 1;
+        grid-column: 2;
+      }
+    }
+  }
+
+  @media (--large) {
+    --text-padding: var(--spacer-5);
+  }
+
+  @media (--xxlarge) {
+    --text-padding: var(--spacer-10);
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  height: 0;
+  padding-top: 69.7%;
+  overflow: hidden;
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.caption {
+  padding-top: var(--spacer-1);
+  text-align: right;
+}
+
+.textWrapper {
+  text-align: left;
+  max-width: var(--max-text-width);
+}
+
+/* .overline {} */
+
+.copy {
+  padding: var(--copy-padding);
+}
+
+.link {
+  text-decoration: underline;
+  text-transform: uppercase;
+}

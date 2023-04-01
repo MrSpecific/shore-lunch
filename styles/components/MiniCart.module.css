@@ -12,6 +12,7 @@
   max-width: 100%;
   padding: var(--spacer-s);
   background-color: var(--white);
+  container-type: inline-size;
 
   @media (--medium) {
     inset: var(--edge-border) var(--edge-border) auto auto;

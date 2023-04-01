@@ -45,7 +45,7 @@
     "**/*.ts",
     "**/*.tsx",
     "additional.d.ts"
-  ],
+, "lib/sanity/sanity.image.js"  ],
   "exclude": [
     "node_modules"
   ]

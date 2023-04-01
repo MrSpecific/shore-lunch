@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Image } from 'react-datocms';
+import Image from 'next/image';
 import classNames from 'classnames';
 
 import styles from '@styles/components/MediaCardGrid.module.css';
