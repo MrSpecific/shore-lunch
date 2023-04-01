@@ -6,6 +6,7 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
+  gap: var(--spacer-xs);
   border: 1px solid var(--shadow-color);
   box-shadow: var(--shadow-elevation-medium);
   border-radius: 10px;
@@ -47,4 +48,6 @@
 .cartBody {
   overflow: auto;
   flex: 1;
+  border-top: 1px solid var(--light-teal);
+  border-bottom: 1px solid var(--light-teal);
 }
