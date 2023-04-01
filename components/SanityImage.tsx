@@ -24,7 +24,7 @@ export default function SanityImage({
   // @ts-ignore
   const url = urlForImage(src).auto('format').fit('clip').width(1000).url();
 
-  return <Image alt={alt} url={url} {...props} />;
+  return <Image alt={alt} src={String(url)} {...props} />;
 
   // return (
   //   <Image

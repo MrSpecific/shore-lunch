@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { urlForImage } from '@lib/sanity';
-import SanityImage from '@components/SanityImage';
+// import SanityImage from '@components/SanityImage';
 import { SiteLogo } from '@components/svg';
 import styles from '@styles/components/Hero.module.css';
 
