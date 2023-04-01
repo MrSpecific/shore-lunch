@@ -1,3 +1,5 @@
+@import "../settings/breakpoints";
+
 .cartLines {
   list-style: none;
   padding: 0;
@@ -8,8 +10,14 @@
 
 .cartLine {
   display: grid;
-  grid-template-columns: 25% 3fr 1fr;
-  gap: var(--spacer-small);
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 1fr auto;
+  gap: var(--spacer-xs) var(--spacer-s);
+
+  @media (--medium) {
+    grid-template-columns: 25% 3fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 
 .lineImage {
