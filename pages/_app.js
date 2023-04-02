@@ -39,8 +39,6 @@ function MyApp({ Component, pageProps, data, products }) {
 export async function getServerSideProps() {
   const products = await availableProducts();
 
-  console.log('Products are: ', products);
-
   return { props: { products } };
 }
 

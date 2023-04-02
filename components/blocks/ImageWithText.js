@@ -20,6 +20,7 @@ const ImageWithText = ({ className, overline, bodyCopy, image, alignment, link }
   return (
     <div className={imageWithTextClass}>
       <div className={styles.imageWrapper}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={source} className={styles.image} alt={alt} />
         {caption && <div className={classNames(styles.caption, 'caption')}>{caption}</div>}
       </div>

@@ -18,7 +18,7 @@ const HeroDecorations = ({ headline, cta }) => {
 };
 
 const Hero = (props) => {
-  console.log(props);
+  // console.log(props);
   const { className, asset, image, alt, caption, headline, cta } = props;
   // Decorated Hero has an image (and cta + headline)
   // Undecorated has an asset
