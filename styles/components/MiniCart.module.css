@@ -41,7 +41,7 @@
 .cartHeader {
   display: flex;
   justify-content: space-between;
-  gap: var(--spacer-s);
+  gap: var(--spacer-xs);
 }
 
 .cartBody {
