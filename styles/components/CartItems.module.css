@@ -12,11 +12,12 @@
   display: grid;
   grid-template-columns: 25% 75%;
   grid-template-rows: 1fr auto;
-  gap: var(--spacer-xs) var(--spacer-s);
+  gap: var(--spacer-xs);
 
   @media (--medium) {
     grid-template-columns: 25% 3fr 1fr;
     grid-template-rows: 1fr;
+    gap: var(--spacer-s);
   }
 }
 
@@ -30,9 +31,13 @@
 }
 
 .lineHeadline {
-  font-size: var(--font-size-h4);
+  font-size: var(--font-size-h5);
   line-height: 1;
   margin-bottom: var(--spacer-xs);
+
+  @media (--medium) {
+    font-size: var(--font-size-h4);
+  }
 }
 
 .quantityControlWrapper {
