@@ -56,12 +56,6 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'link',
-      title: 'Link',
-      type: 'link',
-      group: 'link',
-    },
-    {
       title: 'Hidden',
       name: 'hidden',
       type: 'boolean',

@@ -22,4 +22,5 @@ const TextBlock = ({ className, overline, bodyCopy }) => {
     </div>
   );
 };
+
 export default TextBlock;

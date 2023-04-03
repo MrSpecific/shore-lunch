@@ -1,0 +1,10 @@
+.imageWrapper {
+  margin: var(--spacer-m) 0;
+}
+
+.caption {
+  font-size: 0.8em;
+  color: var(--dark-grey);
+  text-align: right;
+  margin-top: calc(var(--spacer-xs) / 2);
+}

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { getDynamicPagePaths, getDynamicPage } from '@lib/sanity';
 import { Page } from '@layout';
-import Blocks from '@components/Blocks';
+import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
 import styles from '@styles/page/DynamicPage.module.css';
 
@@ -19,7 +19,7 @@ export default function DynamicPage({ data, ...props }) {
         {hero && <Hero {...hero} />}
         <div className={contentContainerClass}>
           {title && <h1 className={styles.headline}>{title}</h1>}
-          {blocks && <Blocks blocks={blocks} blockClass={styles.contentBlock} />}
+          {blocks && <BlocksGroup blocks={blocks} blockClass={styles.contentBlock} />}
         </div>
       </div>
     </Page>
