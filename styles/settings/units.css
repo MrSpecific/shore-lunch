@@ -23,7 +23,6 @@
 
   --header-z-index--mobile: 2;
   --header-z-index: 3;
-
   --nav-z-index: calc(var(--header-z-index) + 1);
 
   --transition-duration: 150ms;

@@ -1,6 +1,6 @@
 import { useNav } from '@hooks';
 import { Hamburger } from '@svg';
-import styles from '@styles/components/layout/NavToggle.module.css';
+import styles from '@styles/nav/NavToggle.module.css';
 
 // Toggle for activating the mobile nav
 const NavToggle = () => {

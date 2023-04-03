@@ -6,7 +6,7 @@ import FocusTrap from 'focus-trap-react';
 import { useNav } from '@hooks';
 import { NavList } from '@components/nav';
 import { Close } from '@svg';
-import styles from '@styles/components/layout/NavOverlay.module.css';
+import styles from '@styles/nav/NavOverlay.module.css';
 
 const Overlay = () => {
   const { navIsActive, setNavIsActive, closeNav } = useNav();

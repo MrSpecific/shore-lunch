@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import { useAppContext } from '@lib/context/app';
-import styles from '@styles/components/layout/NavItem.module.css';
+import styles from '@styles/nav/NavItem.module.css';
 
 // Single Nav Item
 const NavItem = ({ path, children, className, clickHandler = () => {} }) => {

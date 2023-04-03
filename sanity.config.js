@@ -14,10 +14,11 @@ import { apiVersion, dataset, previewSecretId, projectId } from '@lib/sanity';
 // v3: https://www.sanity.io/docs/migrating-from-v2
 // v3: https://www.sanity.io/blog/sanity-studio-v3-simplified-yet-powerful-customization
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Comedy Mothership';
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'PDX Coffee Outside';
 
 export default defineConfig({
   name: 'default',
+  title,
   basePath: '/studio',
   projectId,
   dataset,

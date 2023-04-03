@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { NavList } from '@components/nav';
-import styles from '@styles/components/layout/Nav.module.css';
+import styles from '@styles/nav/Nav.module.css';
 
 // Top-level Nav component
 const Nav = ({ className }) => {

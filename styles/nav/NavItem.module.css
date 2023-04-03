@@ -1,4 +1,4 @@
-@import "../../settings/breakpoints";
+@import "../settings/breakpoints";
 
 .navItem {
   --location-nav-underline-opacity: 0;
