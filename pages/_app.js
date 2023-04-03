@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import { AppContext, AppContextProvider } from '@context';
 import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
-import AnalyticsTags from '@lib/analytics';
+import { AnalyticsTags } from '@layout';
 // import { availableProducts } from '@data/products';
 import Cart from '@commerce/Cart';
 import '../styles/globals.css';

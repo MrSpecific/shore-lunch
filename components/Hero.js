@@ -1,9 +1,7 @@
 import classNames from 'classnames';
-// import { Image } from 'next';
 import Image from 'next/image';
 import { urlForImage } from '@lib/sanity';
 // import SanityImage from '@components/SanityImage';
-import { SiteLogo } from '@components/svg';
 import styles from '@styles/components/Hero.module.css';
 
 const Hero = (props) => {
@@ -27,12 +25,6 @@ const Hero = (props) => {
   return (
     <div className={HeroClass}>
       <div className={styles.imageWrapper}>
-        {/* Asset: {JSON.stringify(asset)}
-        {imageBuilder.image(asset).url()}
-        <hr></hr>
-        Image: {JSON.stringify(image)} */}
-        {/* <SanityImage src={asset || image} alt={alt || ''} fill /> */}
-        {/* <img src={source} className={styles.image} alt={alt || 'Hero image'} /> */}
         <Image src={source} className={styles.image} alt={alt || 'Hero image'} fill />
       </div>
       {caption && <div className={classNames('caption content', styles.caption)}>{caption}</div>}
