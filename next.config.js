@@ -6,6 +6,16 @@ module.exports = withNextPluginPreval({
     locales: ['en'],
     defaultLocale: 'en',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        // port: '',
+        // pathname: '/account123/**',
+      },
+    ],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

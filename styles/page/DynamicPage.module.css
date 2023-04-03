@@ -1,20 +1,10 @@
 @import "../settings/breakpoints";
 
 .dynamicPage {
-  --headline-padding: var(--spacer-4);
-
-  @media (--medium) {
-    --headline-padding: var(--spacer-5);
-  }
-
-  @media (--large) {
-    --headline-padding: var(--spacer-6);
-  }
 }
 
 .headline {
-  padding-top: var(--headline-padding);
-  padding-bottom: var(--headline-padding);
+  margin-bottom: var(--spacer-m);
   text-align: center;
   line-height: 1;
 }
