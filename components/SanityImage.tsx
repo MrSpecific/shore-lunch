@@ -1,55 +1,48 @@
 import Image, { ImageProps } from 'next/image';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { urlForImage, imageBuilder } from '@lib/sanity';
+import { sanityCDNClient, urlForImage, imageBuilder } from '@lib/sanity';
+import { useNextSanityImage } from 'next-sanity-image';
+
+interface SanityImageAsset {
+  asset?: any;
+}
 
 interface SanityImageProps extends Omit<ImageProps, 'src' | 'height'> {
-  src: SanityImageSource;
+  src: SanityImageSource & SanityImageAsset;
   quality?: number;
   blur?: number;
   alt: string;
+  className?: string;
   height?: any;
 }
 
 export default function SanityImage({
   quality = 80,
   blur = 0,
-  // imageBuilder,
   height = null,
   src,
   alt,
+  className,
   ...props
 }: SanityImageProps) {
-  const baseURL = 'https://cdn.sanity.io/images/';
-
   // @ts-ignore
-  const url = urlForImage(src).auto('format').fit('clip').width(1000).url();
+  const imageProps = useNextSanityImage(sanityCDNClient, src);
 
-  return <Image alt={alt} src={String(url)} {...props} />;
+  if (imageProps && !!props.fill) {
+    delete imageProps['width'];
+    delete imageProps['height'];
+  }
 
-  // return (
-  //   <Image
-  //     {...props}
-  //     alt={alt}
-  //     loader={({ width: srcWidth }) => {
-  //       let url =
-  //         imageBuilder
-  //           .image(src)
-  //           .width(srcWidth)
-  //           // .height(Number(props?.height) || 256)
-  //           // .height(height ? Number(height) : null)
-  //           .auto('format')
-  //           .quality(quality)
-  //           // .fit('clip')
-  //           .url() ?? '';
-
-  //       if (blur) {
-  //         url += `&blur=${blur}`;
-  //       }
-
-  //       return url;
-  //     }}
-  //     // src={imageBuilder.image(src).url()?.toString().replace(baseURL, '') ?? ''}
-  //     src={imageBuilder.image(src).url()}
-  //   />
-  // );
+  return (
+    <Image
+      // @ts-ignore
+      {...imageProps}
+      style={!props?.fill ? { width: 'auto', height: 'auto' } : null}
+      className={className}
+      alt={alt}
+      placeholder="blur"
+      blurDataURL={src.asset.metadata.lqip}
+      {...props}
+    />
+  );
 }

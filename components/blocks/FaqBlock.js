@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
 import styles from '@styles/components/blocks/FaqBlock.module.css';
-import { ChevronRight } from '@components/svg';
+import { CaretDown } from '@components/svg';
 
 const FaqBlock = ({ faqItems }) => {
   if (!faqItems || !faqItems.length) return null;
@@ -13,7 +13,7 @@ const FaqBlock = ({ faqItems }) => {
           <summary className={styles.questionWrapper}>
             <div className={classNames(styles.question, 'h6')}>{question}</div>
             <div className={styles.chevronIcon}>
-              <ChevronRight />
+              <CaretDown />
             </div>
           </summary>
           <div className={classNames(styles.answer, 'body-copy')}>

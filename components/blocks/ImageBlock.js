@@ -1,19 +1,16 @@
-import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
 import { urlForImage } from '@lib/sanity';
+import SanityImage from '@components/SanityImage';
 import styles from '@styles/components/blocks/ImageBlock.module.css';
 
 const ImageBlock = ({ className, image }) => {
   if (!image) return null;
 
-  const { alt, caption } = image;
-
-  const source = urlForImage(image).auto('format').fit('clip').width(1400).url();
+  const { caption } = image;
 
   return (
     <div className={styles.imageWrapper}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={source} className={styles.image} alt={alt} />
+      <SanityImage src={image} className={styles.image} />
       {caption && <div className={classNames(styles.caption, 'caption')}>{caption}</div>}
     </div>
   );

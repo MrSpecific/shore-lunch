@@ -12,7 +12,7 @@ module.exports = withNextPluginPreval({
         protocol: 'https',
         hostname: 'cdn.sanity.io',
         // port: '',
-        // pathname: '/account123/**',
+        pathname: '/images/**',
       },
     ],
   },
