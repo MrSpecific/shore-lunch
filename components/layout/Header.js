@@ -9,7 +9,7 @@ import { useBreakpoint } from '@hooks';
 import { Nav, NavOverlay, NavToggle } from '@components/nav';
 import CartControl from '@commerce/CartControl';
 import { CoffeeOutsideLogoHoriz } from '@svg';
-import styles from '@styles/components/Header.module.css';
+import styles from '@styles/layout/Header.module.css';
 
 const { log } = console;
 

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { CartIcon } from '@svg';
 import { useShoppingCart } from 'use-shopping-cart';
+import { gtagEvent } from '@lib/google';
 import styles from '@styles/components/CartControl.module.css';
 
 const CartControl = () => {
@@ -8,7 +9,10 @@ const CartControl = () => {
 
   return (
     <button
-      onClick={() => handleCartClick()}
+      onClick={() => {
+        handleCartClick();
+        gtagEvent('add_to_cart');
+      }}
       className={classNames('button-link', [styles.cartControl])}
     >
       <span className={styles.buttonInner}>

@@ -7,7 +7,7 @@ import { type StructureResolver } from 'sanity/desk';
 const pages = ['frontPage', 'productCollection'];
 const documents = ['faq', 'product'];
 const settings = ['siteSettings'];
-const defined = pages.concat(documents, settings);
+const defined = [].concat(pages, documents, settings);
 
 export const deskStructure = (typeDef: DocumentDefinition): StructureResolver => {
   return (S) =>

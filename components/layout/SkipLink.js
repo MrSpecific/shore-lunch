@@ -1,4 +1,4 @@
-import styles from '@styles/components/SkipLink.module.css';
+import styles from '@styles/layout/SkipLink.module.css';
 
 export default function SkipLink({ href = '#main', label = 'Skip to content' }) {
   return (

@@ -1,12 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
-import siteInfo from '@lib/siteInfo.js';
 import Copyright from '@components/Copyright';
 import Attribution from '@components/Attribution';
 import SocialLinks from '@components/SocialLinks';
 import { CoffeeOutsideMug } from '@svg';
-import styles from '@styles/components/Footer.module.css';
+import styles from '@styles/layout/Footer.module.css';
 
 const SocialContent = () => {
   return (
