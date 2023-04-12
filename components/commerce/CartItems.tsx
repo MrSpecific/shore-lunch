@@ -78,6 +78,14 @@ const CartItems = () => {
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
+  if (cartEmpty) {
+    return (
+      <div>
+        <h3>Your cart is empty</h3>
+      </div>
+    );
+  }
+
   return (
     <section>
       {/* {JSON.stringify(cartDetails, null, 2)} */}

@@ -14,6 +14,10 @@ module.exports = withNextPluginPreval({
         // port: '',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'files.stripe.com',
+      },
     ],
   },
   webpack(config) {

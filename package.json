@@ -47,6 +47,7 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "sanity": "^3.2.6",
+    "sanity-image": "^0.1.4",
     "sharp": "^0.30.7",
     "stripe": "^11.10.0",
     "swr": "^2.1.1",

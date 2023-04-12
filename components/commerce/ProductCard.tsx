@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
+
 import * as config from '@config';
 import styles from '@styles/components/ProductCard.module.css';
 
@@ -8,10 +10,14 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <div className={styles.cardTop}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={name} className={styles.cardImage} />
+        <Image
+          src={product.image}
+          alt={name}
+          className={styles.cardImage}
+          width={300}
+          height={300}
+        />
         <h2>{name}</h2>
       </div>
       <div className={styles.cardDetails}>

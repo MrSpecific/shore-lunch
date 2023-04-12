@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 
-import { fetchPostJSON } from '@utils/apiHelpers';
 import { useCheckout } from '@hooks';
 import CheckoutButton from '@commerce/CheckoutButton';
 import StripeTestCards from '@commerce/StripeTestCards';
