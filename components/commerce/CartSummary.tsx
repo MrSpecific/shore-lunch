@@ -22,9 +22,9 @@ const CartSummary = () => {
       <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
       {/* This is where we'll render our cart */}
-      <p suppressHydrationWarning>
+      {/* <p suppressHydrationWarning>
         <strong>Number of Items:</strong> {cartCount}
-      </p>
+      </p> */}
       <p suppressHydrationWarning>
         <strong>Total:</strong> {formattedTotalPrice}
       </p>
