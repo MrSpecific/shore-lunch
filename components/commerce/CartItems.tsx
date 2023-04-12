@@ -80,8 +80,8 @@ const CartItems = () => {
 
   if (cartEmpty) {
     return (
-      <div>
-        <h3>Your cart is empty</h3>
+      <div className={styles.emptyCart}>
+        <h3 className="h6">Your cart is empty</h3>
       </div>
     );
   }

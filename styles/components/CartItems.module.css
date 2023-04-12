@@ -1,5 +1,13 @@
 @import "../settings/breakpoints";
 
+.emptyCart {
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .cartLines {
   list-style: none;
   padding: 0;
