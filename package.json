@@ -28,6 +28,7 @@
     "@sanity/vision": "^3.2.6",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.47.0",
+    "@types/gtag.js": "^0.0.12",
     "body-scroll-lock": "^4.0.0-beta.0",
     "classnames": "^2.3.1",
     "cookies-next": "^2.1.1",
