@@ -11,7 +11,6 @@ import Stripe from 'stripe';
  */
 // import { validateCartItems } from 'use-shopping-cart/utilities/serverless';
 import { validateCartItems } from 'use-shopping-cart/utilities';
-import { cartDetails } from 'use-shopping-cart';
 import { availableProducts } from '@data/products';
 import getShippingRates from '@lib/shipping';
 import { ALLOWED_COUNTRIES, API_VERSION } from '@config';
@@ -32,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return !!item.price_data.recurring;
       });
 
-      const shipping_options = await getShippingRates({ cart: cartDetails });
+      const shipping_options = await getShippingRates({ cart: req.body });
 
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
