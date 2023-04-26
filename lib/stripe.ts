@@ -106,6 +106,7 @@ const sortShippingRates = (a, b) => {
 
   if (rateA < rateB) return -1;
   if (rateA > rateB) return 1;
+
   return 0;
 };
 
@@ -126,18 +127,13 @@ export const fetchShippingRates = async () => {
             type,
             fixed_amount,
             display_name,
-            delivery_estimate,
+            ...(delivery_estimate && { delivery_estimate }),
           },
         };
       }
     );
 
     shippingRates.sort(sortShippingRates);
-    console.log(shippingRates);
-
-    shippingRates = shippingRates.filter(
-      (rate) => rate.shipping_rate_data.fixed_amount?.amount > 0
-    );
 
     // shippingRates = sortShippingRates(shippingRatesObj);
   } catch {

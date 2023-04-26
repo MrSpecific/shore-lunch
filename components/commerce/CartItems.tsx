@@ -88,7 +88,6 @@ const CartItems = () => {
 
   return (
     <section>
-      {/* {JSON.stringify(cartDetails, null, 2)} */}
       <ul className={styles.cartLines}>
         {Object.values(cartDetails).map((item) => (
           <CartLine key={item.id} {...item} />
