@@ -44,6 +44,11 @@ const Footer = () => {
         <h2 className="visually-hidden">Footer</h2>
         <CoffeeOutsideMug className={styles.logo} />
         <div className={styles.footerItems}>
+          <div>
+            <Link href="https://github.com/MrSpecific/pdxcoffeeoutside-policies">
+              Our Policies and Code of Conduct
+            </Link>
+          </div>
           <SocialContent />
           {/* <LegalContent /> */}
         </div>

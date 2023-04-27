@@ -7,7 +7,6 @@
   color: var(--footer-text-color);
   font-size: var(--footer-font-size);
   letter-spacing: var(--footer-letter-spacing);
-  text-transform: uppercase;
   text-align: center;
   z-index: 9999;
 
@@ -34,12 +33,6 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--spacer-s);
-
-  @media (--medium) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
 }
 
 .socialContent,
