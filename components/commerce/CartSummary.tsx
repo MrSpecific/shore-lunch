@@ -33,9 +33,9 @@ const CartSummary = () => {
       {/* <StripeTestCards /> */}
       <div className={styles.cartActions}>
         <CheckoutButton className={styles.checkoutButton} />
-        <button className="button-link" type="button" onClick={clearCart}>
+        {/* <button className="button-link" type="button" onClick={clearCart}>
           Clear Cart
-        </button>
+        </button> */}
       </div>
     </div>
   );

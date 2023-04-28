@@ -12,7 +12,7 @@ const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
   return (
     <Page title="Merchandise">
       <div className="content content-y">
-        <h1>Merchandise</h1>
+        <h1>Merch.</h1>
         <div style={{ marginTop: 'var(--spacer-m)', marginBottom: 'var(--spacer-m)' }}>
           <ProductGrid products={products} />
         </div>
