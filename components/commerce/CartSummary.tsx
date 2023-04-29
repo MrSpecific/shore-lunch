@@ -18,7 +18,7 @@ const CartSummary = () => {
 
   return (
     // <form onSubmit={handleCheckout}>
-    <div>
+    <div className="">
       <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
       {/* This is where we'll render our cart */}
@@ -30,7 +30,6 @@ const CartSummary = () => {
       </p>
 
       {/* Redirects the user to Stripe */}
-      {/* <StripeTestCards /> */}
       <div className={styles.cartActions}>
         <CheckoutButton className={styles.checkoutButton} />
         {/* <button className="button-link" type="button" onClick={clearCart}>

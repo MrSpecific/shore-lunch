@@ -5,12 +5,15 @@
   gap: var(--spacer-xs);
   padding-top: var(--spacer-xs);
 
-  /* @container (max-width: 600px) { */
   @media (--small-only) {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-.checkoutButton {
+.checkoutButton,
+button.checkoutButton {
   min-width: 50%;
+  padding: 18px;
 }
