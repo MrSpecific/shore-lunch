@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -28,7 +24,7 @@
       "@data/*": ["./data/*"],
       "@layout": ["./components/layout/"],
       "@svg/*": ["./components/svg/*"],
-      "@svg": ["./components/svg/"],
+      "@svg": ["./components/svg"],
       "@commerce/*": ["./components/commerce/*"],
       "@images/*": ["./content/images/*"],
       "@lib/*": ["./lib/*"],
@@ -36,8 +32,8 @@
       "@public/*": ["./public/*"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
-      "@hooks": ["./utils/hooks/"],
-      "@hooks/*": ["./utils/hooks/*"]
+      "@hooks": ["./hooks/"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
   "include": [
@@ -47,7 +43,5 @@
     "additional.d.ts",
     "lib/sanity/sanity.image.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

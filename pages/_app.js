@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 import { AppContext, AppContextProvider } from '@context';
 import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
@@ -31,6 +32,8 @@ function MyApp({ Component, pageProps, data, products }) {
       <Cart>
         <Component {...pageProps} />
       </Cart>
+
+      <Analytics />
       <KlaviyoEmbedOriginal formId="QTmyHD" />
     </AppContextProvider>
   );
