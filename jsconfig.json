@@ -19,8 +19,8 @@
       "@public/*": ["./public/*"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
-      "@hooks": ["./utils/hooks/"],
-      "@hooks/*": ["./utils/hooks/*"]
+      "@hooks": ["./hooks/"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
   "exclude": ["node_modules"]
