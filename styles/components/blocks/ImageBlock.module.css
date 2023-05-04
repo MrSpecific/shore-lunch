@@ -1,5 +1,9 @@
 .imageWrapper {
   margin: var(--spacer-m) 0;
+
+  & img {
+    height: auto;
+  }
 }
 
 .caption {

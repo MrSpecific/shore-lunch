@@ -6,11 +6,13 @@ import styles from '@styles/components/blocks/ImageBlock.module.css';
 const ImageBlock = ({ className, image }) => {
   if (!image) return null;
 
+  console.log(image);
+
   const { caption } = image;
 
   return (
     <div className={styles.imageWrapper}>
-      <SanityImage src={image} className={styles.image} />
+      <SanityImage {...image} className={styles.image} />
       {caption && <div className={classNames(styles.caption, 'caption')}>{caption}</div>}
     </div>
   );
