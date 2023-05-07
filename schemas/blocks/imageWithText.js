@@ -21,8 +21,8 @@ export default {
   ],
   fields: [
     {
-      title: 'Overline',
-      name: 'overline',
+      title: 'Headline',
+      name: 'headline',
       type: 'string',
       group: 'editorial',
     },
@@ -64,7 +64,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'overline',
+      title: 'headline',
       blocks: 'bodyCopy',
       image: 'image',
     },

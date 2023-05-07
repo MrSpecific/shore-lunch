@@ -13,14 +13,6 @@
   justify-content: center;
   align-items: center;
   background-color: var(--moss);
-
-  /* &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--overlay);
-    background-blend-mode: overlay;
-  } */
 }
 
 .heroInner {

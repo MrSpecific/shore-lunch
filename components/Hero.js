@@ -17,7 +17,6 @@ const Hero = (props) => {
   return (
     <div className={HeroClass}>
       <div className={styles.imageWrapper}>
-        {/* <Image src={source} className={styles.image} alt={alt || 'Hero image'} fill /> */}
         <SanityImage asset={asset} className={styles.image} alt={alt || 'Hero image'} fill />
       </div>
       {caption && <div className={classNames('caption content', styles.caption)}>{caption}</div>}

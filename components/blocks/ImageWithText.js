@@ -1,14 +1,15 @@
 import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
-import { urlForImage } from '@lib/sanity';
+
+import SanityImage from '@components/SanityImage';
 import styles from '@styles/components/blocks/ImageWithText.module.css';
 
-const ImageWithText = ({ className, overline, bodyCopy, image, alignment, link }) => {
+const ImageWithText = ({ className, headline, bodyCopy, image, alignment, link }) => {
   if (!bodyCopy || !image) return null;
 
   const { alt, caption } = image;
 
-  const source = urlForImage(image).auto('format').fit('clip').width(1000).url();
+  // const source = urlForImage(image).auto('format').fit('clip').width(1000).url();
 
   const imageWithTextClass = classNames({
     [styles.imageWithText]: true,
@@ -21,11 +22,17 @@ const ImageWithText = ({ className, overline, bodyCopy, image, alignment, link }
     <div className={imageWithTextClass}>
       <div className={styles.imageWrapper}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={source} className={styles.image} alt={alt} />
+        <SanityImage
+          asset={image.asset}
+          className={styles.image}
+          alt={alt}
+          fill
+          style={{ height: 'auto' }}
+        />
         {caption && <div className={classNames(styles.caption, 'caption')}>{caption}</div>}
       </div>
       <div className={styles.textWrapper}>
-        {overline && <h2 className={classNames(styles.overline, 'h3')}>{overline}</h2>}
+        {headline && <h2>{headline}</h2>}
         <div className={classNames(styles.copy, 'body-copy large')}>
           <PortableText value={bodyCopy} />
         </div>
