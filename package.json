@@ -1,10 +1,10 @@
 {
-  "name": "pdx-coffee-outside",
+  "name": "shore-lunch",
   "version": "0.1.0",
   "private": true,
   "author": "Will Christenson",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/mrspecific/pdx-coffee-outside",
+  "homepage": "https://github.com/mrspecific/shore-lunch",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

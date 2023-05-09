@@ -12,7 +12,7 @@ import { CoffeeOutsideSticker } from '@svg';
 const { log } = console;
 
 export default function HomePage({ intro }) {
-  const title = 'PDX Coffee Outside';
+  const title = 'Shore Lunch';
 
   return (
     <Page title={title} header={false}>
