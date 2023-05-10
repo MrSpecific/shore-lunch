@@ -20,8 +20,8 @@
 }
 
 .logoLink {
-  --link-color: var(--header-logo-color);
-  --link-color-hover: var(--tertiary-color);
+  --link-color: var(--black);
+  --link-color-hover: var(--dark-grey);
   display: flex;
 }
 
