@@ -8,6 +8,8 @@
   --black: #2f2b2b;
 
   /* Brand Colors */
+  --pink: #ff00d8;
+
   --light-cream: hsl(61, 26%, 89%);
   --moss: hsl(72, 30%, 67%);
   --olive: hsl(71, 39%, 19%);
@@ -21,7 +23,7 @@
   --goldenrod: hsl(37, 100%, 72%);
   --dark-goldenrod: hsl(37, 64%, 29%);
   --light-pink: hsl(343, 76%, 72%);
-  --pink: hsl(343, 76%, 62%);
+  /* --pink: hsl(343, 76%, 62%); */
   --dark-pink: hsl(343, 76%, 32%);
 
   /* Color Implementation */
@@ -45,9 +47,9 @@
   --link-color-hover: var(--secondary-color);
   --link-color-active: var(--tertiary-color);
 
-  --button-background-color: var(--teal);
-  --button-background-color-hover: var(--dark-teal);
-  --button-background-color-active: var(--light-teal);
+  --button-background-color: var(--pink);
+  --button-background-color-hover: var(--dark-pink);
+  --button-background-color-active: var(--light-pink);
   --button-color: var(--soft-white);
   --button-hover-color: var(--soft-white);
   --button-active-color: var(--soft-white);

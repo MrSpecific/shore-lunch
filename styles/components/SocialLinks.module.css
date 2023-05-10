@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   gap: var(--spacer-s);
+  --link-color: var(--pink);
 
   & svg {
     fill: currentColor;
