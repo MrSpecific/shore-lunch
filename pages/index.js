@@ -25,7 +25,7 @@ export default function HomePage({ intro }) {
       <Header />
       <section className="content content-y">
         <div className={styles.introWrapper}>
-          <h1>Shore Lunch</h1>
+          <h1>About Us</h1>
           {intro && <Content markdown={intro} className="body-copy-large" />}
         </div>
       </section>
