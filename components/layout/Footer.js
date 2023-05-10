@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Copyright from '@components/Copyright';
 import Attribution from '@components/Attribution';
 import SocialLinks from '@components/SocialLinks';
-import { CoffeeOutsideMug } from '@svg';
+// import { CoffeeOutsideMug } from '@svg';
 import styles from '@styles/layout/Footer.module.css';
 
 const SocialContent = () => {
@@ -42,13 +42,8 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className="container">
         <h2 className="visually-hidden">Footer</h2>
-        <CoffeeOutsideMug className={styles.logo} />
+        {/* <CoffeeOutsideMug className={styles.logo} /> */}
         <div className={styles.footerItems}>
-          <div>
-            <Link href="https://github.com/MrSpecific/pdxcoffeeoutside-policies">
-              Our Policies and Code of Conduct
-            </Link>
-          </div>
           <SocialContent />
           {/* <LegalContent /> */}
         </div>

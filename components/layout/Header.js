@@ -8,7 +8,7 @@ import { useAppContext } from '@context/app';
 import { useBreakpoint } from '@hooks';
 import { Nav, NavOverlay, NavToggle } from '@components/nav';
 import CartControl from '@commerce/CartControl';
-import { CoffeeOutsideLogoHoriz } from '@svg';
+// import { CoffeeOutsideLogoHoriz } from '@svg';
 import styles from '@styles/layout/Header.module.css';
 
 const { log } = console;
@@ -65,7 +65,7 @@ const Header = ({ className, children }) => {
         <section className="content header-wrapper">
           <div className={classNames(['container', styles.headerInner])}>
             <Link href="/" className={styles.logoLink} onClick={handleHeaderLinkClick}>
-              <CoffeeOutsideLogoHoriz className={styles.headerLogo} />
+              {/* <CoffeeOutsideLogoHoriz className={styles.headerLogo} /> */}
               <span className="visually-hidden">{siteInfo.title}</span>
             </Link>
             <div className={styles.headerMiddle}>

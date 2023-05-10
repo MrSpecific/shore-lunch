@@ -5,8 +5,8 @@ import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';
 import { Page, Header } from '@layout';
 import styles from '@styles/page/Home.module.css';
-import heroImage from '@images/IMG_2854.jpg';
-import { CoffeeOutsideSticker } from '@svg';
+import heroImage from '@images/nate-p-casual-and-handsome.png';
+import { ShoreLunchLogo } from '@svg';
 // import { useAppContext } from '@context/app';
 
 const { log } = console;
@@ -19,17 +19,14 @@ export default function HomePage({ intro }) {
       <section className={styles.heroWrapper}>
         <Image alt="Hero Image" src={heroImage} className={styles.heroImage} fill />
         <div className={styles.heroInner}>
-          <CoffeeOutsideSticker className={styles.heroLogo} />
+          <ShoreLunchLogo className={styles.heroLogo} />
         </div>
       </section>
       <Header />
       <section className="content content-y">
         <div className={styles.introWrapper}>
-          <h1>
-            We&apos;re a loose collective of like-minded individuals that enjoy brewing coffee{' '}
-            <span style={{ whiteSpace: 'nowrap' }}>al fresco.</span>
-          </h1>
-          {intro && <Content markdown={intro} className="body-copy-large" />}
+          <h1>Shore Lunch</h1>
+          {/* {intro && <Content markdown={intro} className="body-copy-large" />} */}
         </div>
       </section>
     </Page>

@@ -1,5 +1,5 @@
 import siteInfo from '@lib/siteInfo.js';
-import { TwitterIcon, InstagramIcon } from '@svg';
+import { TwitterIcon, InstagramIcon, YouTubeIcon } from '@svg';
 import styles from '@styles/components/SocialLinks.module.css';
 
 const renderIcon = (name) => {
@@ -8,6 +8,8 @@ const renderIcon = (name) => {
       return <InstagramIcon />;
     case 'twitter':
       return <TwitterIcon />;
+    case 'youtube':
+      return <YouTubeIcon />;
     default:
       return name;
   }
