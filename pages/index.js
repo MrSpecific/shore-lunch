@@ -26,7 +26,7 @@ export default function HomePage({ intro }) {
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>Shore Lunch</h1>
-          {/* {intro && <Content markdown={intro} className="body-copy-large" />} */}
+          {intro && <Content markdown={intro} className="body-copy-large" />}
         </div>
       </section>
     </Page>
