@@ -1,8 +1,8 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './schemas';
-import { deskStructure } from './plugins/deskStructure';
+import { schemaTypes } from './sanity/schemas';
+import { deskStructure } from './sanity/plugins/deskStructure';
 
 import { apiVersion, dataset, previewSecretId, projectId } from '@lib/sanity';
 

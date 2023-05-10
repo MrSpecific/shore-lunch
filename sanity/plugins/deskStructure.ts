@@ -9,7 +9,8 @@ const documents = ['faq', 'product'];
 const settings = ['siteSettings'];
 const defined = [].concat(pages, documents, settings);
 
-export const deskStructure = (typeDef: DocumentDefinition): StructureResolver => {
+// export const deskStructure = (typeDef: DocumentDefinition): StructureResolver => {
+export const deskStructure = (): StructureResolver => {
   return (S) =>
     S.list()
       .title('Content')
