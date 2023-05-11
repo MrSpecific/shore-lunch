@@ -9,77 +9,42 @@
   letter-spacing: var(--footer-letter-spacing);
   text-align: center;
   z-index: 9999;
-
-  & h3 {
-    margin-bottom: var(--spacer-m);
-    color: var(--footer-text-color);
-  }
-}
-
-.logo {
-  max-width: 100px;
-  fill: var(--footer-text-color);
-}
-
-.submarineLogo {
-  width: 200px;
-  height: auto;
-  margin: var(--spacer-m) auto;
 }
 
 .footerItems {
-  display: flex;
+  display: grid;
   margin-top: var(--spacer-m);
-  flex-direction: column;
-  justify-content: center;
   gap: var(--spacer-s);
+
+  @media (--footer-breakpoint) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .socialContent,
 .footerItem {
-  margin-top: var(--spacer-m);
-
   & ul {
     list-style-type: none;
     padding: 0;
   }
 
   & li {
-    margin-top: var(--spacer-s);
+    margin-top: var(--spacer-xs);
   }
 }
 
 #socialContent {
-  /* display: flex; */
-  /* justify-content: center; */
-  margin: 0 auto;
+  @media (--footer-breakpoint-down) {
+    margin: 0 auto;
+  }
+
+  @media (--footer-breakpoint) {
+    text-align: left;
+  }
 }
 
 #legalContent {
-  & li {
-    margin-top: var(--spacer-xs);
-  }
-
-  & svg {
-    max-width: 45px;
-    margin-left: 0.5em;
-    vertical-align: middle;
-    fill: var(--footer-text-color);
-
-    &:hover {
-      fill: var(--hover-color);
-    }
-  }
-}
-
-.footerLogos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacer-m);
-  border-top: 1px solid var(--moss);
-  padding-top: var(--spacer-m);
-
-  & img {
-    height: auto;
+  @media (--footer-breakpoint) {
+    text-align: right;
   }
 }

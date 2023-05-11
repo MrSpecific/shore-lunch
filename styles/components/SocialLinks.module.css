@@ -1,3 +1,5 @@
+@import "../settings/breakpoints";
+
 .socialLinks {
   list-style: none;
   display: flex;
@@ -9,5 +11,9 @@
     fill: currentColor;
     height: var(--social-icon-size);
     width: var(--social-icon-size);
+  }
+
+  @media (--footer-breakpoint) {
+    justify-content: flex-start;
   }
 }

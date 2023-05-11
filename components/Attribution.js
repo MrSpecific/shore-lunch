@@ -24,7 +24,7 @@ const Attribution = () => {
           margin-left: 0.5em;
         }
       `}</style>
-      Website by
+      Website by&nbsp;
       <a href={url} target="_blank" rel="noopener noreferrer">
         Will Christenson
       </a>

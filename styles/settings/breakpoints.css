@@ -20,6 +20,9 @@
 @custom-media --header-breakpoint (--medium);
 @custom-media --header-breakpoint-down (--small-only);
 
+@custom-media --footer-breakpoint (--medium);
+@custom-media --footer-breakpoint-down (--small-only);
+
 /* @custom-media --motion (prefers-reduced-motion: no-preference); */
 @custom-media --reduced-motion (prefers-reduced-motion: reduce);
 @custom-media --motion not all and (prefers-reduced-motion: reduce);

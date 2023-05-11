@@ -20,12 +20,12 @@ const LegalContent = () => {
     <div className={styles.footerItem} id={styles.legalContent}>
       <h3 className="overline">Legal</h3>
       <ul>
-        <li>
+        {/* <li>
           <Link href="/terms-conditions">{'Terms & Conditions'}</Link>
         </li>
         <li>
           <Link href="/privacy-policy">{'Privacy Policy'}</Link>
-        </li>
+        </li> */}
         <li>
           <Copyright />
         </li>
@@ -42,10 +42,9 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className="container">
         <h2 className="visually-hidden">Footer</h2>
-        {/* <CoffeeOutsideMug className={styles.logo} /> */}
         <div className={styles.footerItems}>
           <SocialContent />
-          {/* <LegalContent /> */}
+          <LegalContent />
         </div>
       </div>
     </footer>
