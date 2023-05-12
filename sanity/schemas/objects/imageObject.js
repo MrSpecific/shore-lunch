@@ -12,10 +12,5 @@ export default {
       name: 'alt',
       type: 'string',
     },
-    {
-      title: 'Caption',
-      name: 'caption',
-      type: 'string',
-    },
   ],
 };

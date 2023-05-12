@@ -6,7 +6,7 @@ import Content from '@components/layout/Content';
 import { Page, Header } from '@layout';
 import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/nate-p-casual-and-handsome.png';
-import { ShoreLunchLogo } from '@svg';
+import { ShoreLunchLogoAlt } from '@svg';
 // import { useAppContext } from '@context/app';
 
 const { log } = console;
@@ -19,10 +19,10 @@ export default function HomePage({ intro }) {
       <section className={styles.heroWrapper}>
         <Image alt="Hero Image" src={heroImage} className={styles.heroImage} fill />
         <div className={styles.heroInner}>
-          <ShoreLunchLogo className={styles.heroLogo} />
+          <ShoreLunchLogoAlt className={styles.heroLogo} />
         </div>
       </section>
-      <Header />
+      <Header className={styles.homePageHeader} />
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>About Us</h1>

@@ -5,15 +5,17 @@
   --light-grey: #f5f3f3;
   --medium-grey: #939393;
   --dark-grey: #6c6c6c;
-  --black: #2f2b2b;
+  --black: #1f1c1c;
 
   /* Brand Colors */
   --pink: #ff00d8;
 
-  --light-cream: hsl(61, 26%, 89%);
-  --moss: hsl(72, 30%, 67%);
-  --olive: hsl(71, 39%, 19%);
-  --dark-olive: hsla(112, 20%, 20%, 0.51);
+  --hot-magenta: hsla(309, 100%, 50%, 1);
+  --eerie-black: hsla(0, 5%, 12%, 1);
+  --cosmic-latte: hsla(49, 59%, 94%, 1);
+  --coral-pink: hsla(4, 98%, 77%, 1);
+  --glaucous: hsla(227, 38%, 63%, 1);
+
   --overlay: hsla(39, 100%, 8%, 0.6);
 
   --light-teal: hsl(191, 75%, 69%);
@@ -27,9 +29,9 @@
   --dark-pink: hsl(343, 76%, 32%);
 
   /* Color Implementation */
-  --primary-color: var(--dark-teal);
-  --secondary-color: var(--teal);
-  --tertiary-color: var(--pink);
+  --primary-color: var(--hot-magenta);
+  --secondary-color: var(--coral-pink);
+  --tertiary-color: var(--glaucous);
 
   --error-color: var(--red);
   --success-color: var(--soft-white);
@@ -39,11 +41,15 @@
   --header-logo-color: var(--white);
   --header-component-color: var(--dark-teal);
 
-  --body-bg: var(--cream);
+  /* --body-bg: var(--cream);
   --body-color: var(--black);
-  --heading-color: var(--black);
+  --heading-color: var(--black); */
+  --body-bg: var(--black);
+  --body-color: var(--cream);
+  --heading-color: var(--cream);
 
-  --link-color: var(--primary-color);
+  /* --link-color: var(--primary-color); */
+  --link-color: inherit;
   --link-color-hover: var(--secondary-color);
   --link-color-active: var(--tertiary-color);
 
@@ -54,8 +60,8 @@
   --button-hover-color: var(--soft-white);
   --button-active-color: var(--soft-white);
 
-  --footer-background-color: var(--cream);
-  --footer-text-color: var(--dark-teal);
+  --footer-background-color: var(--black);
+  --footer-text-color: var(--cream);
 
   --selection-background-color: var(--pink);
   --selection-color: var(--soft-white);

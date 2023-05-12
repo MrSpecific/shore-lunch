@@ -64,7 +64,11 @@ const Header = ({ className, children }) => {
       <header className={headerClass} ref={ref}>
         <section className="content header-wrapper">
           <div className={classNames(['container', styles.headerInner])}>
-            <Link href="/" className={styles.logoLink} onClick={handleHeaderLinkClick}>
+            <Link
+              href="/"
+              className={classNames(styles.logoLink, 'header-logo-link')}
+              onClick={handleHeaderLinkClick}
+            >
               <ShoreLunchLogoMinimal className={styles.headerLogo} />
               <span className="visually-hidden">{siteInfo.title}</span>
             </Link>

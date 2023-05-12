@@ -1,5 +1,9 @@
 @import "../settings/breakpoints";
 
+.homePageHeader :global(.header-logo-link) {
+  display: none;
+}
+
 .heroImage {
   position: absolute;
   inset: 0;
