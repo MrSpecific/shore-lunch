@@ -5,22 +5,11 @@ export default {
   name: 'frontPage',
   type: 'document',
   icon: HomeIcon,
-  groups: [
-    {
-      name: 'settings',
-      title: 'Settings',
-    },
-    {
-      name: 'hero',
-      title: 'Hero',
-    },
-  ],
   fields: [
     {
-      name: 'hero',
       title: 'Hero',
-      type: 'hero',
-      group: 'hero',
+      name: 'hero',
+      type: 'imageObject',
     },
   ],
   preview: {

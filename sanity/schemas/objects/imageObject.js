@@ -5,7 +5,10 @@ export default {
   name: 'imageObject',
   type: 'image',
   icon: ImageIcon,
-  options: { hotspot: true },
+  options: {
+    hotspot: true,
+    metadata: ['palette', 'blurhash', 'lqip', 'exif', 'location'],
+  },
   fields: [
     {
       title: 'Alt Text',
