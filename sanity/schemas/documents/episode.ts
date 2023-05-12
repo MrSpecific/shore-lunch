@@ -39,11 +39,16 @@ export default {
       type: 'imageObject',
       group: 'editorial',
     },
-    {
-      title: 'Video',
-      name: 'video',
-      type: 'videoId',
-    },
+    // {
+    //   title: 'Video',
+    //   name: 'video',
+    //   type: 'videoId',
+    // },
+    // {
+    //   title: 'Video',
+    //   name: 'video',
+    //   type: 'videoId',
+    // },
   ],
   // initialValue: {
   //   template: 'default',
