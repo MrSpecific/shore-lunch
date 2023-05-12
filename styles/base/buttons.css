@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   padding: var(--spacer-xs) 24px;
-  border: var(--border-width) solid var(--button-accent);
+  border: var(--button-border);
   border-radius: var(--button-border-radius);
   background-color: var(--button-background-color);
   font-family: var(--button-font-family);
@@ -33,9 +33,11 @@
   }
 
   &.secondary {
-    --button-background-color: var(--pink);
-    --button-background-color-hover: var(--dark-pink);
-    --button-background-color-active: var(--light-pink);
+    --button-border: 2px solid var(--pink);
+    --button-background-color: transparent;
+    --button-color: var(--pink);
+    /* --button-background-color-hover: var(--dark-pink); */
+    /* --button-background-color-active: var(--light-pink); */
   }
 }
 

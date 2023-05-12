@@ -53,9 +53,10 @@
   --link-color-hover: var(--secondary-color);
   --link-color-active: var(--tertiary-color);
 
+  --button-border: 0;
   --button-background-color: var(--pink);
-  --button-background-color-hover: var(--dark-pink);
-  --button-background-color-active: var(--light-pink);
+  --button-background-color-hover: var(--secondary-color);
+  --button-background-color-active: var(--tertiary-color);
   --button-color: var(--soft-white);
   --button-hover-color: var(--soft-white);
   --button-active-color: var(--soft-white);
