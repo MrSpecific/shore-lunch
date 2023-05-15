@@ -40,12 +40,20 @@ export default {
       group: 'editorial',
     },
     {
+      title: 'Recipe',
+      name: 'recipe',
+      type: 'reference',
+      to: [{ type: 'recipe' }],
+      group: 'editorial',
+    },
+    {
       title: 'Sponsors',
       name: 'sponsors',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'sponsor' }] }],
       group: 'editorial',
     },
+
     // {
     //   title: 'Video',
     //   name: 'video',
