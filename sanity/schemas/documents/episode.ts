@@ -39,6 +39,13 @@ export default {
       type: 'imageObject',
       group: 'editorial',
     },
+    {
+      title: 'Sponsors',
+      name: 'sponsors',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'sponsor' }] }],
+      group: 'editorial',
+    },
     // {
     //   title: 'Video',
     //   name: 'video',
