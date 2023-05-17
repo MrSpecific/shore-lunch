@@ -34,7 +34,6 @@ export default function HomePage({ intro, hero, ...props }) {
       </section>
       <Header className={styles.homePageHeader} />
       <section className="content content-y">
-        {JSON.stringify(props, null, 2)}
         <div className={styles.introWrapper}>
           <h1>About Us</h1>
           {intro && <Content markdown={intro} className="body-copy-large" />}
