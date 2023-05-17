@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { definePlugin, ToolMenuProps, ToolLink } from 'sanity';
+import { definePlugin, ToolMenuProps, ToolLink, PluginOptions, PluginFactory } from 'sanity';
 import { Button, Flex, Card, Stack, Text } from '@sanity/ui';
 import { DownloadIcon } from '@sanity/icons';
 import syncProductsToSanity from '@lib/stripe/syncProductsToSanity';
@@ -23,12 +23,14 @@ const SyncButton = (props) => {
 const syncButtonTool = () => {
   return {
     title: 'Sync',
-    name: 'sync',
+    name: 'syncButton',
     icon: DownloadIcon,
     component: SyncButton,
+    // component: (props) => <SyncButton {...props} />,
   };
 };
 
 export const syncButton = definePlugin({
+  name: 'syncButtonPlugin',
   tools: [syncButtonTool()],
 });
