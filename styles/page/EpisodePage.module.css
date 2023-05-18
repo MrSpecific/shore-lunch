@@ -1,0 +1,7 @@
+@import "../settings/breakpoints";
+
+.headline {
+  margin-bottom: var(--spacer-m);
+  text-align: center;
+  line-height: 1;
+}

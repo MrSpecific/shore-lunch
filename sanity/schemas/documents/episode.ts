@@ -9,6 +9,7 @@ export default {
     {
       name: 'settings',
       title: 'Settings',
+      default: true,
     },
     {
       name: 'editorial',
@@ -34,6 +35,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: 'Video URL',
+      name: 'videoUrl',
+      type: 'url',
+      group: 'settings',
+    },
+    {
       title: 'Cover',
       name: 'cover',
       type: 'imageObject',
@@ -53,12 +60,6 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'sponsor' }] }],
       group: 'editorial',
     },
-
-    // {
-    //   title: 'Video',
-    //   name: 'video',
-    //   type: 'videoId',
-    // },
     // {
     //   title: 'Video',
     //   name: 'video',

@@ -3,9 +3,9 @@ import { getEpisodePaths, getDynamicPage, fetchSanityContent } from '@lib/sanity
 import { Page } from '@layout';
 import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
-import styles from '@styles/page/DynamicPage.module.css';
+import styles from '@styles/page/EpisodePage.module.css';
 
-export default function DynamicPage({ data, ...props }) {
+export default function EpisodePage({ data, ...props }) {
   const { template, title, hero, blocks } = data || {};
 
   const contentContainerClass = classNames({
@@ -27,7 +27,6 @@ export default function DynamicPage({ data, ...props }) {
 }
 
 export async function getStaticProps({ params }) {
-  // const page = await getDynamicPage(params.slug);
   const page = await fetchSanityContent('episode', { slug: params.slug });
 
   return {
