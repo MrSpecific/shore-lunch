@@ -23,7 +23,7 @@ const SyncButton = (props) => {
 const syncButtonTool = () => {
   return {
     title: 'Sync',
-    name: 'syncButton',
+    name: 'sync',
     icon: DownloadIcon,
     component: SyncButton,
     // component: (props) => <SyncButton {...props} />,
