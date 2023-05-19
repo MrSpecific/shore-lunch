@@ -33,7 +33,12 @@ const ProductCard = ({ product }) => {
         <button
           className="button secondary"
           onClick={() => {
-            addItem(product);
+            addItem({
+              ...product,
+              product_data: {
+                type: 'fruit',
+              },
+            });
             handleCartHover();
           }}
         >

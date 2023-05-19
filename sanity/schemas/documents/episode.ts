@@ -18,14 +18,20 @@ export default {
   ],
   fields: [
     {
-      name: 'title',
       title: 'Title',
+      name: 'title',
       type: 'string',
       group: 'settings',
     },
     {
-      name: 'slug',
+      title: 'Episode Number',
+      name: 'episodeNumber',
+      type: 'number',
+      group: 'settings',
+    },
+    {
       title: 'Slug',
+      name: 'slug',
       type: 'slug',
       group: 'settings',
       options: {
@@ -47,10 +53,10 @@ export default {
       group: 'editorial',
     },
     {
-      title: 'Recipe',
-      name: 'recipe',
-      type: 'reference',
-      to: [{ type: 'recipe' }],
+      title: 'Recipes',
+      name: 'recipes',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'recipe' }] }],
       group: 'editorial',
     },
     {
