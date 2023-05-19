@@ -41,6 +41,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: 'Release Date',
+      name: 'releaseDate',
+      type: 'date',
+      group: 'settings',
+    },
+    {
       title: 'Video URL',
       name: 'videoUrl',
       type: 'url',

@@ -1,32 +1,25 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
 import * as config from '@config';
 import styles from '@styles/components/ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
-  const { name, price, description, currency } = product;
+  const { name, image, price, description, currency, assets } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
+  console.log(product);
 
   return (
     <div className={styles.productCard}>
       <div className={styles.cardTop}>
-        <Image
-          src={product.image}
-          alt={name}
-          className={styles.cardImage}
-          width={300}
-          height={300}
-        />
-        <h2>{name}</h2>
+        <Image src={image.url} alt={name} className={styles.cardImage} width={300} height={300} />
+        <h2>
+          <Link href={`/product/${product.permalink}`}>{name}</Link>
+        </h2>
       </div>
       <div className={styles.cardDetails}>
-        <div className={styles.price}>
-          {formatCurrencyString({
-            value: price,
-            currency: currency || config.CURRENCY,
-          })}
-        </div>
+        <div className={styles.price}>{price.formatted_with_symbol}</div>
         <div className={styles.cardDescription}>{description}</div>
       </div>
       <div className={styles.cardActions}>

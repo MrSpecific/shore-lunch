@@ -18,6 +18,10 @@ module.exports = withNextPluginPreval({
         protocol: 'https',
         hostname: 'files.stripe.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.chec.io',
+      },
     ],
   },
   webpack(config) {
