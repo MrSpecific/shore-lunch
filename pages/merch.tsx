@@ -14,7 +14,7 @@ const ProductsPage: NextPage<{
   merchant: Object<any>;
   categories: Array<any>;
 }> = ({ products }) => {
-  // console.log(merchant);
+  console.log(products);
 
   return (
     <Page title="Merchandise">

@@ -5,9 +5,15 @@ import { Page } from '@layout';
 import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
 import styles from '@styles/page/EpisodePage.module.css';
+import { useCartDispatch, useCartState } from '@context/cart';
 
-export default function EpisodePage({ data, ...props }) {
-  const { template, title, hero, blocks } = data || {};
+const { log } = console;
+
+export default function ProductPage({ product }) {
+  const { id, template, name, hero, blocks } = product || {};
+  const { setCart } = useCartDispatch();
+
+  const addToCart = () => commerce.cart.add(id).then(({ cart }) => setCart(cart));
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -15,12 +21,11 @@ export default function EpisodePage({ data, ...props }) {
   });
 
   return (
-    <Page title={title}>
+    <Page title={name}>
       <div className={styles.dynamicPage} data-template={template}>
-        {hero && <Hero {...hero} />}
         <div className={contentContainerClass}>
-          {title && <h1 className={styles.headline}>{title}</h1>}
-          {blocks && <BlocksGroup blocks={blocks} blockClass={styles.contentBlock} />}
+          <h1 className={styles.headline}>{name}</h1>
+          <button onClick={addToCart}>Add to Cart</button>
         </div>
       </div>
     </Page>
