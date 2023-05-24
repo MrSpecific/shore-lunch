@@ -10,14 +10,11 @@ import styles from '@styles/components/CartSummary.module.css';
 
 const CartSummary = () => {
   const { total_items: totalItems, subtotal } = useCartState();
-  const [cartEmpty, setCartEmpty] = useState(true);
   const { clearCart, cartDetails, redirectToCheckout } = useShoppingCart();
 
   const { loading, errorMessage, handleCheckout } = useCheckout();
 
-  const { formatted_with_symbol: formattedTotalPrice } = subtotal;
-
-  // useEffect(() => setCartEmpty(!totalItems), [totalItems]);
+  const { formatted_with_symbol: formattedTotalPrice } = subtotal || {};
 
   return (
     // <form onSubmit={handleCheckout}>

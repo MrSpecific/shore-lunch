@@ -9,9 +9,9 @@ const { log } = console;
 
 export default function ProductPage({ product }) {
   const { id, template, name, hero, blocks } = product || {};
-  const cart = useCartState();
+  const { loading, ...cart } = useCartState();
   const { shouldDisplayCart } = useCartMeta();
-  const { setCart, addToCart, isLoading } = useCartDispatch();
+  const { setCart, addToCart } = useCartDispatch();
 
   const handleAddToCart = async () => {
     await addToCart(id, 1);
@@ -30,7 +30,7 @@ export default function ProductPage({ product }) {
             {name} : {JSON.stringify(shouldDisplayCart)}
           </h1>
           {JSON.stringify(cart, null, 2)}
-          <button onClick={handleAddToCart}>{isLoading ? 'Adding...' : 'Add to Cart'}</button>
+          <button onClick={handleAddToCart}>{loading ? 'Adding...' : 'Add to Cart'}</button>
         </div>
       </div>
     </Page>

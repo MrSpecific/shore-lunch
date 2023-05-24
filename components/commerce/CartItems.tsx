@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { Page } from '@layout';
 import Cart from '@commerce/Cart';
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
@@ -46,13 +47,14 @@ const QuantityControls = ({ id, quantity }) => {
   );
 };
 
-const CartLine = (props) => {
-  const { id, image, name, quantity, formattedValue, formattedPrice } = props;
+const CartLine = ({ id, image, name, quantity, formattedValue, price, line_total }) => {
+  // const { id, image, name, quantity, formattedValue, formattedPrice } = props;
+  if (!id) return null;
 
   return (
     <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} className={styles.lineImage} alt="" />
+      <img src={image && image.url} className={styles.lineImage} alt="" />
 
       <div className={styles.lineContent}>
         <div>
@@ -63,8 +65,8 @@ const CartLine = (props) => {
       </div>
 
       <div className={styles.lineSummary}>
-        <span className={styles.lineTotal}>{formattedValue}</span>
-        <span className={styles.itemPrice}>{formattedPrice} each</span>
+        <span className={styles.lineTotal}>{line_total && line_total.formatted_with_symbol}</span>
+        <span className={styles.itemPrice}>{price && price.formatted_with_symbol} each</span>
       </div>
     </li>
   );
@@ -74,6 +76,7 @@ const CartItems = () => {
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
+  const { line_items: lineItems } = useCartState();
   const { loading, handleCheckout } = useCheckout();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
@@ -88,7 +91,11 @@ const CartItems = () => {
 
   return (
     <section>
+      <pre>{JSON.stringify(lineItems, null, 2)}</pre>
       <ul className={styles.cartLines}>
+        {lineItems.map((item) => (
+          <CartLine key={item.id} {...item} />
+        ))}
         {Object.values(cartDetails).map((item) => (
           <CartLine key={item.id} {...item} />
         ))}
