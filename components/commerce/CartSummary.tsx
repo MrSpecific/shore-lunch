@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import { useCheckout } from '@hooks';
 import CheckoutButton from '@commerce/CheckoutButton';
 import StripeTestCards from '@commerce/StripeTestCards';
 import styles from '@styles/components/CartSummary.module.css';
 
 const CartSummary = () => {
+  const { total_items: totalItems, subtotal } = useCartState();
   const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
+  const { clearCart, cartDetails, redirectToCheckout } = useShoppingCart();
 
   const { loading, errorMessage, handleCheckout } = useCheckout();
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  const { formatted_with_symbol: formattedTotalPrice } = subtotal;
+
+  // useEffect(() => setCartEmpty(!totalItems), [totalItems]);
 
   return (
     // <form onSubmit={handleCheckout}>
@@ -23,13 +26,12 @@ const CartSummary = () => {
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
       {/* This is where we'll render our cart */}
       {/* <p suppressHydrationWarning>
-        <strong>Number of Items:</strong> {cartCount}
+        <strong>Number of Items:</strong> {totalItems}
       </p> */}
       <p suppressHydrationWarning>
         <strong>Total:</strong> {formattedTotalPrice}
       </p>
 
-      {/* Redirects the user to Stripe */}
       <div className={styles.cartActions}>
         <CheckoutButton className={styles.checkoutButton} />
         {/* <button className="button-link" type="button" onClick={clearCart}>

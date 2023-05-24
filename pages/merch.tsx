@@ -11,7 +11,7 @@ import { useAppContext } from '@context';
 
 const ProductsPage: NextPage<{
   products: Array<any>;
-  merchant: Object<any>;
+  merchant: any;
   categories: Array<any>;
 }> = ({ products }) => {
   console.log(products);
