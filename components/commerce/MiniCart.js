@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
-import { useShoppingCart } from 'use-shopping-cart';
 import { motion, AnimatePresence } from 'framer-motion';
 import FocusTrap from 'focus-trap-react';
 
 import CartItems from '@commerce/CartItems';
 import CartSummary from '@commerce/CartSummary';
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import CloseIcon from '@svg/close.svg';
 import styles from '@styles/components/MiniCart.module.css';
 
 const MiniCartContents = () => {
-  const { handleCloseCart } = useShoppingCart();
+  const { closeCart } = useCartMeta();
 
   useEffect(() => {
     const escapeKeyHandler = (e) => {
       if (e.key === 'Escape') {
-        handleCloseCart();
+        closeCart();
       }
     };
 
@@ -23,7 +23,7 @@ const MiniCartContents = () => {
     return () => {
       document.removeEventListener('keydown', escapeKeyHandler);
     };
-  }, [handleCloseCart]);
+  }, [closeCart]);
 
   return (
     <FocusTrap focusTrapOptions={{ allowOutsideClick: true }}>
@@ -36,7 +36,7 @@ const MiniCartContents = () => {
       >
         <div className={styles.cartHeader}>
           <h2>Your Cart.</h2>
-          <button className={styles.closeCart} onClick={() => handleCloseCart()}>
+          <button className={styles.closeCart} onClick={() => closeCart()}>
             <CloseIcon />
           </button>
         </div>
@@ -52,7 +52,8 @@ const MiniCartContents = () => {
 };
 
 const MiniCart = () => {
-  const { shouldDisplayCart } = useShoppingCart();
+  // const { shouldDisplayCart } = useShoppingCart();
+  const { shouldDisplayCart } = useCartMeta();
 
   return <AnimatePresence>{shouldDisplayCart && <MiniCartContents />}</AnimatePresence>;
 };

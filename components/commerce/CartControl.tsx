@@ -1,17 +1,19 @@
 import classNames from 'classnames';
 import { CartIcon } from '@svg';
 import { useShoppingCart } from 'use-shopping-cart';
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import { gtagEvent } from '@lib/google';
 import styles from '@styles/components/CartControl.module.css';
 
 const CartControl = () => {
   const { handleCartClick, shouldDisplayCart, cartCount } = useShoppingCart();
+  const { openCart } = useCartMeta();
 
   return (
     <button
       onClick={() => {
-        handleCartClick();
-        gtagEvent('add_to_cart');
+        openCart();
+        // gtagEvent('add_to_cart');
       }}
       className={classNames('button-link', [styles.cartControl])}
     >

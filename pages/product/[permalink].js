@@ -1,37 +1,21 @@
 import classNames from 'classnames';
 
-import { enableLegendStateReact, observer } from '@legendapp/state/react';
 import commerce from '@lib/commerce';
 import { Page } from '@layout';
-import BlocksGroup from '@components/BlocksGroup';
-import Hero from '@components/Hero';
 import styles from '@styles/page/EpisodePage.module.css';
-import { useCartDispatch, useCartState, cart, cartState, cartCount } from '@context/cart';
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 
 const { log } = console;
 
-enableLegendStateReact();
-
-export default observer(function ProductPage({ product }) {
+export default function ProductPage({ product }) {
   const { id, template, name, hero, blocks } = product || {};
-  const { setCart } = useCartDispatch();
+  const cart = useCartState();
+  const { shouldDisplayCart } = useCartMeta();
+  const { setCart, addToCart, isLoading } = useCartDispatch();
 
-  const addToCart = () =>
-    commerce.cart.add(id).then(({ cart }) => {
-      // cart.state.set(cart);
-      cartState.set(cart);
-      cartCount.set((v) => v + 1);
-      return setCart(cart);
-    });
-
-  const getCart = () => {
-    // commerce.cart.retrieve().then((cart) => console.log(cart));
-    return commerce.cart.get();
+  const handleAddToCart = async () => {
+    await addToCart(id, 1);
   };
-
-  log('Cart state', cart.state.get());
-  // log('Cartstate', cartState.get());
-  // log('cartCount', cartCount.get());
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -42,17 +26,16 @@ export default observer(function ProductPage({ product }) {
     <Page title={name}>
       <div className={styles.dynamicPage} data-template={template}>
         <div className={contentContainerClass}>
-          <h1 className={styles.headline}>{name}</h1>
-          <button onClick={addToCart}>Add to Cart</button>
-          {/* <button onClick={() => cart.count.set((v) => v + 1)}>Increment 1</button> */}
-          {/* <button onClick={() => cart.increment()}>Increment p</button> */}
-          <button onClick={() => getCart()}>Get Cart</button>
-          {cart.state.id} - {cart.state.total_items} | {cartCount} - {cart.count}
+          <h1 className={styles.headline}>
+            {name} : {JSON.stringify(shouldDisplayCart)}
+          </h1>
+          {JSON.stringify(cart, null, 2)}
+          <button onClick={handleAddToCart}>{isLoading ? 'Adding...' : 'Add to Cart'}</button>
         </div>
       </div>
     </Page>
   );
-});
+}
 
 export async function getStaticProps({ params }) {
   const { permalink } = params;
