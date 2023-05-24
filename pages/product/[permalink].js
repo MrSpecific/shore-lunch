@@ -24,9 +24,14 @@ export default observer(function ProductPage({ product }) {
       return setCart(cart);
     });
 
+  const getCart = () => {
+    // commerce.cart.retrieve().then((cart) => console.log(cart));
+    return commerce.cart.get();
+  };
+
   log('Cart state', cart.state.get());
-  log('Cartstate', cartState.get());
-  log('cartCount', cartCount.get());
+  // log('Cartstate', cartState.get());
+  // log('cartCount', cartCount.get());
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -39,8 +44,9 @@ export default observer(function ProductPage({ product }) {
         <div className={contentContainerClass}>
           <h1 className={styles.headline}>{name}</h1>
           <button onClick={addToCart}>Add to Cart</button>
-          <button onClick={() => cart.count.set((v) => v + 1)}>Increment 1</button>
-          <button onClick={() => cart.increment()}>Increment p</button>
+          {/* <button onClick={() => cart.count.set((v) => v + 1)}>Increment 1</button> */}
+          {/* <button onClick={() => cart.increment()}>Increment p</button> */}
+          <button onClick={() => getCart()}>Get Cart</button>
           {cart.state.id} - {cart.state.total_items} | {cartCount} - {cart.count}
         </div>
       </div>
