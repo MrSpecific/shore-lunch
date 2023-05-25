@@ -48,7 +48,7 @@ const QuantityControls = ({ id, quantity }) => {
   );
 };
 
-const CartLine = ({ id, image, name, quantity, formattedValue, price, line_total }) => {
+const CartLine = ({ id, image, name, quantity, formattedValue, price, line_total }: any) => {
   // const { id, image, name, quantity, formattedValue, formattedPrice } = props;
   if (!id) return null;
 
