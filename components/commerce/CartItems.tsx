@@ -10,7 +10,8 @@ import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
 const QuantityControls = ({ id, quantity }) => {
-  const { decrementItem, incrementItem, removeItem } = useShoppingCart();
+  // const { decrementItem, incrementItem, removeItem } = useShoppingCart();
+  const { decrementItem, incrementItem, removeItem } = useCartDispatch();
 
   return (
     <div className={styles.quantityControlWrapper}>
@@ -76,12 +77,12 @@ const CartItems = () => {
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
-  const { line_items: lineItems } = useCartState();
+  const { line_items: lineItems, total_items, ...cart } = useCartState();
   const { loading, handleCheckout } = useCheckout();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
-  if (cartEmpty) {
+  if (total_items <= 0) {
     return (
       <div className={styles.emptyCart}>
         <h3 className="h6">Your cart is empty</h3>
@@ -91,7 +92,7 @@ const CartItems = () => {
 
   return (
     <section>
-      {/* <pre>{JSON.stringify(lineItems, null, 2)}</pre> */}
+      {/* <pre>{JSON.stringify(cart, null, 2)}</pre> */}
       <ul className={styles.cartLines}>
         {lineItems.map((item) => (
           <CartLine key={item.id} {...item} />
