@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import { useShoppingCart } from 'use-shopping-cart';
 
+import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import { gtagEvent } from '@lib/google';
 import { useCheckout } from '@hooks';
+
+const { log } = console;
 
 interface CheckoutButtonInterface {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -12,13 +14,10 @@ interface CheckoutButtonInterface {
 }
 
 const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ className }) => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-  const { loading, errorMessage, handleCheckout } = useCheckout();
-  const { currency } = cartDetails;
+  const { loading, total_items, ...state } = useCartState();
+  const { handleCheckout } = useCartDispatch();
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  log(state);
 
   return (
     <motion.button
@@ -31,7 +30,7 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ clas
         // });
         handleCheckout(event);
       }}
-      disabled={cartEmpty || loading}
+      disabled={total_items <= 0 || loading}
       animate={loading ? { x: [0, 4, 0] } : {}}
       transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
     >
