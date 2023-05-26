@@ -63,14 +63,14 @@
 .decrement,
 .increment {
   background-color: unset;
-  border: 2px solid var(--teal);
+  border: 2px solid var(--pink);
   padding: 4px 10px;
   cursor: pointer;
   line-height: 1;
 
   &:hover {
     color: var(--soft-white);
-    background-color: var(--teal);
+    background-color: var(--glaucous);
   }
 }
 
@@ -88,7 +88,7 @@
 
 .quantity {
   padding: 4px 10px;
-  border: 2px solid var(--teal);
+  border: 2px solid var(--pink);
   min-width: 60px;
   text-align: center;
 }

@@ -10,7 +10,6 @@ import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
 const QuantityControls = ({ id, quantity }) => {
-  // const { decrementItem, incrementItem, removeItem } = useShoppingCart();
   const { decrementItem, incrementItem, removeItem } = useCartDispatch();
 
   return (
