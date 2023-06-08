@@ -17,7 +17,7 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ clas
   const { loading, total_items, ...state } = useCartState();
   const { handleCheckout } = useCartDispatch();
 
-  log(state);
+  // log(state);
 
   return (
     <motion.button

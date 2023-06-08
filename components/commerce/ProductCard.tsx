@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
   const { loading } = useCartState();
   const { setCart, addToCart } = useCartDispatch();
-  console.log(product);
+  // console.log(product);
 
   const handleAddToCart = async () => {
     await addToCart(id, 1);

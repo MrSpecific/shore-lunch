@@ -6,7 +6,7 @@ import styles from '@styles/components/blocks/ImageBlock.module.css';
 const ImageBlock = ({ className, image }) => {
   if (!image) return null;
 
-  console.log(image);
+  // console.log(image);
 
   const { caption } = image;
 

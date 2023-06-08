@@ -9,7 +9,9 @@ import { useCartDispatch, useCartState, useCartMeta } from '@context/cart';
 import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
-const QuantityControls = ({ id, quantity }) => {
+const { log } = console;
+
+const QuantityControls = ({ id, quantity, ...props }) => {
   const { decrementItem, incrementItem, removeItem } = useCartDispatch();
 
   return (
@@ -29,7 +31,7 @@ const QuantityControls = ({ id, quantity }) => {
         <button
           type="button"
           onClick={() => {
-            incrementItem(id, { count: 1 });
+            incrementItem(id, 1);
           }}
           aria-label={`Add ${name} to your cart`}
           className={styles.increment}
@@ -47,9 +49,21 @@ const QuantityControls = ({ id, quantity }) => {
   );
 };
 
-const CartLine = ({ id, image, name, quantity, formattedValue, price, line_total }: any) => {
+const CartLine = ({
+  id,
+  product_id,
+  image,
+  name,
+  quantity,
+  formattedValue,
+  price,
+  line_total,
+  ...props
+}: any) => {
   // const { id, image, name, quantity, formattedValue, formattedPrice } = props;
   if (!id) return null;
+
+  log('props are', props);
 
   return (
     <li className={styles.cartLine}>
@@ -61,7 +75,7 @@ const CartLine = ({ id, image, name, quantity, formattedValue, price, line_total
           <h3 className={styles.lineHeadline}>{name}</h3>
         </div>
 
-        <QuantityControls id={id} quantity={quantity} />
+        <QuantityControls id={product_id} quantity={quantity} />
       </div>
 
       <div className={styles.lineSummary}>
