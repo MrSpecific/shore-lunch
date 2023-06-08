@@ -1,5 +1,6 @@
 import { Page } from '@layout';
 import { fetchSanityContent } from '@lib/sanity';
+import EpisodeGrid from '@components/EpisodeGrid';
 import styles from '@styles/page/Home.module.css';
 
 const { log } = console;
@@ -12,7 +13,8 @@ export default function EpisodesPage({ episodes }) {
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>Episodes</h1>
-          {JSON.stringify(episodes, null, 2)}
+          {/* {JSON.stringify(episodes, null, 2)} */}
+          <EpisodeGrid episodes={episodes} />
         </div>
       </section>
     </Page>
