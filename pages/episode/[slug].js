@@ -1,22 +1,40 @@
 import classNames from 'classnames';
-import { getEpisodePaths, getDynamicPage, fetchSanityContent } from '@lib/sanity';
+import YouTube from 'react-youtube';
+
+import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import SanityImage from '@components/SanityImage';
-import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
+import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from '@styles/page/EpisodePage.module.css';
 
 export default function EpisodePage({ data, ...props }) {
-  const { template, title, cover } = data || {};
+  const { episodeNumber, title, cover, videoUrl } = data || {};
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
     ['content container']: true,
   });
 
+  const handleOnReady = (event) => {
+    console.log(event);
+  };
+
+  const videoOptions = {
+    width: '1280',
+    height: '780',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      // autoplay: 1,
+    },
+  };
+
+  const urlObject = new URL(videoUrl);
+  const { videoId } = parseYouTubeUrl(urlObject);
+
   return (
     <Page title={title}>
-      <div className={styles.dynamicPage} data-template={template}>
+      <div className={styles.dynamicPage}>
         {cover && (
           <SanityImage
             {...cover}
@@ -27,7 +45,15 @@ export default function EpisodePage({ data, ...props }) {
         )}
         <div className={contentContainerClass}>
           {title && <h1 className={styles.headline}>{title}</h1>}
-          {JSON.stringify(cover, null, 2)}
+          <YouTube
+            videoId={videoId}
+            opts={videoOptions}
+            onReady={handleOnReady}
+            // iframeClassName={styles.}
+            className={styles.videoWrapper}
+          />
+          {/* {parseYouTubeUrl()} */}
+          {/* {JSON.stringify(parseYouTubeUrl(urlObject), null, 2)} */}
         </div>
       </div>
     </Page>
