@@ -1,0 +1,11 @@
+@import "../settings/breakpoints";
+
+.episodeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacer-l) var(--spacer-m);
+
+  @media (--large) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

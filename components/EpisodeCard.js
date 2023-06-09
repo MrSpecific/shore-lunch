@@ -8,7 +8,7 @@ const EpisodeCard = ({ episodeNumber, title, slug, videoUrl, cover, ...props }) 
   // console.log(cover);
 
   return (
-    <div className={styles.episodeGrid}>
+    <div className={styles.episodeCard}>
       {cover && <SanityImage {...cover} height={'auto'} />}
       <h3>
         <Link href={`/episode/${slug}`} style={{ textDecoration: 'none' }}>

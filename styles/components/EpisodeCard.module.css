@@ -1,0 +1,6 @@
+.episodeCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-s);
+  align-items: flex-start;
+}
