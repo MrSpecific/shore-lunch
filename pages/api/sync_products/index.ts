@@ -1,5 +1,4 @@
 import getStripe, { stripe, formatAmountForDisplay, fetchProducts } from '@lib/stripe';
-import { addProduct, addOrUpdateProduct, getProducts } from '@lib/sanity';
 import syncProductsToSanity from '@lib/stripe/syncProductsToSanity';
 
 const { log } = console;
