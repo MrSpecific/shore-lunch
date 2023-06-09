@@ -33,6 +33,7 @@ const Overlay = () => {
         initial={{ y: '100%' }}
         animate={{ y: 0 }}
         exit={{ y: '100%' }}
+        transition={{ ease: 'easeInOut', duration: 0.15 }}
       >
         <div className={styles.overlayTop}>
           <button className={classNames('button-link', [styles.navClose])} onClick={closeNav}>

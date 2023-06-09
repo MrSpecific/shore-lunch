@@ -12,7 +12,7 @@
   display: flex;
   gap: var(--spacer-xs);
   justify-content: space-between;
-  padding-top: var(--spacer-m);
+  padding: var(--spacer-s) 0;
 
   @media (--header-breakpoint) {
     gap: var(--spacer-m);
