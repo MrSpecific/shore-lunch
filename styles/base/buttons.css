@@ -11,6 +11,7 @@
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
+  text-decoration: none;
   transition-property: color, background-color, border-color;
 
   &:hover {

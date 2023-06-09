@@ -1,12 +1,15 @@
 import classNames from 'classnames';
 import { getEpisodePaths, getDynamicPage, fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
+import SanityImage from '@components/SanityImage';
 import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
 import styles from '@styles/page/EpisodePage.module.css';
 
 export default function EpisodePage({ data, ...props }) {
-  const { template, title, hero, blocks } = data || {};
+  const { template, title, cover } = data || {};
+
+  console.log(data);
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -16,10 +19,15 @@ export default function EpisodePage({ data, ...props }) {
   return (
     <Page title={title}>
       <div className={styles.dynamicPage} data-template={template}>
-        {hero && <Hero {...hero} />}
+        <SanityImage
+          {...cover}
+          width={2000}
+          height={'auto'}
+          style={{ margin: 'var(--spacer-m) 0' }}
+        />
         <div className={contentContainerClass}>
           {title && <h1 className={styles.headline}>{title}</h1>}
-          {blocks && <BlocksGroup blocks={blocks} blockClass={styles.contentBlock} />}
+          {JSON.stringify(cover, null, 2)}
         </div>
       </div>
     </Page>
