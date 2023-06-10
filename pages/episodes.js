@@ -23,7 +23,7 @@ export default function EpisodesPage({ episodes }) {
 
 export async function getStaticProps() {
   // const episodes = await loadContent('homepageIntro');
-  const episodes = await fetchSanityContent('allEpisodes');
+  const episodes = await fetchSanityContent('allEpisodesQuery');
 
   return {
     props: {

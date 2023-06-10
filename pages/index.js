@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 
-import { getHomePage } from '@lib/sanity';
+import { fetchSanityContent } from '@lib/sanity';
 import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';
 import { Page, Header } from '@layout';
@@ -44,7 +44,7 @@ export default function HomePage({ intro, hero, ...props }) {
 }
 
 export async function getStaticProps() {
-  const homePageData = await getHomePage();
+  const homePageData = await fetchSanityContent('homePageQuery');
   const intro = await loadContent('homepageIntro');
 
   return {

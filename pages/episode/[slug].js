@@ -61,7 +61,7 @@ export default function EpisodePage({ data, ...props }) {
 }
 
 export async function getStaticProps({ params }) {
-  const page = await fetchSanityContent('episode', { slug: params.slug });
+  const page = await fetchSanityContent('episodeQuery', { slug: params.slug });
 
   return {
     props: {
@@ -71,7 +71,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await fetchSanityContent('episodePaths');
+  const paths = await fetchSanityContent('episodePathsQuery');
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
