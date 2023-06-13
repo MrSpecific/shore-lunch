@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 
 import { Page } from '@layout';
 import { availableProducts } from '@data/products';
+import { fetchProducts } from '@lib/swell-js';
 import Cart from '@commerce/Cart';
 import CartSummary from '@commerce/CartSummary';
 import ProductGrid from '@components/commerce/ProductGrid';
@@ -27,6 +28,7 @@ export default ProductsPage;
 
 export async function getStaticProps() {
   const products = await availableProducts();
+  const swellProducts = await fetchProducts();
 
   return {
     props: {

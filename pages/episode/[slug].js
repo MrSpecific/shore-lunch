@@ -5,6 +5,7 @@ import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import SanityImage from '@components/SanityImage';
 import Hero from '@components/Hero';
+import NumberLockup from '@components/NumberLockup';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from '@styles/page/EpisodePage.module.css';
 
@@ -44,6 +45,10 @@ export default function EpisodePage({ data, ...props }) {
           />
         )}
         <div className={contentContainerClass}>
+          <NumberLockup
+            episodeNumber={episodeNumber}
+            style={{ fontSize: '3em', textAlign: 'center' }}
+          />
           {title && <h1 className={styles.headline}>{title}</h1>}
           <YouTube
             videoId={videoId}

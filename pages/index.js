@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-import Image from 'next/image';
-
 import { fetchSanityContent } from '@lib/sanity';
 import loadContent from '@utils/loadContent';
 import Content from '@components/layout/Content';

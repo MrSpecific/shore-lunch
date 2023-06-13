@@ -1,0 +1,10 @@
+.numberLockup {
+  text-transform: none;
+  font-family: var(--lora);
+}
+
+.superScript {
+  font-size: 0.6em;
+  position: relative;
+  bottom: 0.35em;
+}
