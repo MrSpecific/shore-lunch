@@ -30,8 +30,7 @@ export default function EpisodePage({ data, ...props }) {
     },
   };
 
-  const urlObject = new URL(videoUrl);
-  const { videoId } = parseYouTubeUrl(urlObject);
+  const { videoId } = parseYouTubeUrl(videoUrl);
 
   return (
     <Page title={title}>

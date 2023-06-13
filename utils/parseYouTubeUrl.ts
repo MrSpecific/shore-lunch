@@ -1,4 +1,4 @@
-const parseYouTubeUrl = (url) => {
+const parseYouTubeUrl = (url: string) => {
   try {
     const urlObject = new URL(url);
 
