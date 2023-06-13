@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SanityImage from '@components/SanityImage';
 import NumberLockup from '@components/NumberLockup';
+import { YouTubeIcon } from '@svg';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from '@styles/components/EpisodeCard.module.css';
 
@@ -38,12 +39,15 @@ const EpisodeCard = ({ episodeNumber, title, slug, videoUrl, cover, ...props }) 
           {title}
         </Link>
       </h3>
-      <Link href={videoUrl} target="_blank" className="button">
-        Watch now
-      </Link>
-      <Link href={videoUrl} target="_blank" className="button">
-        YouTube
-      </Link>
+      <div className={styles.cardActions}>
+        <Link href={`/episode/${slug}`} className="button">
+          Watch now
+        </Link>
+        <Link href={videoUrl} target="_blank" className={styles.offsiteButton}>
+          <span className="visually-hidden">Watch on YouTube</span>
+          <YouTubeIcon className={styles.buttonIcon} />
+        </Link>
+      </div>
     </div>
   );
 };

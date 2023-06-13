@@ -21,6 +21,7 @@
       "@context/*": ["./lib/context/*"],
       "@context": ["./lib/context/"],
       "@config": ["./config/"],
+      "@config/*": ["./config/*"],
       "@data/*": ["./data/*"],
       "@layout": ["./components/layout/"],
       "@svg/*": ["./components/svg/*"],

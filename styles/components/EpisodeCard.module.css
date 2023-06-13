@@ -4,3 +4,20 @@
   gap: var(--spacer-s);
   align-items: flex-start;
 }
+
+.cardActions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--spacer-xs);
+}
+
+.offsiteButton {
+  line-height: 0;
+}
+
+.buttonIcon {
+  height: 2em;
+  width: 2em;
+  fill: currentColor;
+}

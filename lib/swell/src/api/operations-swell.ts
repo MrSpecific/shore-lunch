@@ -39,9 +39,9 @@ export async function searchProducts(searchString: string, limit = 100, offset =
 }
 
 export async function getAllProducts() {
-// limit = 100,
-// offset = 0
-// TODO: add in these params
+  // limit = 100,
+  // offset = 0
+  // TODO: add in these params
   await swell.init(swellConfig.storeId, swellConfig.publicKey);
 
   const productResults = await swell.products.list();

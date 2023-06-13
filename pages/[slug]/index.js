@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { getDynamicPagePaths, getDynamicPage } from '@lib/sanity';
+import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
@@ -27,7 +27,7 @@ export default function DynamicPage({ data, ...props }) {
 }
 
 export async function getStaticProps({ params }) {
-  const page = await getDynamicPage(params.slug);
+  const page = await fetchSanityContent('dynamicPageQuery', { slug: params.slug });
 
   return {
     props: {
@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getDynamicPagePaths();
+  const paths = await fetchSanityContent('pagePathsQuery');
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
