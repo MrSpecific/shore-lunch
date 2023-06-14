@@ -1,7 +1,8 @@
 import ProductCard from '@commerce/ProductCard';
 import styles from '@styles/components/commerce/ProductGrid.module.css';
 
-const ProductGrid: any = ({ products }) => {
+const ProductGrid: any = ({ results: products }) => {
+  // return <>{JSON.stringify(props)}</>;
   if (!products) return null;
 
   return (

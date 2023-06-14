@@ -1,7 +1,7 @@
 import swell from 'swell-js';
 import swellConfig from '@config/swell';
 import image from 'next/image';
-import { ProductResult, Product, Image } from '@lib/swell/src/types';
+import { ProductResult, Product, Image } from '@lib/swell-lib/src/types';
 
 export interface BuillderConfig {
   apiKey: string;

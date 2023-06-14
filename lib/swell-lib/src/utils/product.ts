@@ -1,4 +1,4 @@
-import { Product } from '@lib/swell/src/types';
+import { Product } from '@lib/swell-lib/src/types';
 
 export function prepareVariantsWithOptions(product: Product) {
   return product.variants.map((variant) => {

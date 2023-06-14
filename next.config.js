@@ -22,6 +22,10 @@ module.exports = withNextPluginPreval({
         protocol: 'https',
         hostname: 'img.youtube.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.schema.io',
+      },
     ],
   },
   webpack(config) {
