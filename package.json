@@ -55,6 +55,7 @@
     "remark-parse": "^10.0.1",
     "sanity": "^3.10.1",
     "sanity-image": "^0.1.4",
+    "string-strip-html": "^13.4.1",
     "stripe": "^12.3.0",
     "swell-js": "^3.22.0",
     "swr": "^2.1.1",

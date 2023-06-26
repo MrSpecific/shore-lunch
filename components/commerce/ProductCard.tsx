@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { stripHtml } from 'string-strip-html';
 import swell, { fetchProducts } from '@lib/swell';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
@@ -29,10 +30,11 @@ const ProductCard = ({ product }) => {
             value: price,
             currency: currency || config.CURRENCY,
           })} */}
-          {JSON.stringify(price)}
           {swell.currency.format(price)}
         </div>
-        <div className={styles.cardDescription}>{description}</div>
+        {description && (
+          <div className={styles.cardDescription}>{stripHtml(description).result}</div>
+        )}
       </div>
       <div className={styles.cardActions}>
         <button
