@@ -32,7 +32,8 @@ export default ProductsPage;
 
 export async function getStaticProps() {
   const products = await availableProducts();
-  const swellProducts = await fetchProducts();
+  // const swellProducts = await fetchProducts();
+  const swellProducts = [];
 
   return {
     props: {
