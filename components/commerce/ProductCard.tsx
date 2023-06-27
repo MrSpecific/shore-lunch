@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { stripHtml } from 'string-strip-html';
-import swell, { fetchProducts } from '@lib/swell';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
 import * as config from '@config';
@@ -9,8 +8,6 @@ import styles from '@styles/components/ProductCard.module.css';
 const ProductCard = ({ product }) => {
   const { name, price, description, currency } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
-
-  // console.log(await swell.currency.format(price));
 
   return (
     <div className={styles.productCard}>
@@ -26,11 +23,10 @@ const ProductCard = ({ product }) => {
       </div>
       <div className={styles.cardDetails}>
         <div className={styles.price}>
-          {/* {formatCurrencyString({
+          {formatCurrencyString({
             value: price,
             currency: currency || config.CURRENCY,
-          })} */}
-          {swell.currency.format(price)}
+          })}
         </div>
         {description && (
           <div className={styles.cardDescription}>{stripHtml(description).result}</div>

@@ -3,6 +3,7 @@ import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemas';
 import { deskStructure } from './sanity/plugins/deskStructure';
+import { CustomNavbar } from './sanity/components';
 import { syncButton } from './sanity/plugins/syncButton';
 
 import { apiVersion, dataset, previewSecretId, projectId } from '@lib/sanity';
@@ -23,6 +24,11 @@ export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
+  studio: {
+    components: {
+      navbar: CustomNavbar,
+    },
+  },
 
   plugins: [
     deskTool({

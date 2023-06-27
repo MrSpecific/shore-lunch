@@ -8,14 +8,14 @@ export default {
   icon: CreditCardIcon,
   fields: [
     {
-      title: 'Title',
       name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      title: 'Slug',
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
       options: {
         source: 'title',
@@ -30,15 +30,15 @@ export default {
     //   validation: (Rule) => Rule.required(),
     // },
     {
-      title: 'Images',
       name: 'images',
+      title: 'Images',
       type: 'array',
       of: [{ type: 'image' }],
       validation: (Rule) => Rule.required().min(1).max(10),
     },
     {
-      title: 'Description',
       name: 'description',
+      title: 'Description',
       type: 'text',
       rows: '4',
     },
@@ -59,11 +59,32 @@ export default {
     //   validation: (Rule) => Rule.required().min(0),
     // },
     {
-      title: 'Price',
       name: 'price',
+      title: 'Price',
       type: 'currency',
       initialValue: 0,
       validation: (Rule) => Rule.required().min(0),
+    },
+    {
+      name: 'hasVariants',
+      title: 'Has Variants',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
+      name: 'variants',
+      title: 'Variants',
+      type: 'array',
+      of: [{ type: 'variant' }],
+      hidden: ({ parent }) => !parent?.hasVariants,
+    },
+    {
+      name: 'inventory',
+      title: 'Inventory',
+      type: 'number',
+      initialValue: 0,
+      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => parent?.hasVariants,
     },
   ],
   // initialValue: {
