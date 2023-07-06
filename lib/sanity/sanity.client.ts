@@ -23,8 +23,6 @@ export async function fetchSanityContent(queryName: string, params = {}) {
   try {
     const query = getQuery(queryName);
 
-    log('Query: ', query);
-
     if (!query) throw new Error(`Query ${queryName} not found`);
 
     return await client.fetch(query, params);

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { stripHtml } from 'string-strip-html';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
@@ -33,6 +32,7 @@ const ProductCard = ({ product }) => {
           onClick={() => {
             addItem({
               ...product,
+              currency: currency || config.CURRENCY,
               // product_data: {
               //   type: 'fruit',
               // },

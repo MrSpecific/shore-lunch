@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
-import { AppContext, AppContextProvider } from '@context';
+import { AppContext, AppContextProvider, CartContextProvider } from '@context';
 import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
 import { AnalyticsTags } from '@layout';
 // import { availableProducts } from '@data/products';
@@ -24,17 +24,19 @@ function MyApp({ Component, pageProps, data, products }) {
 
   return (
     <AppContextProvider>
-      <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <AnalyticsTags />
-      <AppData data={data} products={products} />
-      <Cart>
-        <Component {...pageProps} />
-      </Cart>
+      <CartContextProvider>
+        <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
+        <AnalyticsTags />
+        <AppData data={data} products={products} />
+        <Cart>
+          <Component {...pageProps} />
+        </Cart>
 
-      <Analytics />
-      <KlaviyoEmbedOriginal formId="QTmyHD" />
+        <Analytics />
+        <KlaviyoEmbedOriginal formId="" />
+      </CartContextProvider>
     </AppContextProvider>
   );
 }

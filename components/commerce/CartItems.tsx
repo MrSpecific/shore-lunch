@@ -47,7 +47,7 @@ const QuantityControls = ({ id, quantity }) => {
 };
 
 const CartLine = (props) => {
-  const { id, image, name, quantity, formattedValue, formattedPrice } = props;
+  const { id, image, name, quantity, formattedValue, formattedPrice, currency } = props;
 
   return (
     <li className={styles.cartLine}>

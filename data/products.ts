@@ -1,4 +1,5 @@
 import { fetchSanityContent } from '@lib/sanity';
+import * as config from '@config';
 // import { fetchProducts } from '@lib/stripe';
 
 const testProducts = [
@@ -37,9 +38,11 @@ export const availableProducts = async () => {
 
   const products = await fetchSanityContent('availableProductsQuery');
 
-  console.log(products);
+  const transformedProducts = products.map((product) => {
+    return { ...product, currency: config.CURRENCY };
+  });
 
-  return products;
+  return transformedProducts;
 };
 
 const products = testProducts;

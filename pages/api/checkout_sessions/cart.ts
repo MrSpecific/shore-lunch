@@ -15,6 +15,8 @@ import { availableProducts } from '@data/products';
 import getShippingRates from '@lib/shipping';
 import { ALLOWED_COUNTRIES, API_VERSION } from '@config';
 
+const { log, warn } = console;
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: API_VERSION,
@@ -27,6 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       // Validate the cart details that were sent from the client.
       const line_items = validateCartItems(inventory as any, req.body);
+      log('line_items', line_items);
       const hasSubscription = line_items.find((item) => {
         return !!item.price_data.recurring;
       });
@@ -55,7 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.status(200).json(checkoutSession);
     } catch (err) {
-      console.log(err);
+      warn(err);
       const errorMessage = err instanceof Error ? err.message : 'Internal server error';
       res.status(500).json({ statusCode: 500, message: errorMessage });
     }
