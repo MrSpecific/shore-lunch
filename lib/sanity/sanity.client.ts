@@ -3,7 +3,7 @@ import { createClient } from 'next-sanity';
 // import { apiVersion, dataset, projectId, useCdn } from '@config/sanityConfig';
 import * as queries from './sanity.queries';
 
-const { error } = console;
+const { log, error } = console;
 
 export const client = createClient({
   apiVersion,
@@ -22,6 +22,8 @@ export async function fetchSanityContent(queryName: string, params = {}) {
 
   try {
     const query = getQuery(queryName);
+
+    log('Query: ', query);
 
     if (!query) throw new Error(`Query ${queryName} not found`);
 

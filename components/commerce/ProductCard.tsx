@@ -4,21 +4,16 @@ import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
 import * as config from '@config';
 import styles from '@styles/components/ProductCard.module.css';
+import SanityImage from '@components/SanityImage';
 
 const ProductCard = ({ product }) => {
-  const { name, price, description, currency } = product;
+  const { name, price, description, currency, images } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
 
   return (
     <div className={styles.productCard}>
       <div className={styles.cardTop}>
-        <Image
-          src={product.images[0] && product.images[0].file.url}
-          alt={name}
-          className={styles.cardImage}
-          width={300}
-          height={300}
-        />
+        <SanityImage {...images[0]} className={styles.cardImage} width={300} height={300} />
         <h2>{name}</h2>
       </div>
       <div className={styles.cardDetails}>
@@ -38,9 +33,9 @@ const ProductCard = ({ product }) => {
           onClick={() => {
             addItem({
               ...product,
-              product_data: {
-                type: 'fruit',
-              },
+              // product_data: {
+              //   type: 'fruit',
+              // },
             });
             handleCartHover();
           }}

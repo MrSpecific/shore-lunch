@@ -3,7 +3,6 @@ import { NextPage } from 'next';
 
 import { Page } from '@layout';
 import { availableProducts } from '@data/products';
-import Cart from '@commerce/Cart';
 import CartSummary from '@commerce/CartSummary';
 import ProductGrid from '@components/commerce/ProductGrid';
 import { useAppContext } from '@context';
@@ -14,7 +13,7 @@ const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
       <div className="content content-y">
         <h1>Merch.</h1>
         <div style={{ marginTop: 'var(--spacer-m)', marginBottom: 'var(--spacer-m)' }}>
-          <ProductGrid {...products} />
+          <ProductGrid products={products} />
         </div>
         <hr />
         <CartSummary />
@@ -30,7 +29,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      products: [],
+      products,
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in

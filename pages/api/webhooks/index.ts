@@ -44,17 +44,28 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('✅ Success:', event.id);
 
     // Cast event data to Stripe object.
-    if (event.type === 'payment_intent.succeeded') {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
-    } else if (event.type === 'payment_intent.payment_failed') {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log(`❌ Payment failed: ${paymentIntent.last_payment_error?.message}`);
-    } else if (event.type === 'charge.succeeded') {
-      const charge = event.data.object as Stripe.Charge;
-      console.log(`💵 Charge id: ${charge.id}`);
-    } else {
-      console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
+    // Handle the event
+    let intent: Stripe.PaymentIntent | Stripe.Charge | Stripe.Checkout.Session;
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        intent = event.data.object as Stripe.PaymentIntent;
+        console.log(`💰 PaymentIntent status: ${intent.status}`);
+        // console.log(`Event: ${JSON.stringify(event)}`);
+        break;
+      case 'payment_intent.payment_failed':
+        intent = event.data.object as Stripe.PaymentIntent;
+        console.log(`❌ Payment failed: ${intent.last_payment_error?.message}`);
+        break;
+      case 'charge.succeeded':
+        const charge = event.data.object as Stripe.Charge;
+        console.log(`💵 Charge id: ${charge.id}`);
+        break;
+      case 'checkout.session.completed':
+        const session = event.data.object as Stripe.Checkout.Session;
+        console.log(`💵 Checkout Session: ${JSON.stringify(session)}`);
+        break;
+      default:
+        console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
     }
 
     // Return a response to acknowledge receipt of the event.

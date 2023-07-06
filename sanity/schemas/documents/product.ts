@@ -83,8 +83,20 @@ export default {
       title: 'Inventory',
       type: 'number',
       initialValue: 0,
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.custom((currentValue, { parent }) => {
+          if (!parent?.hasVariants && currentValue === undefined)
+            return 'You must specify the inventory for this product, or use variants.';
+
+          return true;
+        }),
       hidden: ({ parent }) => parent?.hasVariants,
+    },
+    {
+      name: 'available',
+      title: 'Available',
+      type: 'boolean',
+      initialValue: true,
     },
   ],
   // initialValue: {

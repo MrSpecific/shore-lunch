@@ -1,4 +1,5 @@
-import { fetchProducts } from '@lib/stripe';
+import { fetchSanityContent } from '@lib/sanity';
+// import { fetchProducts } from '@lib/stripe';
 
 const testProducts = [
   {
@@ -32,10 +33,13 @@ const testProducts = [
 ];
 
 export const availableProducts = async () => {
-  const stripeProducts = await fetchProducts();
+  // const stripeProducts = await fetchProducts();
 
-  // console.log(stripeProducts);
-  return stripeProducts;
+  const products = await fetchSanityContent('availableProductsQuery');
+
+  console.log(products);
+
+  return products;
 };
 
 const products = testProducts;
