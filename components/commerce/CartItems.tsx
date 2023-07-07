@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { Page } from '@layout';
 import Cart from '@commerce/Cart';
+import SanityImage from '@components/SanityImage';
 import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
@@ -47,12 +48,13 @@ const QuantityControls = ({ id, quantity }) => {
 };
 
 const CartLine = (props) => {
-  const { id, image, name, quantity, formattedValue, formattedPrice, currency } = props;
+  const { id, images, name, quantity, formattedValue, formattedPrice, currency } = props;
 
   return (
     <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={image} className={styles.lineImage} alt="" />
+      {/* <img src={image} className={styles.lineImage} alt="" /> */}
+      <SanityImage {...images[0]} className={styles.lineImage} width={300} height={300} />
 
       <div className={styles.lineContent}>
         <div>
