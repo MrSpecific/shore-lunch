@@ -45,6 +45,24 @@ export const availableProducts = async () => {
   return transformedProducts;
 };
 
+export const availableProductsWithSKU = async () => {
+  const products = await availableProducts();
+
+  const productSkus = products.reduce((skus, product) => {
+    if (product.hasVariants) {
+      const skuProuducts = product.variants.map((variant) => {
+        return { id: `${product.id}-${variant.sku}` };
+      });
+
+      skus = [...skus, ...skuProuducts];
+    }
+
+    return skus;
+  }, []);
+
+  return { ...products, ...productSkus };
+};
+
 const products = testProducts;
 
 export default products;
