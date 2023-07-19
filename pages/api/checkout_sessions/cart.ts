@@ -11,7 +11,8 @@ import Stripe from 'stripe';
  */
 // import { validateCartItems } from 'use-shopping-cart/utilities/serverless';
 import { validateCartItems } from 'use-shopping-cart/utilities';
-import { availableProducts } from '@data/products';
+// import validateCart from '@lib/validateCart';
+import { availableProducts, availableProductsWithSKU } from '@data/products';
 import getShippingRates from '@lib/shipping';
 import { ALLOWED_COUNTRIES, API_VERSION } from '@config';
 
@@ -23,16 +24,26 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const inventory = await availableProducts();
+  // const inventory = await availableProducts();
+  const inventorySkus = await availableProductsWithSKU();
+
+  // console.log('inventory', inventory);
+  // console.log('inventorySkus', inventorySkus);
 
   if (req.method === 'POST') {
     try {
       // Validate the cart details that were sent from the client.
-      const line_items = validateCartItems(inventory as any, req.body);
-      log('line_items', line_items);
-      const hasSubscription = line_items.find((item) => {
-        return !!item.price_data.recurring;
-      });
+      // console.log('cart', req.body);
+      // const lineItems = validateCart({ cart: req.body, inventory });
+      const line_items = validateCartItems(inventorySkus as any, req.body);
+
+      // console.log('line_items', line_items);
+
+      const hasSubscription =
+        line_items &&
+        line_items.find((item) => {
+          return !!item.price_data.recurring;
+        });
 
       const shipping_options = await getShippingRates({ cart: req.body });
 

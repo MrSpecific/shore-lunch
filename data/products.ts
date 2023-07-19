@@ -48,11 +48,19 @@ export const availableProducts = async () => {
 export const availableProductsWithSKU = async () => {
   const products = await availableProducts();
 
+  // console.log('products', products);
+
   const productSkus = products.reduce((skus, product) => {
     if (product.hasVariants) {
       const skuProuducts = product.variants.map((variant) => {
-        return { id: `${product.id}-${variant.sku}` };
+        const skuId = `${product.id}-${variant.sku}`;
+        const skuName = `${product.title} - ${variant.title}`;
+
+        return { ...product, id: skuId, _id: skuId, name: skuName };
       });
+
+      // console.log('--------');
+      // console.log('skuProuducts', skuProuducts);
 
       skus = [...skus, ...skuProuducts];
     }
@@ -60,7 +68,11 @@ export const availableProductsWithSKU = async () => {
     return skus;
   }, []);
 
-  return { ...products, ...productSkus };
+  // console.log('-----------');
+  // console.log('productSkus', productSkus);
+  // console.log('-----------');
+
+  return [...products, ...productSkus];
 };
 
 const products = testProducts;
