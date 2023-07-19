@@ -14,7 +14,11 @@ const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
   };
 
   return (
-    <select onChange={handleChange} defaultValue={selectedVariant.sku}>
+    <select
+      onChange={handleChange}
+      defaultValue={selectedVariant.sku}
+      className={styles.variantSelect}
+    >
       {variants.map((variant, i) => (
         <option key={i} value={variant.sku}>
           {variant.title}
