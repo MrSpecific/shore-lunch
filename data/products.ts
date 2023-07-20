@@ -56,7 +56,7 @@ export const availableProductsWithSKU = async () => {
         const skuId = `${product.id}-${variant.sku}`;
         const skuName = `${product.title} - ${variant.title}`;
 
-        return { ...product, id: skuId, _id: skuId, name: skuName };
+        return { ...product, id: skuId, _id: skuId, name: skuName, inventory: variant.inventory };
       });
 
       // console.log('--------');
