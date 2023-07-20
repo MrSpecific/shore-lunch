@@ -31,6 +31,8 @@ const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
 const isProductAvailable = ({ product, selectedVariant }) => {
   let available = true;
 
+  console.log(product);
+
   if (!product?.available) {
     available = false;
   }
@@ -100,7 +102,13 @@ const ProductCard = ({ product }) => {
           }}
           disabled={!available}
         >
-          Add <span className="visually-hidden">{name}</span> to cart
+          {available ? (
+            <>
+              Add <span className="visually-hidden">{name}</span> to cart
+            </>
+          ) : (
+            'Sold Out'
+          )}
         </button>
       </div>
     </div>
