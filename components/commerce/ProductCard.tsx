@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { stripHtml } from 'string-strip-html';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
@@ -28,10 +28,34 @@ const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
   );
 };
 
+const isProductAvailable = ({ product, selectedVariant }) => {
+  let available = true;
+
+  if (!product?.available) {
+    available = false;
+  }
+
+  if (selectedVariant && selectedVariant.inventory <= 0) {
+    available = false;
+  }
+
+  if (!selectedVariant && product.inventory <= 0) {
+    available = false;
+  }
+
+  return available;
+};
+
 const ProductCard = ({ product }) => {
   const { name, price, description, currency, images, hasVariants } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
   const [selectedVariant, setSelectedVariant] = useState(product.variants && product.variants[0]);
+  const [available, setAvailable] = useState(true);
+
+  useEffect(() => {
+    const isAvailable = isProductAvailable({ product, selectedVariant });
+    setAvailable(isAvailable);
+  }, [product, selectedVariant]);
 
   return (
     <div className={styles.productCard}>
@@ -74,6 +98,7 @@ const ProductCard = ({ product }) => {
             });
             handleCartHover();
           }}
+          disabled={!available}
         >
           Add <span className="visually-hidden">{name}</span> to cart
         </button>
