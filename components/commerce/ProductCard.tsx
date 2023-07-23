@@ -61,8 +61,6 @@ const ProductCard = ({ product }) => {
         )}
       </div>
       <div className={styles.cardActions}>
-        {/* {JSON.stringify(product)} */}
-        {/* {JSON.stringify(selectedVariant)} */}
         {hasVariants && (
           <VariantSelector
             {...product}

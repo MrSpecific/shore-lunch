@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
@@ -6,13 +7,20 @@ import { formatCurrencyString } from 'use-shopping-cart';
 import * as config from '@config';
 import { Page } from '@layout';
 import PrintObject from '@commerce/PrintObject';
-import Cart from '@commerce/Cart';
-import ClearCart from '@commerce/ClearCart';
 import { fetchGetJSON } from '@utils/apiHelpers';
 import styles from '@styles/page/Result.module.css';
+import { useShoppingCart } from 'use-shopping-cart';
 
 const SuccessMessage = ({ data }) => {
+  const { cartCount, clearCart } = useShoppingCart();
   const { amount_total, currency, customer_details, shipping_details, line_items } = data;
+
+  useEffect(() => {
+    if (cartCount > 0) {
+      clearCart();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -52,10 +60,6 @@ const ResultPage: NextPage = () => {
           {/* <h3>CheckoutSession response:</h3> */}
           {/* <PrintObject content={data ?? 'loading...'} /> */}
         </div>
-
-        <Cart>
-          <ClearCart />
-        </Cart>
       </section>
     </Page>
   );
