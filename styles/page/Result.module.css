@@ -1,0 +1,4 @@
+.receiptContainer {
+  max-width: 666px;
+  margin: var(--spacer-m) auto;
+}
