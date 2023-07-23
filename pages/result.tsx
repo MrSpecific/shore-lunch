@@ -16,15 +16,15 @@ const SuccessMessage = ({ data }) => {
 
   return (
     <div>
-      <hr />
-      Order total:&nbsp;
-      {formatCurrencyString({
-        value: amount_total,
-        currency: currency || config.CURRENCY,
-      })}
-      <br />
-      Shipping to {shipping_details?.address?.city}, {shipping_details?.address?.state}
-      <hr />
+      <div className={styles.receiptBody}>
+        Order total:&nbsp;
+        {formatCurrencyString({
+          value: amount_total,
+          currency: currency || config.CURRENCY,
+        })}
+        <br />
+        Shipping to {shipping_details?.address?.city}, {shipping_details?.address?.state}
+      </div>
       <h2>Thank you for your order!</h2>
     </div>
   );

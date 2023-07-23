@@ -2,3 +2,10 @@
   max-width: 666px;
   margin: var(--spacer-m) auto;
 }
+
+.receiptBody {
+  margin: var(--spacer-m) 0;
+  padding: var(--spacer-m) 0;
+  border-top: 1px solid var(--white);
+  border-bottom: 1px solid var(--white);
+}
