@@ -1,5 +1,5 @@
-import { fetchSanityContent } from '@lib/sanity';
 import * as config from '@config';
+import { fetchSanityContent, urlForImage } from '@lib/sanity';
 // import { fetchProducts } from '@lib/stripe';
 
 const testProducts = [
@@ -39,7 +39,11 @@ export const availableProducts = async () => {
   const products = await fetchSanityContent('availableProductsQuery');
 
   const transformedProducts = products.map((product) => {
-    return { ...product, currency: config.CURRENCY };
+    return {
+      ...product,
+      currency: config.CURRENCY,
+      image: product?.images[0] && urlForImage(product.images[0]).width(800).url(),
+    };
   });
 
   return transformedProducts;

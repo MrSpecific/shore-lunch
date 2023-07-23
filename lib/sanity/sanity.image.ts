@@ -9,7 +9,7 @@ https://www.sanity.io/docs/image-urls#fit-object-object
 Lazy load concept: https://gist.github.com/kmelve/e047d40e24d92f1b4751535a4cee1e59
 */
 
-export const imageBuilder = createImageUrlBuilder({ projectId, dataset });
+export const imageBuilder = createImageUrlBuilder({ projectId, dataset }) as any;
 
 export const urlForImage = (source) => {
   return source ? imageBuilder.image(source) : '';

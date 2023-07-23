@@ -1,4 +1,5 @@
 export { default as useBreakpoint } from './useBreakpoint';
+export { default as useCart } from './useCart';
 export { default as useCheckout } from './useCheckout';
 export { default as useConstructor } from './useConstructor';
 export { default as useIntersectionObserver } from './useIntersectionObserver';

@@ -5,6 +5,8 @@ import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 import * as config from '@config';
 import styles from '@styles/components/ProductCard.module.css';
 import SanityImage from '@components/SanityImage';
+import { isProductAvailable } from '@lib/commerce';
+import { useCart } from '@hooks';
 
 const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
   const handleChange = (e) => {
@@ -28,26 +30,6 @@ const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
   );
 };
 
-const isProductAvailable = ({ product, selectedVariant }) => {
-  let available = true;
-
-  console.log(product);
-
-  if (!product?.available) {
-    available = false;
-  }
-
-  if (selectedVariant && selectedVariant.inventory <= 0) {
-    available = false;
-  }
-
-  if (!selectedVariant && product.inventory <= 0) {
-    available = false;
-  }
-
-  return available;
-};
-
 const ProductCard = ({ product }) => {
   const { name, price, description, currency, images, hasVariants } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
@@ -58,6 +40,8 @@ const ProductCard = ({ product }) => {
     const isAvailable = isProductAvailable({ product, selectedVariant });
     setAvailable(isAvailable);
   }, [product, selectedVariant]);
+
+  const { addToCart } = useCart({ product, selectedVariant });
 
   return (
     <div className={styles.productCard}>
@@ -89,16 +73,7 @@ const ProductCard = ({ product }) => {
         <button
           className="button secondary"
           onClick={() => {
-            addItem({
-              ...product,
-              id: selectedVariant ? `${product.id}-${selectedVariant.sku}` : product.id,
-              name: selectedVariant ? `${product.name} - ${selectedVariant.title}` : product.name,
-              currency: currency || config.CURRENCY,
-              // product_data: {
-              //   type: 'fruit',
-              // },
-            });
-            handleCartHover();
+            addToCart();
           }}
           disabled={!available}
         >
