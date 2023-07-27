@@ -1,9 +1,11 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { buffer } from 'micro';
 import Cors from 'micro-cors';
-import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
+
+import { updateInventoryFromSession } from '@lib/commerce';
 import { API_VERSION } from '@config';
 
-import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: API_VERSION,
@@ -62,7 +64,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         break;
       case 'checkout.session.completed':
         const session = event.data.object as Stripe.Checkout.Session;
-        console.log(`💵 Checkout Session: ${JSON.stringify(session)}`);
+        updateInventoryFromSession({ session, stripe });
         break;
       default:
         console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);

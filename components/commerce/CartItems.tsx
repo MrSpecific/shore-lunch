@@ -80,6 +80,8 @@ const CartItems = () => {
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
+  // console.log(cartDetails);
+
   if (cartEmpty) {
     return (
       <div className={styles.emptyCart}>

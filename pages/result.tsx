@@ -17,7 +17,8 @@ const SuccessMessage = ({ data }) => {
 
   useEffect(() => {
     if (cartCount > 0) {
-      clearCart();
+      // TODO: Re-enable this when done
+      // clearCart();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,7 +59,7 @@ const ResultPage: NextPage = () => {
           {/* <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2> */}
           {data?.payment_intent?.status === 'succeeded' && <SuccessMessage data={data} />}
           {/* <h3>CheckoutSession response:</h3> */}
-          {/* <PrintObject content={data ?? 'loading...'} /> */}
+          <PrintObject content={data ?? 'loading...'} />
         </div>
       </section>
     </Page>

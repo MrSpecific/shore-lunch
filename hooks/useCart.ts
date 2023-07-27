@@ -22,6 +22,19 @@ const useCart = ({ product, selectedVariant }) => {
           tester: 'product_data',
         },
       },
+      price_data: {
+        test: 'price_data_top',
+        metadata: {
+          parentId: id,
+          sku: selectedVariant?.sku,
+          tester: 'price_data',
+        },
+      },
+      price_metadata: {
+        parentId: id,
+        sku: selectedVariant?.sku,
+        tester: 'price_metadata',
+      },
       product_metadata: {
         parentId: id,
         sku: selectedVariant?.sku,
