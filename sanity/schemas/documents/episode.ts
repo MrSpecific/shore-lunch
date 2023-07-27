@@ -51,7 +51,7 @@ export default {
       name: 'cover',
       type: 'imageObject',
       group: 'settings',
-      validation: (Rule) => Rule.required(),
+      // validation: (Rule) => Rule.required(),
     },
     {
       title: 'Recipes',
