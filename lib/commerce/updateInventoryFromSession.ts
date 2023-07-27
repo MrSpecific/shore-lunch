@@ -7,10 +7,10 @@ export default async function updateInventoryFromSession({ session, stripe }) {
 
   const lineItems = await stripe.checkout.sessions.listLineItems(
     id,
-    { limit: 5 },
+    { limit: 10, expand: ['data.price.product'] },
     function (err, lineItems) {
       // asynchronously called
-      log(lineItems);
+      log('Async response lineItems', lineItems);
     }
   );
 
