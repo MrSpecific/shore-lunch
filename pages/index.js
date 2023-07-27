@@ -10,18 +10,30 @@ import SanityImage from '@components/SanityImage';
 
 const { log } = console;
 
-export default function HomePage({ intro, hero, ...props }) {
+export default function HomePage({ intro, hero, heroMobile, ...props }) {
   const title = 'Shore Lunch';
+
+  // console.log('hero, heroMobile', hero, heroMobile);
 
   return (
     <Page title={title} header={false}>
       <section className={styles.heroWrapper}>
-        {hero.image && (
+        {hero?.image && (
           <SanityImage
-            asset={hero.image.asset}
-            alt={hero.image.alt}
-            className={styles.heroImage}
-            fill
+            {...hero.image}
+            asset={hero.image}
+            alt={hero?.alt}
+            className={!!heroMobile ? styles.heroImageDesktop : styles.heroImage}
+            fill="true"
+          />
+        )}
+        {heroMobile && (
+          <SanityImage
+            {...heroMobile}
+            asset={heroMobile}
+            alt={heroMobile?.alt}
+            className={styles.heroImageMobile}
+            fill="true"
           />
         )}
         {/* <Image alt="Hero Image" src={heroImage} className={styles.heroImage} fill /> */}

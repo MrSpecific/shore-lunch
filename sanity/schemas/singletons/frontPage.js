@@ -10,6 +10,12 @@ export default {
       title: 'Hero',
       name: 'hero',
       type: 'imageObject',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      title: 'Mobile Hero',
+      name: 'heroMobile',
+      type: 'imageObject',
     },
   ],
   preview: {
