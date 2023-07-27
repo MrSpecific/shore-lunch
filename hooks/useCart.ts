@@ -8,6 +8,7 @@ const useCart = ({ product, selectedVariant }) => {
   const selectedId = hasVariants && selectedVariant ? `${id}-${selectedVariant.sku}` : id;
 
   const addToCart = ({ quantity = 1 } = { quantity: 1 }) => {
+    console.log('Add to cart id:', selectedId);
     addItem({
       ...product,
       id: selectedId,
