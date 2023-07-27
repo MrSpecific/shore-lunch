@@ -13,16 +13,18 @@ export default async function updateInventoryFromSession({ session, stripe }) {
     { expand: ['data.price.product'] },
     function (err, lineItems) {
       // asynchronously called
-      log('Async response lineItems', JSON.stringify(lineItems, null, 2));
+      // log('Async response lineItems', JSON.stringify(lineItems, null, 2));
       lineItems.data.forEach(async ({ quantity, price }) => {
         const { parentId, sku, hasVariants } = price?.product?.metadata;
-        // const id =
-        updateProductInventory({ id: parentId, sku, quantity });
+        const cleanSku = sku.toLowerCase() === 'false' ? false : sku;
+
+        // log('Updating inventory for', price?.product?.metadata);
+        updateProductInventory({ id: parentId, sku: cleanSku, quantity });
       });
     }
   );
 
-  log(`💵 webhook lineItems: ${JSON.stringify(lineItems)}`);
+  // log(`💵 webhook lineItems: ${JSON.stringify(lineItems)}`);
   // log(`💵 Checkout Session: ${JSON.stringify(session)}`);
   return true;
 }

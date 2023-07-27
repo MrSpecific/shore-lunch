@@ -6,21 +6,22 @@ const useCart = ({ product, selectedVariant }) => {
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
   const { id, name, price, description, currency, images, hasVariants } = product;
   const selectedId = hasVariants && selectedVariant ? `${id}-${selectedVariant.sku}` : id;
+  const selectedName = hasVariants && selectedVariant ? `${name} - ${selectedVariant.title}` : name;
 
   const addToCart = ({ quantity = 1 } = { quantity: 1 }) => {
     // console.log('Add to cart id:', selectedId);
     addItem({
       ...product,
       id: selectedId,
-      name: selectedVariant ? `${product.name} - ${selectedVariant.title}` : product.name,
+      name: selectedName,
       currency: currency || config.CURRENCY,
       quantity,
       image: images[0] && urlForImage(images[0]).width(600).url(),
       product_data: {
         metadata: {
           parentId: id,
-          sku: selectedVariant?.sku,
-          hasVariants: product.hasVariants,
+          sku: hasVariants && selectedVariant?.sku,
+          hasVariants: hasVariants,
           tester: 'product_data',
         },
       },

@@ -1,5 +1,7 @@
 import { adminClient } from '@lib/sanity';
 
+const { log } = console;
+
 export interface UpdateProductInventory {
   id: string;
   sku: string | boolean;
@@ -23,7 +25,20 @@ export const updateSkuInventory = async ({ id, sku, quantity }: UpdateProductInv
 
     return updatedProduct;
   } catch (error) {
-    console.log(error);
+    log(error);
+  }
+};
+
+export const updatePrimaryInventory = async ({ id, quantity }: UpdateProductInventory) => {
+  try {
+    const updatedProduct = adminClient
+      .patch(id) // Document ID to patch
+      .dec({ [`inventory`]: 1 })
+      .commit(); // Perform the patch and return a promise
+
+    return updatedProduct;
+  } catch (error) {
+    log(error);
   }
 };
 
@@ -33,22 +48,10 @@ export const updateProductInventory = async ({
   quantity,
 }: UpdateProductInventory) => {
   if (sku) {
+    log('Updating with sku', id, sku, quantity);
     updateSkuInventory({ id, sku, quantity });
   } else {
-    try {
-      await adminClient
-        .patch(id) // Document ID to patch
-        .dec({ [`inventory`]: 1 })
-        .commit(); // Perform the patch and return a promise
-      // .then((updatedProduct) => {
-      //   console.log('Hurray, the product is updated! New document:');
-      //   console.log(updatedProduct);
-      // })
-      // .catch((err) => {
-      //   console.error('Oh no, the update failed: ', err.message);
-      // });
-    } catch (error) {
-      console.log(error);
-    }
+    log('Updating primary inventory', id, sku, quantity);
+    updatePrimaryInventory({ id, quantity, sku: false });
   }
 };
