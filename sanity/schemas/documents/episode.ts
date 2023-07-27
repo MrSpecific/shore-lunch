@@ -51,6 +51,7 @@ export default {
       name: 'cover',
       type: 'imageObject',
       group: 'settings',
+      description: '(Optional) This will be used as the cover image for the episode.',
       // validation: (Rule) => Rule.required(),
     },
     {
