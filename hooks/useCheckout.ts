@@ -23,7 +23,7 @@ const useCheckout = (callBack = () => {}) => {
       return;
     }
 
-    // redirectToCheckout(response.id);
+    redirectToCheckout(response.id);
   };
 
   return { loading, errorMessage, handleCheckout };
