@@ -8,7 +8,7 @@ const useCart = ({ product, selectedVariant }) => {
   const selectedId = hasVariants && selectedVariant ? `${id}-${selectedVariant.sku}` : id;
 
   const addToCart = ({ quantity = 1 } = { quantity: 1 }) => {
-    console.log('Add to cart id:', selectedId);
+    // console.log('Add to cart id:', selectedId);
     addItem({
       ...product,
       id: selectedId,
@@ -20,6 +20,7 @@ const useCart = ({ product, selectedVariant }) => {
         metadata: {
           parentId: id,
           sku: selectedVariant?.sku,
+          hasVariants: product.hasVariants,
           tester: 'product_data',
         },
       },
