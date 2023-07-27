@@ -12,6 +12,14 @@ export const client = createClient({
   useCdn,
 });
 
+export const adminClient = createClient({
+  apiVersion,
+  dataset,
+  projectId,
+  useCdn: false,
+  token: process.env.SANITY_API_WRITE_TOKEN,
+});
+
 export const getQuery = (key: string | number | symbol) => {
   const obj: typeof queries = queries;
   return obj[key as keyof typeof queries];
