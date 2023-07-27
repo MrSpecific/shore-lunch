@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // const lineItems = validateCart({ cart: req.body, inventory });
       const line_items = validateCartItems(inventorySkus as any, req.body);
 
-      // console.log('line_items', line_items);
+      // console.log('line_items', JSON.stringify(line_items, null, 2));
 
       const hasSubscription =
         line_items &&

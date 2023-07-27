@@ -25,7 +25,7 @@ const cors = Cors({
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const lineItems = await stripe.checkout.sessions.listLineItems(
     'cs_test_b16kdI8aqtuYLSbb3ZvJT7ncPTQJQ1VGOLrEzLsjajACqES8Uqh53hdVpO',
-    { limit: 10 }
+    { limit: 10, expand: ['data.price.product'] }
     // function (err, lineItems): any {
     //   // asynchronously called
     //   log(lineItems);
