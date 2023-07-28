@@ -4,8 +4,10 @@ import { NextPage } from 'next';
 import { Page } from '@layout';
 import { availableProducts } from '@data/products';
 import CartSummary from '@commerce/CartSummary';
+import CheckoutButton from '@commerce/CheckoutButton';
 import ProductGrid from '@components/commerce/ProductGrid';
 import { useAppContext } from '@context';
+import styles from '@styles/page/Merch.module.css';
 
 const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
   return (
@@ -16,7 +18,13 @@ const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
           <ProductGrid products={products} />
         </div>
         <hr />
-        <CartSummary />
+        {/* <CartSummary /> */}
+        <div style={{ marginTop: 'var(--spacer-m)', display: 'flex', justifyContent: 'center' }}>
+          <CheckoutButton includePrice className={styles.checkoutButton} />
+          {/* <button className="button-link" type="button" onClick={clearCart}>
+          Clear Cart
+        </button> */}
+        </div>
       </div>
     </Page>
   );

@@ -8,10 +8,14 @@ import { useCheckout } from '@hooks';
 
 interface CheckoutButtonInterface {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className: string;
+  className?: string;
+  includePrice?: boolean;
 }
 
-const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ className }) => {
+const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
+  className,
+  includePrice = false,
+}) => {
   const [cartEmpty, setCartEmpty] = useState(true);
   const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
     useShoppingCart();
@@ -35,6 +39,7 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({ clas
       animate={loading ? { x: [0, 4, 0] } : {}}
       transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
     >
+      {includePrice && !loading ? `${formattedTotalPrice} — ` : null}
       {!loading ? 'Checkout' : 'Loading...'}
     </motion.button>
   );

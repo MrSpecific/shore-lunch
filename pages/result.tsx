@@ -18,7 +18,7 @@ const SuccessMessage = ({ data }) => {
   useEffect(() => {
     if (cartCount > 0) {
       // TODO: Re-enable this when done
-      // clearCart();
+      clearCart();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

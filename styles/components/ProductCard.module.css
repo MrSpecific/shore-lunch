@@ -17,6 +17,7 @@
   aspect-ratio: 1 / 1;
   object-fit: cover;
   margin-bottom: var(--spacer-xs);
+  border-radius: 4px;
 }
 
 .cardDetails {
