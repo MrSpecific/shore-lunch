@@ -123,6 +123,21 @@ export default {
       group: 'commerce',
     },
     {
+      name: 'shipping',
+      title: 'Shipping',
+      type: 'string',
+      options: {
+        list: [
+          { value: 'default', title: 'Default Shipping' },
+          { value: 'free', title: 'Free Shipping' },
+          { value: 'noShipping', title: 'No Shipping' },
+        ],
+        layout: 'dropdown',
+      },
+      initialValue: 'default',
+      group: 'commerce',
+    },
+    {
       name: 'lastSold',
       title: 'Last Sold',
       type: 'datetime',
