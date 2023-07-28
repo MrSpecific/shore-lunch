@@ -7,6 +7,7 @@ import styles from '@styles/components/ProductCard.module.css';
 import SanityImage from '@components/SanityImage';
 import { isProductAvailable } from '@lib/commerce';
 import { useCart } from '@hooks';
+import classNames from 'classnames';
 
 const VariantSelector = ({ variants, selectedVariant, setSelectedVariant }) => {
   const handleChange = (e) => {
@@ -69,7 +70,7 @@ const ProductCard = ({ product }) => {
           />
         )}
         <button
-          className="button secondary"
+          className={classNames(styles.addToCart, 'button secondary')}
           onClick={() => {
             addToCart();
           }}

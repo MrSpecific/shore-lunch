@@ -29,7 +29,13 @@
 
 .cardActions {
   display: flex;
+  justify-content: stretch;
   gap: var(--spacer-xs);
+  flex-wrap: wrap;
+}
+
+.addToCart {
+  flex-grow: 2;
 }
 
 .price {
@@ -42,4 +48,6 @@
   border-radius: 50px;
   color: var(--pink);
   padding: 0 20px;
+  flex-grow: 1;
+  padding: 8px 12px;
 }
