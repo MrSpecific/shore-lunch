@@ -54,7 +54,9 @@ const CartLine = (props) => {
     <li className={styles.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       {/* <img src={image} className={styles.lineImage} alt="" /> */}
-      <SanityImage {...images[0]} className={styles.lineImage} width={300} height={300} />
+      <div className={styles.imageWrapper}>
+        <SanityImage {...images[0]} className={styles.lineImage} width={300} height={300} />
+      </div>
 
       <div className={styles.lineContent}>
         <div>
