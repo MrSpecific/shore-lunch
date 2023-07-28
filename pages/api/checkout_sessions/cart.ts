@@ -59,7 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         shipping_options,
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/merch`,
+        cancel_url: `${req.headers.origin}/cart`,
         mode: hasSubscription ? 'subscription' : 'payment',
       };
 
