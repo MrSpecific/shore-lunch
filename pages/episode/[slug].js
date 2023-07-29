@@ -1,16 +1,17 @@
 import classNames from 'classnames';
+import { PortableText } from '@portabletext/react';
 import YouTube from 'react-youtube';
 
 import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import SanityImage from '@components/SanityImage';
-import Hero from '@components/Hero';
+// import Hero from '@components/Hero';
 import NumberLockup from '@components/NumberLockup';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from '@styles/page/EpisodePage.module.css';
 
 export default function EpisodePage({ data, ...props }) {
-  const { episodeNumber, title, cover, videoUrl } = data || {};
+  const { episodeNumber, description, title, cover, videoUrl } = data || {};
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -58,6 +59,12 @@ export default function EpisodePage({ data, ...props }) {
           />
           {/* {parseYouTubeUrl()} */}
           {/* {JSON.stringify(parseYouTubeUrl(urlObject), null, 2)} */}
+
+          {description && (
+            <section className={styles.episodeDescription}>
+              <PortableText value={description} />
+            </section>
+          )}
         </div>
       </div>
     </Page>

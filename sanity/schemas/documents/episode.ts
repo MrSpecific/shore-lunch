@@ -18,8 +18,8 @@ export default {
   ],
   fields: [
     {
-      title: 'Title',
       name: 'title',
+      title: 'Title',
       type: 'string',
       group: 'settings',
     },
@@ -30,8 +30,8 @@ export default {
       group: 'settings',
     },
     {
-      title: 'Slug',
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
       group: 'settings',
       options: {
@@ -41,29 +41,36 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: 'Video URL',
       name: 'videoUrl',
+      title: 'Video URL',
       type: 'url',
       group: 'settings',
     },
     {
-      title: 'Cover',
       name: 'cover',
+      title: 'Cover',
       type: 'imageObject',
       group: 'settings',
       description: '(Optional) This will be used as the cover image for the episode.',
       // validation: (Rule) => Rule.required(),
     },
     {
-      title: 'Recipes',
+      name: 'description',
+      title: 'Description',
+      type: 'array',
+      of: [{ type: 'block' }],
+      group: 'editorial',
+    },
+    {
       name: 'recipes',
+      title: 'Recipes',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'recipe' }] }],
       group: 'editorial',
     },
     {
-      title: 'Sponsors',
       name: 'sponsors',
+      title: 'Sponsors',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'sponsor' }] }],
       group: 'editorial',
