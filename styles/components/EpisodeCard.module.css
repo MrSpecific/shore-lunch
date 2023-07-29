@@ -5,6 +5,41 @@
   align-items: flex-start;
 }
 
+.coverWrapper {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover .coverImage {
+    border-color: var(--coral-pink);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.coverImage {
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+
+  & svg {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.newLabel {
+  composes: label;
+}
+
 .cardActions {
   display: flex;
   justify-content: flex-start;

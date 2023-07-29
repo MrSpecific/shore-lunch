@@ -5,6 +5,7 @@ export { default as Close } from './close.svg';
 export { default as CoffeeOutsideMark } from './coffee-outside-mark.svg';
 export { default as Hamburger } from './hamburger.svg';
 export { default as InstagramIcon } from './instagram.svg';
+export { default as NewSticker } from './new-sticker.svg';
 export { default as ShoreLunchLogoAlt } from './shore-lunch-logo-alt.svg';
 export { default as ShoreLunchLogoMinimal } from './shore-lunch-logo-minimal.svg';
 export { default as ShoreLunchLogo } from './shore-lunch-logo.svg';
