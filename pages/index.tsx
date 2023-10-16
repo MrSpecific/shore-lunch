@@ -41,7 +41,9 @@ export default function HomePage({ intro, hero, heroMobile, ...props }) {
           <ShoreLunchLogoAlt className={styles.heroLogo} />
         </div>
       </section>
-      <Header className={styles.homePageHeader} />
+      <Header className={styles.homePageHeader}>
+        <span />
+      </Header>
       <section className="content content-y">
         <div className={styles.introWrapper}>
           <h1>About Us</h1>

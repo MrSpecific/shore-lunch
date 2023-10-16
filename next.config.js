@@ -6,6 +6,15 @@ module.exports = withNextPluginPreval({
     locales: ['en'],
     defaultLocale: 'en',
   },
+  async redirects() {
+    return [
+      {
+        source: '/home/:path*',
+        destination: `${process.env.NEXT_PUBLIC_ABOUT_GO_CAMP_LINK}/:path*`,
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
