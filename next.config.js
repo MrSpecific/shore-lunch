@@ -1,7 +1,4 @@
-const createNextPluginPreval = require('next-plugin-preval/config');
-const withNextPluginPreval = createNextPluginPreval();
-
-module.exports = withNextPluginPreval({
+module.exports = {
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
@@ -51,4 +48,4 @@ module.exports = withNextPluginPreval({
 
     return config;
   },
-});
+};
