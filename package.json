@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
     "lint": "next lint",
     "open": "open http://localhost:3035",
     "start": "next start"
@@ -71,8 +70,7 @@
     "eslint": "^8.39.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^14.0.3",
-    "next": "^14.0.3",
-    "next-sitemap": "^4.0.2",
+    "next": "^13.5.6",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^9.3.0",
