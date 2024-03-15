@@ -4,7 +4,7 @@ import { useAppContext } from '@lib/context/app';
 const useNav = () => {
   const { navIsActive, setNavIsActive } = useAppContext();
 
-  if (!document) return {};
+  if (typeof document === 'undefined' || !document) return {};
 
   const bodyScrollTarget = document.body;
 
