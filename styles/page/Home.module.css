@@ -83,3 +83,10 @@
     font-size: 20px;
   }
 }
+
+.mobileNavTop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: calc(var(--edge-border) * 1.5);
+}

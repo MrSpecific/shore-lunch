@@ -6,14 +6,13 @@ import styles from '@styles/page/Home.module.css';
 import heroImage from '@images/nate-p-casual-and-handsome.png';
 import { ShoreLunchLogoAlt } from '@svg';
 import SanityImage from '@components/SanityImage';
+import NavToggle from '@components/nav/NavToggle';
 // import { useAppContext } from '@context/app';
 
 const { log } = console;
 
 export default function HomePage({ intro, hero, heroMobile, ...props }) {
   const title = 'Shore Lunch';
-
-  // console.log('hero, heroMobile', hero, heroMobile);
 
   return (
     <Page title={title} header={false}>
@@ -41,6 +40,9 @@ export default function HomePage({ intro, hero, heroMobile, ...props }) {
           <ShoreLunchLogoAlt className={styles.heroLogo} />
         </div>
       </section>
+      <div className={styles.mobileNavTop}>
+        <NavToggle />
+      </div>
       <Header className={styles.homePageHeader}>
         <span />
       </Header>
