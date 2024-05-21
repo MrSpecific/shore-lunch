@@ -81,19 +81,34 @@ export default {
     //   type: 'videoId',
     // },
   ],
+  orderings: [
+    {
+      title: 'Episode Number (Newest First)',
+      name: 'episodeNumberDesc',
+      by: [{ field: 'episodeNumber', direction: 'desc' }],
+    },
+    {
+      title: 'Episode Number (Oldest First)',
+      name: 'episodeNumberAsc',
+      by: [{ field: 'episodeNumber', direction: 'asc' }],
+    },
+  ],
   // initialValue: {
   //   template: 'default',
   // },
-  // preview: {
-  //   select: {
-  //     title: 'title',
-  //     media: 'mainImage',
-  //   },
-  //   prepare(selection) {
-  //     const {author} = selection
-  //     return Object.assign({}, selection, {
-  //       subtitle: author && `by ${author}`,
-  //     })
-  //   },
-  // },
+  preview: {
+    select: {
+      episodeNumber: 'episodeNumber',
+      title: 'title',
+      media: 'cover',
+    },
+    prepare(selection) {
+      const { title, episodeNumber, media } = selection;
+      return {
+        title: title,
+        subtitle: `Episode #${episodeNumber}`,
+        media: media,
+      };
+    },
+  },
 };
