@@ -56,16 +56,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           allowed_countries: ALLOWED_COUNTRIES as any,
           // allowed_countries: ['US', 'CA'],
         },
-        shipping_options,
+        // shipping_options,
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/cart`,
         mode: hasSubscription ? 'subscription' : 'payment',
       };
 
-      const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(
-        params
-      );
+      const checkoutSession: Stripe.Checkout.Session =
+        await stripe.checkout.sessions.create(params);
 
       res.status(200).json(checkoutSession);
     } catch (err) {
