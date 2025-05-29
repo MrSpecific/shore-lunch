@@ -5,9 +5,6 @@ import YouTube from 'react-youtube';
 import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import SanityImage from '@components/SanityImage';
-// import Hero from '@components/Hero';
-import NumberLockup from '@components/NumberLockup';
-import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from './RecipePage.module.css';
 
 export default function RecipePage({ data, ...props }) {

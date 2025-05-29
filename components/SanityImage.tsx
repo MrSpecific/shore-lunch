@@ -1,12 +1,10 @@
 import { SanityImage as SanityImageComponent } from 'sanity-image';
 import { projectId, dataset } from '@lib/sanity';
 
-const SanityImage = ({
-  asset,
-  alt,
-  className,
-  ...props
-}: React.ComponentProps<typeof SanityImageComponent>) => (
+type SanityImageComponentProps = React.ComponentProps<typeof SanityImageComponent>;
+type SanityImageProps = SomeOptional<SanityImageComponentProps, 'id'>;
+
+const SanityImage = ({ asset, alt, className, ...props }: SanityImageProps) => (
   <SanityImageComponent
     // Pass the Sanity Image ID (`_id`) (e.g., `image-abcde12345-1200x800-jpg`)
     {...props}
