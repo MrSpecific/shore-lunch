@@ -25,6 +25,7 @@ export default function RecipePage({ data, ...props }) {
           {image && (
             <SanityImage
               {...image}
+              id={image?._id || image?._ref || image.alt || 'image'}
               width={2000}
               height={'auto'}
               style={{ margin: 'var(--spacer-m) 0' }}
