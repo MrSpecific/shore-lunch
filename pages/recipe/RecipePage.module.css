@@ -1,0 +1,24 @@
+@import "@settings/breakpoints.css";
+
+.headline {
+  margin-bottom: var(--spacer-m);
+  text-align: center;
+  line-height: 1;
+}
+
+.episodeDescription {
+  margin-top: var(--spacer-m);
+}
+
+.recipeMain {
+  display: grid;
+  gap: var(--spacer-l);
+
+  @media (--medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  & h2 {
+    margin-bottom: var(--spacer-s);
+  }
+}

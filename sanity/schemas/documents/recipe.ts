@@ -23,6 +23,11 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'array',
+    },
+    {
       title: 'Image',
       name: 'image',
       type: 'imageObject',
@@ -37,7 +42,7 @@ export default {
       title: 'Ingredients',
       name: 'ingredients',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'block' }],
     },
     {
       title: 'Preparation Time',
