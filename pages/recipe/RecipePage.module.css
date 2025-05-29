@@ -6,8 +6,16 @@
   line-height: 1;
 }
 
-.episodeDescription {
+.recipeImage {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.recipeDescription {
   margin-top: var(--spacer-m);
+  margin-bottom: var(--spacer-l);
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .recipeMain {

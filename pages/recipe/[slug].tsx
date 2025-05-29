@@ -28,15 +28,12 @@ export default function RecipePage({ data, ...props }) {
               width={2000}
               height={'auto'}
               style={{ margin: 'var(--spacer-m) 0' }}
+              className={styles.recipeImage}
             />
           )}
           {title && <h1 className={styles.headline}>{title}</h1>}
 
-          {description && (
-            <section className={styles.episodeDescription}>
-              <PortableText value={description} />
-            </section>
-          )}
+          {description && <section className={styles.recipeDescription}>{description}</section>}
 
           <section className={styles.recipeMain}>
             {instructions && (
