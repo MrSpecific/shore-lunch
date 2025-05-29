@@ -10,7 +10,8 @@
     "build": "next build",
     "lint": "next lint",
     "open": "open http://localhost:3035",
-    "start": "next start"
+    "start": "next start",
+    "type-check": "tsc --noEmit"
   },
   "browserslist": [
     "defaults",
