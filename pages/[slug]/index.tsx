@@ -19,7 +19,7 @@ export default function DynamicPage({ data, ...props }) {
         {hero && <Hero {...hero} />}
         <div className={contentContainerClass}>
           {title && <h1 className={styles.headline}>{title}</h1>}
-          {blocks && <BlocksGroup blocks={blocks} blockClass={styles.contentBlock} />}
+          {blocks && <BlocksGroup blocks={blocks} className={styles.contentBlock} />}
         </div>
       </div>
     </Page>
