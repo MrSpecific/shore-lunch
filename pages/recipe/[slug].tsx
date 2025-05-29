@@ -19,7 +19,7 @@ export default function RecipePage({ data, ...props }) {
     <Page title={title}>
       <div className={styles.dynamicPage}>
         <div className={contentContainerClass}>
-          {image && (
+          {image && (image.id || image._ref) && (
             <SanityImage
               {...image}
               id={image?._id || image?._ref || image.alt || 'image'}
