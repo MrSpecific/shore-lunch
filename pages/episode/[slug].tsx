@@ -8,10 +8,10 @@ import SanityImage from '@components/SanityImage';
 // import Hero from '@components/Hero';
 import NumberLockup from '@components/NumberLockup';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
-import styles from '@styles/page/EpisodePage.module.css';
+import styles from './EpisodePage.module.css';
 
 export default function EpisodePage({ data, ...props }) {
-  const { episodeNumber, description, title, cover, videoUrl } = data || {};
+  const { episodeNumber, description, title, cover, videoUrl, recipes } = data || {};
 
   const contentContainerClass = classNames({
     [styles.contentContainer]: true,
@@ -65,6 +65,23 @@ export default function EpisodePage({ data, ...props }) {
           )}
 
           {/* {} */}
+          {recipes && recipes.length > 0 && (
+            <section className={styles.recipes}>
+              <h2>Cook the episode:</h2>
+              <ul className={styles.recipeList}>
+                {recipes.map((recipe) => (
+                  <li key={recipe._id} className={styles.recipeItem}>
+                    <a href={`/recipe/${recipe.slug.current}`} className={styles.recipeLink}>
+                      <span className={styles.recipeTitle}>{recipe.title}</span>
+                      {recipe.description && (
+                        <span className={styles.recipeDescription}>{recipe.description}</span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </div>
     </Page>

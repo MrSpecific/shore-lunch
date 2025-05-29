@@ -1,0 +1,50 @@
+@import "@settings/breakpoints.css";
+
+.headline {
+  margin-bottom: var(--spacer-m);
+  text-align: center;
+  line-height: 1;
+}
+
+.videoWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  overflow: hidden;
+
+  & iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.episodeDescription {
+  margin-top: var(--spacer-m);
+}
+
+.recipes {
+  margin: var(--spacer-m) 0;
+}
+
+.recipeList {
+  /* font-size: 1.5em; */
+}
+
+.recipeLink {
+  text-decoration: none;
+}
+
+.recipeTitle {
+  display: block;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 0.1em;
+  text-decoration: underline;
+}
+
+.recipeDescription {
+  text-decoration: none;
+  opacity: 0.75;
+}
