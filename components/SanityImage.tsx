@@ -10,7 +10,7 @@ const SanityImage = ({
   <SanityImageComponent
     // Pass the Sanity Image ID (`_id`) (e.g., `image-abcde12345-1200x800-jpg`)
     {...props}
-    id={asset?._id || asset?._ref}
+    id={asset?._id || asset?._ref || alt || 'image'}
     baseUrl={`https://cdn.sanity.io/images/${projectId}/${dataset}/`}
     className={className}
     alt={alt}

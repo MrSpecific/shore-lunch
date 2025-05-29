@@ -64,7 +64,6 @@ export default function EpisodePage({ data, ...props }) {
             </section>
           )}
 
-          {/* {} */}
           {recipes && recipes.length > 0 && (
             <section className={styles.recipes}>
               <h2>Cook the episode:</h2>
