@@ -1,7 +1,15 @@
 import classNames from 'classnames';
 import styles from '@styles/components/NumberLockup.module.css';
 
-export default function NumberLockup({ episodeNumber, className, style }) {
+export default function NumberLockup({
+  episodeNumber,
+  className,
+  style,
+}: {
+  episodeNumber?: string | number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   if (!episodeNumber) return null;
 
   return (

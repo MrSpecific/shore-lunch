@@ -57,8 +57,6 @@ export default function EpisodePage({ data, ...props }) {
             // iframeClassName={styles.}
             className={styles.videoWrapper}
           />
-          {/* {parseYouTubeUrl()} */}
-          {/* {JSON.stringify(parseYouTubeUrl(urlObject), null, 2)} */}
 
           {description && (
             <section className={styles.episodeDescription}>
