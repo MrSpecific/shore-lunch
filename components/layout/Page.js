@@ -20,13 +20,23 @@ export const GlobalStyles = () => {
 
 export default function Page({
   title = null,
+  description = null,
+  noIndex = false,
+  noFollow = false,
   metaTags = {},
   header = true,
   headerClass = null,
   children = null,
 }) {
+  const mergedMetaTags = {
+    ...metaTags,
+    ...(description ? { metaDescription: description } : {}),
+    ...(noIndex ? { noIndex: true } : {}),
+    ...(noFollow ? { noFollow: true } : {}),
+  };
+
   return (
-    <Layout metaTags={metaTags} pageTitle={title}>
+    <Layout metaTags={mergedMetaTags} pageTitle={title}>
       <GlobalStyles />
       <SkipLink />
       {header && <Header className={headerClass} />}

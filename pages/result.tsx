@@ -52,7 +52,7 @@ const ResultPage: NextPage = () => {
   if (error) return <div>There was a problem...</div>;
 
   return (
-    <Page title="Checkout Result">
+    <Page title="Order Receipt" noIndex noFollow>
       <section className="page-container">
         <div className={styles.receiptContainer}>
           <h1>Your Receipt.</h1>

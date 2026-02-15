@@ -7,7 +7,7 @@ const { log } = console;
 export default function FourOhFour({}) {
   const title = '404';
   return (
-    <Page title={title}>
+    <Page title={title} noIndex noFollow>
       <section className={classNames(styles.page, 'content container')}>
         <h1 className={styles.headline}>
           404 | <span className={styles.subtext}>Page Not Found</span>

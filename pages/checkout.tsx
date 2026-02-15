@@ -5,10 +5,10 @@ import CheckoutForm from '@commerce/CheckoutForm'
 
 const DonatePage: NextPage = () => {
   return (
-    <Page>
+    <Page title="Checkout" noIndex noFollow>
       <div className="page-container">
-        <h1>Donate with Checkout</h1>
-        <p>Donate to our project 💖</p>
+        <h1>Checkout</h1>
+        <p>Complete your order.</p>
         <CheckoutForm />
       </div>
     </Page>

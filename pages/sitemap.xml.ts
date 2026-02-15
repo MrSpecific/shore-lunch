@@ -1,34 +1,64 @@
-const EXTERNAL_DATA_URL = 'https://jsonplaceholder.typicode.com/posts';
+import { fetchSanityContent } from '@lib/sanity';
 
-function generateSiteMap(posts) {
+type SitemapEntry = {
+  slug: string;
+  updatedAt?: string;
+};
+
+const SITE_URL = 'https://shore-lunch.com';
+
+const absoluteUrl = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;
+
+const urlNode = (path: string, lastmod?: string) => {
+  const safeLastmod = lastmod ? `<lastmod>${lastmod}</lastmod>` : '';
+  return `<url><loc>${absoluteUrl(path)}</loc>${safeLastmod}</url>`;
+};
+
+function generateSiteMap({
+  staticPaths,
+  episodes,
+  recipes,
+  pages,
+}: {
+  staticPaths: string[];
+  episodes: SitemapEntry[];
+  recipes: SitemapEntry[];
+  pages: SitemapEntry[];
+}) {
+  const nodes = [
+    ...staticPaths.map((path) => urlNode(path)),
+    ...episodes.map((item) => urlNode(`/episode/${item.slug}`, item.updatedAt)),
+    ...recipes.map((item) => urlNode(`/recipe/${item.slug}`, item.updatedAt)),
+    ...pages.map((item) => urlNode(`/${item.slug}`, item.updatedAt)),
+  ];
+
   return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <!--We manually set the two URLs we know already-->
-     <url>
-       <loc>https://shore-lunch.com/merch</loc>
-     </url>
-     <url>
-       <loc>https://shore-lunch.com/episodes</loc>
-     </url>
-   </urlset>
- `;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${nodes.join('\n')}
+</urlset>`;
 }
 
 function SiteMap() {
-  // getServerSideProps will do the heavy lifting
+  return null;
 }
 
 export async function getServerSideProps({ res }) {
-  // We make an API call to gather the URLs for our site
-  // const request = await fetch(EXTERNAL_DATA_URL);
-  // const posts = await request.json();
+  const [episodes, recipes, pages] = await Promise.all([
+    fetchSanityContent('episodeSitemapQuery'),
+    fetchSanityContent('recipeSitemapQuery'),
+    fetchSanityContent('pageSitemapQuery'),
+  ]);
 
-  // We generate the XML sitemap with the posts data
-  // const sitemap = generateSiteMap(posts);
-  const sitemap = generateSiteMap([]);
+  const staticPaths = ['/', '/episodes', '/merch', '/privacy-policy', '/terms-conditions'];
+
+  const sitemap = generateSiteMap({
+    staticPaths,
+    episodes: episodes || [],
+    recipes: recipes || [],
+    pages: pages || [],
+  });
 
   res.setHeader('Content-Type', 'text/xml');
-  // we send the XML to the browser
   res.write(sitemap);
   res.end();
 

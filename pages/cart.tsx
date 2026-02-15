@@ -8,7 +8,7 @@ import ProductGrid from '@components/commerce/ProductGrid';
 
 const DonatePage: NextPage = () => {
   return (
-    <Page title="Shopping Cart | Next.js + TypeScript Example">
+    <Page title="Cart" noIndex noFollow>
       <div className="content content-y">
         <h1>Shopping Cart</h1>
         {/* <Cart> */}
