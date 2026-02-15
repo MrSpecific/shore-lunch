@@ -70,6 +70,29 @@
   grid-gap: var(--spacer-s);
 }
 
+.latestEpisodeSection {
+  margin-top: var(--spacer-l);
+  display: grid;
+  gap: var(--spacer-s);
+}
+
+.latestEpisodeHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacer-s);
+  flex-wrap: wrap;
+}
+
+.latestEpisodeLink {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.latestEpisodeCard {
+  max-width: 720px;
+}
+
 .introParagraph {
   font-size: var(--body-large-font-size);
 }
