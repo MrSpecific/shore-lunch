@@ -48,26 +48,33 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     // Cast event data to Stripe object.
     // Handle the event
     let intent: Stripe.PaymentIntent | Stripe.Charge | Stripe.Checkout.Session;
-    switch (event.type) {
-      case 'payment_intent.succeeded':
-        intent = event.data.object as Stripe.PaymentIntent;
-        console.log(`💰 PaymentIntent status: ${intent.status}`);
-        // console.log(`Event: ${JSON.stringify(event)}`);
-        break;
-      case 'payment_intent.payment_failed':
-        intent = event.data.object as Stripe.PaymentIntent;
-        console.log(`❌ Payment failed: ${intent.last_payment_error?.message}`);
-        break;
-      case 'charge.succeeded':
-        const charge = event.data.object as Stripe.Charge;
-        console.log(`💵 Charge id: ${charge.id}`);
-        break;
-      case 'checkout.session.completed':
-        const session = event.data.object as Stripe.Checkout.Session;
-        updateInventoryFromSession({ session, stripe });
-        break;
-      default:
-        console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
+    try {
+      switch (event.type) {
+        case 'payment_intent.succeeded':
+          intent = event.data.object as Stripe.PaymentIntent;
+          console.log(`💰 PaymentIntent status: ${intent.status}`);
+          // console.log(`Event: ${JSON.stringify(event)}`);
+          break;
+        case 'payment_intent.payment_failed':
+          intent = event.data.object as Stripe.PaymentIntent;
+          console.log(`❌ Payment failed: ${intent.last_payment_error?.message}`);
+          break;
+        case 'charge.succeeded':
+          const charge = event.data.object as Stripe.Charge;
+          console.log(`💵 Charge id: ${charge.id}`);
+          break;
+        case 'checkout.session.completed':
+          const session = event.data.object as Stripe.Checkout.Session;
+          await updateInventoryFromSession({ session, stripe });
+          break;
+        default:
+          console.warn(`🤷‍♀️ Unhandled event type: ${event.type}`);
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown inventory update error';
+      console.error(`❌ Webhook processing failed for event ${event.id}: ${errorMessage}`);
+      res.status(500).json({ received: false, message: errorMessage });
+      return;
     }
 
     // Return a response to acknowledge receipt of the event.
