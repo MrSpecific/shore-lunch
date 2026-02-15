@@ -27,6 +27,7 @@ export default {
       title: 'Episode Number',
       name: 'episodeNumber',
       type: 'number',
+      validation: (Rule) => Rule.required().integer().positive(),
       group: 'settings',
     },
     {
