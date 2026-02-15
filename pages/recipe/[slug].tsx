@@ -5,6 +5,7 @@ import YouTube from 'react-youtube';
 import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import SanityImage from '@components/SanityImage';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 import styles from './RecipePage.module.css';
 
 export default function RecipePage({ data, ...props }) {
@@ -80,6 +81,7 @@ export async function getStaticProps({ params }) {
     props: {
       data: { ...page },
     },
+    revalidate: REVALIDATE_SECONDS.recipeDetail,
   };
 }
 
@@ -88,6 +90,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }

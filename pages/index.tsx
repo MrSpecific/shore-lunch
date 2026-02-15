@@ -9,6 +9,7 @@ import { ShoreLunchLogoAlt } from '@svg';
 import SanityImage from '@components/SanityImage';
 import Link from 'next/link';
 import NavToggle from '@components/nav/NavToggle';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 // import { useAppContext } from '@context/app';
 
 const { log } = console;
@@ -84,6 +85,6 @@ export async function getStaticProps() {
       latestEpisode: latestEpisode || null,
       ...homePageData,
     },
-    revalidate: 60,
+    revalidate: REVALIDATE_SECONDS.home,
   };
 }

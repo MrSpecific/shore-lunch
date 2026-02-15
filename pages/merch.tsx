@@ -7,6 +7,7 @@ import CartSummary from '@commerce/CartSummary';
 import CheckoutButton from '@commerce/CheckoutButton';
 import ProductGrid from '@components/commerce/ProductGrid';
 import { useAppContext } from '@context';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 import styles from '@styles/page/Merch.module.css';
 
 const ProductsPage: NextPage<{ products: Array<any> }> = ({ products }) => {
@@ -42,6 +43,6 @@ export async function getStaticProps() {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
-    revalidate: 120, // In seconds
+    revalidate: REVALIDATE_SECONDS.merch,
   };
 }

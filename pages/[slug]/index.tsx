@@ -3,6 +3,7 @@ import { fetchSanityContent } from '@lib/sanity';
 import { Page } from '@layout';
 import BlocksGroup from '@components/BlocksGroup';
 import Hero from '@components/Hero';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 import styles from '@styles/page/DynamicPage.module.css';
 
 export default function DynamicPage({ data, ...props }) {
@@ -33,6 +34,7 @@ export async function getStaticProps({ params }) {
     props: {
       data: { ...page },
     },
+    revalidate: REVALIDATE_SECONDS.pageDetail,
   };
 }
 
@@ -41,6 +43,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }

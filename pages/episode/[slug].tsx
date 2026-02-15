@@ -8,6 +8,7 @@ import SanityImage from '@components/SanityImage';
 // import Hero from '@components/Hero';
 import NumberLockup from '@components/NumberLockup';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 import styles from './EpisodePage.module.css';
 
 export default function EpisodePage({ data, ...props }) {
@@ -94,6 +95,7 @@ export async function getStaticProps({ params }) {
     props: {
       data: { ...page },
     },
+    revalidate: REVALIDATE_SECONDS.episodeDetail,
   };
 }
 
@@ -102,6 +104,6 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }

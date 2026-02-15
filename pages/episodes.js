@@ -1,5 +1,6 @@
 import { Page } from '@layout';
 import { fetchSanityContent } from '@lib/sanity';
+import { REVALIDATE_SECONDS } from '@lib/revalidation';
 import EpisodeGrid from '@components/EpisodeGrid';
 import styles from '@styles/page/Home.module.css';
 
@@ -29,6 +30,6 @@ export async function getStaticProps() {
     props: {
       episodes,
     },
-    revalidate: 60,
+    revalidate: REVALIDATE_SECONDS.episodesList,
   };
 }
