@@ -80,6 +80,9 @@
     "sharp": "^0.35.4",
     "typescript": "^5.9.3"
   },
+  "overrides": {
+    "react-dom": "$react-dom"
+  },
   "allowScripts": {
     "bufferutil@4.0.7": true,
     "esbuild@0.19.12": true,
