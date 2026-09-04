@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 import CustomDonationInput from '@commerce/CustomDonationInput';
@@ -34,17 +36,13 @@ const CheckoutForm = () => {
 
     // Redirect to Checkout.
     const stripe = await getStripe();
-    // const { error } = await stripe!.redirectToCheckout({
-    //   // Make the id field from the Checkout Session creation API response
-    //   // available to this file, so you can provide it as parameter here
-    //   // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-    //   sessionId: response.id,
-    // });
-    const { error } = await stripe!.redirectToCheckout(response.id);
+    const { error } = (await stripe?.redirectToCheckout({
+      sessionId: response.id,
+    })) ?? {};
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
     // using `error.message`.
-    console.warn(error.message);
+    if (error) console.warn(error.message);
     setLoading(false);
   };
 

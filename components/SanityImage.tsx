@@ -1,3 +1,5 @@
+'use client';
+
 import { SanityImage as SanityImageComponent } from 'sanity-image';
 import { projectId, dataset } from '@lib/sanity';
 

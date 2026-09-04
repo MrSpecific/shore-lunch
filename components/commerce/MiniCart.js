@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { useShoppingCart } from 'use-shopping-cart';
 import { motion, AnimatePresence } from 'framer-motion';

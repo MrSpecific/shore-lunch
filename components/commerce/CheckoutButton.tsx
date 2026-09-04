@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
@@ -17,10 +19,8 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
   includePrice = false,
 }) => {
   const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-  const { loading, errorMessage, handleCheckout } = useCheckout();
-  const { currency } = cartDetails;
+  const { formattedTotalPrice, cartCount } = useShoppingCart();
+  const { loading, handleCheckout } = useCheckout();
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 

@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { CartIcon } from '@svg';
 import { useShoppingCart } from 'use-shopping-cart';

@@ -18,7 +18,7 @@ const getBreakpoint = (element) => {
   return style.getPropertyValue('--breakpoint').trim();
 };
 
-const useBreakpoint = (existingRef = null) => {
+const useBreakpoint = (existingRef) => {
   const newRef = useRef(null);
   const ref = existingRef || newRef;
   const [value, setValue] = useState(null);

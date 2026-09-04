@@ -77,14 +77,22 @@
       "@hooks/*": [
         "./hooks/*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "additional.d.ts",
-    "lib/sanity/sanity.image.js"
+    "lib/sanity/sanity.image.js",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

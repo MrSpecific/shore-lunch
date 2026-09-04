@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode } from 'react';
 import { CartProvider } from 'use-shopping-cart';
 import * as config from '@config';

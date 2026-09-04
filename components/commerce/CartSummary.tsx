@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';

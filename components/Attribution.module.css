@@ -1,0 +1,10 @@
+.attribution {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.attribution :global(.svg-graphic) {
+  width: 50px;
+  fill: currentColor;
+  margin-left: 0.5em;
+}

@@ -3,7 +3,7 @@ import { NavList } from '@components/nav';
 import styles from '@styles/nav/Nav.module.css';
 
 // Top-level Nav component
-const Nav = ({ className }) => {
+const Nav = ({ className = '' } = {}) => {
   const navClass = classNames({
     [styles.primaryNav]: true,
     [className]: !!className,

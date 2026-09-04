@@ -1,3 +1,5 @@
+'use client';
+
 import { useShoppingCart } from 'use-shopping-cart';
 
 const CartScrim = () => {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useNav } from '@hooks';
 import { Hamburger } from '@svg';
 import styles from '@styles/nav/NavToggle.module.css';

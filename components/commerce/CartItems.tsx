@@ -1,3 +1,5 @@
+'use client';
+
 import { NextPage } from 'next';
 import { useState, useEffect } from 'react';
 import { useShoppingCart } from 'use-shopping-cart';
@@ -95,7 +97,7 @@ const CartItems = () => {
   return (
     <section>
       <ul className={styles.cartLines}>
-        {Object.values(cartDetails).map((item) => (
+        {Object.values(cartDetails ?? {}).map((item) => (
           <CartLine key={item.id} {...item} />
         ))}
       </ul>

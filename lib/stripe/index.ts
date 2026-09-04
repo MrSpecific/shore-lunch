@@ -1,13 +1,13 @@
 import Stripe from 'stripe';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, Stripe as StripeJs } from '@stripe/stripe-js';
 import { API_VERSION } from '@config';
 
 // Load Stripe Script
-let stripePromise = null;
+let stripePromise: Promise<StripeJs | null> | null = null;
 
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
   }
 
   return stripePromise;
@@ -63,7 +63,7 @@ export function formatAmountFromStripe(amount: number, currency: string): number
 }
 
 export const fetchProducts = async () => {
-  let products = [];
+  let products: Array<Stripe.Product & { price: number | null; currency: string }> = [];
 
   getProducts: try {
     // const result = await stripe.products.list({
@@ -77,7 +77,7 @@ export const fetchProducts = async () => {
 
     const pricingResult = await Promise.allSettled(
       productArray.map(async (product: Stripe.Product) => {
-        const price = await stripe.prices.retrieve(product.default_price.toString());
+        const price = await stripe.prices.retrieve((product.default_price ?? '').toString());
 
         return {
           ...product,
@@ -92,7 +92,7 @@ export const fetchProducts = async () => {
     products = pricingResult.reduce((acc, result) => {
       if (result.status != 'fulfilled') return acc;
       return [...acc, result.value];
-    }, []);
+    }, [] as Array<Stripe.Product & { price: number | null; currency: string }>);
   } catch (error) {
     console.error('Problem fetching products', error);
   }
@@ -111,7 +111,7 @@ const sortShippingRates = (a, b) => {
 };
 
 export const fetchShippingRates = async () => {
-  let shippingRates = [];
+  let shippingRates: Array<{ shipping_rate_data: Record<string, any> } | undefined> = [];
 
   getRates: try {
     const stripeShippingRates = await stripe.shippingRates.list();

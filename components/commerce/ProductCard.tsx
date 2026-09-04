@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { stripHtml } from 'string-strip-html';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';

@@ -1,13 +1,17 @@
 module.exports = {
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
+  // The old `i18n` config (single locale 'en') isn't supported in the App
+  // Router, and prefixed every URL with /en/. Dropped in favor of clean
+  // paths, with a permanent redirect below for any old /en/* links.
   async redirects() {
     return [
       {
         source: '/home/:path*',
         destination: `${process.env.NEXT_PUBLIC_ABOUT_GO_CAMP_LINK}/:path*`,
+        permanent: true,
+      },
+      {
+        source: '/en/:path*',
+        destination: '/:path*',
         permanent: true,
       },
     ];
