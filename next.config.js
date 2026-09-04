@@ -34,6 +34,17 @@ module.exports = {
       },
     ],
   },
+  // Turbopack is the default builder as of Next.js 16; this is what
+  // `next build`/`next dev` actually use. The webpack() fn below is kept
+  // only as a fallback for `next build --webpack`.
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
