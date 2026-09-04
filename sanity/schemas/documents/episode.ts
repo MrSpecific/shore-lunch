@@ -56,6 +56,20 @@ export default {
       // validation: (Rule) => Rule.required(),
     },
     {
+      name: 'fishWereCaught',
+      title: 'Were fish caught?',
+      type: 'boolean',
+      group: 'settings',
+    },
+    {
+      name: 'numberOfFishCaught',
+      title: 'Number of Fish Caught',
+      type: 'number',
+      group: 'settings',
+      hidden: ({ parent }) => !parent?.fishWereCaught,
+      validation: (Rule) => Rule.min(0),
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'array',
