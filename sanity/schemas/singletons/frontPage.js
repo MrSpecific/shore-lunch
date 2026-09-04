@@ -1,4 +1,4 @@
-import { HomeIcon } from '@sanity/icons';
+import { HomeIcon } from '@sanity/icons/Home';
 
 export default {
   title: 'Front Page',
@@ -21,7 +21,7 @@ export default {
   preview: {
     prepare() {
       return {
-        title: 'Home Page',
+        title: 'HomeIcon Page',
       };
     },
   },

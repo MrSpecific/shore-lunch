@@ -1,4 +1,4 @@
-import { RobotIcon } from '@sanity/icons';
+import { RobotIcon } from '@sanity/icons/Robot';
 
 export default {
   title: 'Sponsor',

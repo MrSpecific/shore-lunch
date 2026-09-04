@@ -1,7 +1,7 @@
+import { DownloadIcon } from '@sanity/icons/Download';
 import { useState } from 'react';
 import { definePlugin, ToolMenuProps, ToolLink, PluginOptions, PluginFactory } from 'sanity';
 import { Button, Flex, Card, Stack, Text } from '@sanity/ui';
-import { DownloadIcon } from '@sanity/icons';
 import syncProductsToSanity from '@lib/stripe/syncProductsToSanity';
 
 const SyncButton = (props) => {

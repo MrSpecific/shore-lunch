@@ -1,4 +1,4 @@
-import { BlockElementIcon } from '@sanity/icons';
+import { BlockElementIcon } from '@sanity/icons/BlockElement';
 
 export default {
   title: 'Image with Text',

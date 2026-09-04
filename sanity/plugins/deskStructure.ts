@@ -1,6 +1,9 @@
-import { HomeIcon, RobotIcon, CogIcon, TagIcon } from '@sanity/icons';
+import { HomeIcon } from '@sanity/icons/Home';
+import { RobotIcon } from '@sanity/icons/Robot';
+import { CogIcon } from '@sanity/icons/Cog';
+import { TagIcon } from '@sanity/icons/Tag';
 import { type DocumentDefinition, definePlugin } from 'sanity';
-import { type StructureResolver } from 'sanity/desk';
+import { type StructureResolver } from 'sanity/structure';
 
 // https://www.sanity.io/docs/set-up-structure-builder-to-override-the-default-list-view
 
@@ -16,7 +19,7 @@ export const deskStructure = (): StructureResolver => {
       .title('Content')
       .items([
         S.listItem()
-          .title('Home Page')
+          .title('HomeIcon Page')
           .icon(HomeIcon)
           .child(S.document().schemaType('frontPage').documentId('frontPage')),
         ...S.documentTypeListItems().filter((item) => !defined.includes(item.getId() ?? '')),
