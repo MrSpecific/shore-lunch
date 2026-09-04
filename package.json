@@ -6,10 +6,10 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/mrspecific/shore-lunch",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3070",
     "build": "next build",
     "lint": "next lint",
-    "open": "open http://localhost:3035",
+    "open": "open http://localhost:3070",
     "start": "next start",
     "type-check": "tsc --noEmit"
   },
@@ -34,7 +34,6 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "classnames": "^2.3.2",
     "cookies-next": "^2.1.1",
-    "eslint-config-prettier": "^8.8.0",
     "focus-trap-react": "^10.1.1",
     "framer-motion": "^10.8.5",
     "get-video-id": "^3.6.5",
@@ -62,23 +61,24 @@
     "use-shopping-cart": "^3.1.4"
   },
   "devDependencies": {
-    "@svgr/webpack": "^7.0.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/micro": "^10.0.0",
     "@types/micro-cors": "^0.1.3",
-    "@types/node": "^18.14.1",
+    "@types/node": "^24.13.3",
     "@types/react": "^18.0.28",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "^8.39.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^14.0.3",
+    "eslint-config-prettier": "^10.1.8",
     "next": "^13.5.6",
-    "postcss": "^8.4.23",
-    "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^9.3.0",
+    "postcss": "^8.5.28",
+    "postcss-import": "^17.0.0",
+    "postcss-preset-env": "^11.5.1",
     "postcss-pxtorem": "^6.0.0",
     "prettier": "^3.1.0",
     "sharp": "^0.32.1",
-    "typescript": "^5.0.2"
+    "typescript": "^5.9.3"
   },
   "allowScripts": {
     "bufferutil@4.0.7": true,
