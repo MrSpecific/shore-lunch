@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const isElement = (o) => {
   return typeof HTMLElement === 'object'
@@ -23,18 +23,22 @@ const useBreakpoint = (existingRef) => {
   const ref = existingRef || newRef;
   const [value, setValue] = useState(null);
 
-  const updateBreakpoint = useCallback(() => {
-    const breakpoint = getBreakpoint(ref.current);
-    setValue(breakpoint);
-  }, [ref]);
-
   useEffect(() => {
-    updateBreakpoint();
-  }, [updateBreakpoint, ref]);
+    const updateBreakpoint = () => {
+      const breakpoint = getBreakpoint(ref.current);
+      setValue(breakpoint);
+    };
 
-  if (typeof window !== 'undefined') {
+    updateBreakpoint();
+
+    if (typeof window === 'undefined') return;
+
     window.addEventListener('resize', updateBreakpoint, { passive: true });
-  }
+
+    return () => {
+      window.removeEventListener('resize', updateBreakpoint);
+    };
+  }, [ref]);
 
   return [value, ref];
 };

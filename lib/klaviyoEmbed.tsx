@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppContext } from '@lib/context/app';
 
 export const KlaviyoScriptTag = () => {
@@ -19,12 +19,8 @@ export const KlaviyoScriptTag = () => {
 
 export const KlaviyoEmbedOriginal = ({ formId }: { formId: string }) => {
   const originalRef = useRef<HTMLDivElement>(null);
-  const [className, setClassName] = useState<string>();
+  const className = `klaviyo-form-${formId}`;
   const { setKlaviyoEmbedRef } = useAppContext();
-
-  useEffect(() => {
-    setClassName(`klaviyo-form-${formId}`);
-  }, [formId]);
 
   useEffect(() => {
     setKlaviyoEmbedRef(originalRef);

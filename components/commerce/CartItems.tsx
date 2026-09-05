@@ -1,14 +1,9 @@
 'use client';
 
-import { NextPage } from 'next';
-import { useState, useEffect } from 'react';
 import { useShoppingCart } from 'use-shopping-cart';
 import classNames from 'classnames';
 
-import { Page } from '@layout';
-import Cart from '@commerce/Cart';
 import SanityImage from '@components/SanityImage';
-import { useCheckout } from '@hooks';
 import styles from '@styles/components/CartItems.module.css';
 
 const QuantityControls = ({ id, quantity }) => {
@@ -77,14 +72,8 @@ const CartLine = (props) => {
 };
 
 const CartItems = () => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-  const { loading, handleCheckout } = useCheckout();
-
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
-
-  // console.log(cartDetails);
+  const { cartCount, cartDetails } = useShoppingCart();
+  const cartEmpty = !cartCount;
 
   if (cartEmpty) {
     return (

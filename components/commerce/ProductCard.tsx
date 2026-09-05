@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { stripHtml } from 'string-strip-html';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart';
 
@@ -37,12 +37,7 @@ const ProductCard = ({ product }) => {
   const { name, price, description, currency, images, hasVariants } = product;
   const { addItem, removeItem, handleCartHover } = useShoppingCart();
   const [selectedVariant, setSelectedVariant] = useState(product.variants && product.variants[0]);
-  const [available, setAvailable] = useState(true);
-
-  useEffect(() => {
-    const isAvailable = isProductAvailable({ product, selectedVariant });
-    setAvailable(isAvailable);
-  }, [product, selectedVariant]);
+  const available = isProductAvailable({ product, selectedVariant });
 
   const { addToCart } = useCart({ product, selectedVariant });
 

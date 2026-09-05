@@ -1,25 +1,16 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 
 import { useCheckout } from '@hooks';
 import CheckoutButton from '@commerce/CheckoutButton';
-import StripeTestCards from '@commerce/StripeTestCards';
 import styles from '@styles/components/CartSummary.module.css';
 
 const CartSummary = () => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-
-  const { loading, errorMessage, handleCheckout } = useCheckout();
-
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  const { formattedTotalPrice } = useShoppingCart();
+  const { errorMessage } = useCheckout();
 
   return (
-    // <form onSubmit={handleCheckout}>
     <div className="">
       <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
