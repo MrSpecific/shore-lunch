@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { AppContextProvider, CartContextProvider } from '@context';
-import { KlaviyoEmbedOriginal } from '@lib/klaviyo';
+import { KlaviyoEmbedOriginal } from '@lib/klaviyoEmbed';
 import { AnalyticsTags } from '@layout';
 import Cart from '@commerce/Cart';
 

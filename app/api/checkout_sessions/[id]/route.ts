@@ -1,14 +1,14 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
 import { API_VERSION } from '@config';
 
-import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: API_VERSION,
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const id: string = req.query.id as string;
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
 
   try {
     if (!id.startsWith('cs_')) {
@@ -19,9 +19,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       expand: ['payment_intent', 'line_items'],
     });
 
-    res.status(200).json(checkout_session);
+    return NextResponse.json(checkout_session);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Internal server error';
-    res.status(500).json({ statusCode: 500, message: errorMessage });
+    return NextResponse.json({ statusCode: 500, message: errorMessage }, { status: 500 });
   }
 }

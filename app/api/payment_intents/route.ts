@@ -1,28 +1,21 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
 
 import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT, API_VERSION } from '@config';
-// import { formatAmountForStripe } from '../../../utils/stripe-helpers';
 import { formatAmountForStripe } from '@lib/stripe';
 
-import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
   apiVersion: API_VERSION,
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
-    return;
-  }
-
-  const { amount, payment_intent_id }: { amount: number; payment_intent_id?: string } = req.body;
+export async function POST(req: NextRequest) {
+  const { amount, payment_intent_id }: { amount: number; payment_intent_id?: string } =
+    await req.json();
 
   // Validate the amount that was passed from the client.
   if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
-    res.status(500).json({ statusCode: 400, message: 'Invalid amount.' });
-    return;
+    return NextResponse.json({ statusCode: 400, message: 'Invalid amount.' }, { status: 500 });
   }
 
   if (payment_intent_id) {
@@ -33,14 +26,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const updated_intent = await stripe.paymentIntents.update(payment_intent_id, {
           amount: formatAmountForStripe(amount, CURRENCY),
         });
-        res.status(200).json(updated_intent);
-        return;
+        return NextResponse.json(updated_intent);
       }
     } catch (e) {
       if ((e as any).code !== 'resource_missing') {
         const errorMessage = e instanceof Error ? e.message : 'Internal server error';
-        res.status(500).json({ statusCode: 500, message: errorMessage });
-        return;
+        return NextResponse.json({ statusCode: 500, message: errorMessage }, { status: 500 });
       }
     }
   }
@@ -57,9 +48,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     };
     const payment_intent: Stripe.PaymentIntent = await stripe.paymentIntents.create(params);
 
-    res.status(200).json(payment_intent);
+    return NextResponse.json(payment_intent);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Internal server error';
-    res.status(500).json({ statusCode: 500, message: errorMessage });
+    return NextResponse.json({ statusCode: 500, message: errorMessage }, { status: 500 });
   }
 }

@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -20,63 +15,25 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@content/*": [
-        "./content/*"
-      ],
-      "@context/*": [
-        "./lib/context/*"
-      ],
-      "@context": [
-        "./lib/context/"
-      ],
-      "@config": [
-        "./config/"
-      ],
-      "@config/*": [
-        "./config/*"
-      ],
-      "@data/*": [
-        "./data/*"
-      ],
-      "@layout": [
-        "./components/layout/"
-      ],
-      "@svg/*": [
-        "./components/svg/*"
-      ],
-      "@svg": [
-        "./components/svg"
-      ],
-      "@commerce/*": [
-        "./components/commerce/*"
-      ],
-      "@images/*": [
-        "./content/images/*"
-      ],
-      "@lib/*": [
-        "./lib/*"
-      ],
-      "@pages/*": [
-        "./pages/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ],
-      "@hooks": [
-        "./hooks/"
-      ],
-      "@hooks/*": [
-        "./hooks/*"
-      ]
+      "@components/*": ["./components/*"],
+      "@content/*": ["./content/*"],
+      "@context/*": ["./lib/context/*"],
+      "@context": ["./lib/context/"],
+      "@config": ["./config/"],
+      "@config/*": ["./config/*"],
+      "@data/*": ["./data/*"],
+      "@layout": ["./components/layout/"],
+      "@svg/*": ["./components/svg/*"],
+      "@svg": ["./components/svg"],
+      "@commerce/*": ["./components/commerce/*"],
+      "@images/*": ["./content/images/*"],
+      "@lib/*": ["./lib/*"],
+      "@pages/*": ["./pages/*"],
+      "@public/*": ["./public/*"],
+      "@styles/*": ["./styles/*"],
+      "@utils/*": ["./utils/*"],
+      "@hooks": ["./hooks/"],
+      "@hooks/*": ["./hooks/*"]
     },
     "plugins": [
       {
@@ -94,7 +51,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

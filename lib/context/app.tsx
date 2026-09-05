@@ -10,8 +10,8 @@ export type AppContextValue = {
   setNavIsActive: Dispatch<SetStateAction<boolean>>;
   headerHeight: number | null;
   setHeaderHeight: Dispatch<SetStateAction<number | null>>;
-  klaviyoEmbedRef: React.RefObject<HTMLDivElement> | null;
-  setKlaviyoEmbedRef: Dispatch<SetStateAction<React.RefObject<HTMLDivElement> | null>>;
+  klaviyoEmbedRef: React.RefObject<HTMLDivElement | null> | null;
+  setKlaviyoEmbedRef: Dispatch<SetStateAction<React.RefObject<HTMLDivElement | null> | null>>;
 };
 
 export const AppContext = createContext<AppContextValue>({
@@ -33,7 +33,7 @@ export const AppContextProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<any[]>([]);
   const [navIsActive, setNavIsActive] = useState(false);
   const [headerHeight, setHeaderHeight] = useState<number | null>(null);
-  const [klaviyoEmbedRef, setKlaviyoEmbedRef] = useState<React.RefObject<HTMLDivElement> | null>(
+  const [klaviyoEmbedRef, setKlaviyoEmbedRef] = useState<React.RefObject<HTMLDivElement | null> | null>(
     null
   );
 

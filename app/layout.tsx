@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import FontImports from '@utils/FontImports';
-import { KlaviyoScriptTag } from '@lib/klaviyo';
+import { KlaviyoScriptTag } from '@lib/klaviyoEmbed';
 import siteInfo from '@lib/siteInfo';
 import Providers from './providers';
 import '../styles/globals.css';
