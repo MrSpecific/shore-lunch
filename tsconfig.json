@@ -28,7 +28,6 @@
       "@commerce/*": ["./components/commerce/*"],
       "@images/*": ["./content/images/*"],
       "@lib/*": ["./lib/*"],
-      "@pages/*": ["./pages/*"],
       "@public/*": ["./public/*"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
@@ -47,7 +46,6 @@
     "**/*.ts",
     "**/*.tsx",
     "additional.d.ts",
-    "lib/sanity/sanity.image.js",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
