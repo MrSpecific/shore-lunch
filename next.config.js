@@ -36,6 +36,14 @@ module.exports = {
         protocol: 'https',
         hostname: 'cdn.schema.io',
       },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
     ],
   },
   // Turbopack is the default builder as of Next.js 16; this is what
