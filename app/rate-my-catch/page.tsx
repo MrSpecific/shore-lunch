@@ -26,7 +26,10 @@ export default async function RateMyCatchPage() {
                 fish pic or a food pic and let the crew rate it.
               </p>
             </div>
-            <Link href={userId ? '/rate-my-catch/upload' : '/sign-in'} className="button">
+            <Link
+              href={userId ? '/rate-my-catch/upload' : '/sign-in?redirect_url=/rate-my-catch/upload'}
+              className="button"
+            >
               Post your catch
             </Link>
           </div>

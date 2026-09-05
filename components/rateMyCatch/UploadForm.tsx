@@ -33,7 +33,7 @@ const UploadForm = () => {
         name="caption"
         type="text"
         maxLength={200}
-        placeholder="What'd you catch — or cook?"
+        placeholder="What'd you catch - or cook?"
       />
 
       {error && <p className={styles.error}>{error}</p>}

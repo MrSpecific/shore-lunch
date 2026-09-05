@@ -1,4 +1,12 @@
 module.exports = {
+  // Rate My Catch photo uploads go through a Server Action; the default 1MB
+  // body limit is well under our 8MB max image size (lib/rateMyCatch), so
+  // raise it with headroom for multipart overhead.
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
   // The old `i18n` config (single locale 'en') isn't supported in the App
   // Router, and prefixed every URL with /en/. Dropped in favor of clean
   // paths, with a permanent redirect below for any old /en/* links.

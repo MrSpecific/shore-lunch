@@ -26,7 +26,7 @@ const RatingWidget = ({
   if (!isSignedIn) {
     return (
       <p className={styles.signInPrompt}>
-        <Link href="/sign-in">Sign in</Link> to rate this catch.
+        <Link href={`/sign-in?redirect_url=/rate-my-catch/${photoId}`}>Sign in</Link> to rate this catch.
       </p>
     );
   }

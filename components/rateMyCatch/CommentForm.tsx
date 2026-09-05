@@ -13,7 +13,7 @@ const CommentForm = ({ photoId, isSignedIn }: { photoId: number; isSignedIn: boo
   if (!isSignedIn) {
     return (
       <p className={styles.signInPrompt}>
-        <Link href="/sign-in">Sign in</Link> to leave a comment.
+        <Link href={`/sign-in?redirect_url=/rate-my-catch/${photoId}`}>Sign in</Link> to leave a comment.
       </p>
     );
   }

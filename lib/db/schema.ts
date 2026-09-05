@@ -1,10 +1,11 @@
-import { pgTable, serial, integer, text, timestamp, smallint, unique, index } from 'drizzle-orm/pg-core';
+import { pgTable, serial, integer, text, timestamp, smallint, boolean, unique, index } from 'drizzle-orm/pg-core';
 
 export const fishPhotos = pgTable('fish_photos', {
   id: serial('id').primaryKey(),
   clerkUserId: text('clerk_user_id').notNull(),
   imageUrl: text('image_url').notNull(),
   caption: text('caption'),
+  archived: boolean('archived').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
 

@@ -10,6 +10,7 @@ export type PhotoWithStats = {
   authorAvatarUrl: string | null;
   imageUrl: string;
   caption: string | null;
+  archived: boolean;
   createdAt: Date;
   averageRating: number | null;
   ratingCount: number;
@@ -72,16 +73,47 @@ async function attachStats(photos: (typeof fishPhotos.$inferSelect)[]): Promise<
 
 export async function listPhotosWithStats(): Promise<PhotoWithStats[]> {
   const db = getDb();
-  const photos = await db.select().from(fishPhotos).orderBy(desc(fishPhotos.createdAt));
+  const photos = await db
+    .select()
+    .from(fishPhotos)
+    .where(eq(fishPhotos.archived, false))
+    .orderBy(desc(fishPhotos.createdAt));
   return attachStats(photos);
 }
 
 export async function getPhotoWithStats(photoId: number): Promise<PhotoWithStats | null> {
   const db = getDb();
-  const [photo] = await db.select().from(fishPhotos).where(eq(fishPhotos.id, photoId)).limit(1);
+  const [photo] = await db
+    .select()
+    .from(fishPhotos)
+    .where(and(eq(fishPhotos.id, photoId), eq(fishPhotos.archived, false)))
+    .limit(1);
   if (!photo) return null;
   const [withStats] = await attachStats([photo]);
   return withStats;
+}
+
+// Admin-only: includes archived photos, for the Sanity Studio moderation tool.
+export async function listAllPhotosForAdmin(): Promise<PhotoWithStats[]> {
+  const db = getDb();
+  const photos = await db.select().from(fishPhotos).orderBy(desc(fishPhotos.createdAt));
+  return attachStats(photos);
+}
+
+export async function setPhotoArchived(photoId: number, archived: boolean) {
+  const db = getDb();
+  const [photo] = await db
+    .update(fishPhotos)
+    .set({ archived })
+    .where(eq(fishPhotos.id, photoId))
+    .returning();
+  return photo ?? null;
+}
+
+export async function deletePhoto(photoId: number) {
+  const db = getDb();
+  const [photo] = await db.delete(fishPhotos).where(eq(fishPhotos.id, photoId)).returning();
+  return photo ?? null;
 }
 
 export async function getCommentsForPhoto(photoId: number): Promise<CommentWithAuthor[]> {

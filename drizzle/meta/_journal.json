@@ -15,6 +15,13 @@
       "when": 1788637679723,
       "tag": "0001_productive_siren",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788641332568,
+      "tag": "0002_sparkling_virginia_dare",
+      "breakpoints": true
     }
   ]
 }
