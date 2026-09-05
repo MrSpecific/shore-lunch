@@ -85,10 +85,9 @@
   },
   "allowScripts": {
     "bufferutil@4.0.7": true,
-    "esbuild@0.19.12": true,
-    "esbuild@0.18.20": true,
     "fsevents@2.3.3": true,
     "sharp@0.32.6": true,
-    "utf-8-validate@6.0.3": true
+    "utf-8-validate@6.0.3": true,
+    "esbuild@0.28.2": true
   }
 }
