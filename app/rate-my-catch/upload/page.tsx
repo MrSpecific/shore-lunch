@@ -18,7 +18,7 @@ export default async function UploadCatchPhotoPage() {
   return (
     <Page>
       <section className="content content-y">
-        <div className={styles.introWrapper}>
+        <div className={styles.uploadPage}>
           <h1>Post your catch</h1>
           <p className={styles.subhead}>Got a fish pic or a food pic? Share it with the crew.</p>
           <UploadForm />
