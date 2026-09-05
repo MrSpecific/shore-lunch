@@ -1,10 +1,18 @@
 .attribution {
   display: flex;
   align-items: center;
+  justify-content: center;
   line-height: 1;
 }
+
 .attribution :global(.svg-graphic) {
   width: 50px;
   fill: currentColor;
   margin-left: 0.5em;
+}
+
+@media (--medium) {
+  .attribution {
+    justify-content: end;
+  }
 }
