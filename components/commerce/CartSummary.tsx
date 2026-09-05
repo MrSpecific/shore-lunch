@@ -5,9 +5,10 @@ import { useShoppingCart } from 'use-shopping-cart';
 import { useCheckout } from '@hooks';
 import { CheckoutButton } from '@commerce/CheckoutButton';
 import css from './CartSummary.module.css';
+import Link from 'next/link';
 
 const CartSummary = () => {
-  const { formattedTotalPrice } = useShoppingCart();
+  const { formattedTotalPrice, handleCloseCart } = useShoppingCart();
   const { errorMessage } = useCheckout();
 
   return (
@@ -18,9 +19,14 @@ const CartSummary = () => {
       {/* <p suppressHydrationWarning>
         <strong>Number of Items:</strong> {cartCount}
       </p> */}
-      <p suppressHydrationWarning>
-        <strong>Total:</strong> {formattedTotalPrice}
-      </p>
+      <div className={css.cartSummary}>
+        <p suppressHydrationWarning>
+          <strong>Total:</strong> {formattedTotalPrice}
+        </p>
+        <Link href="/merch" onClick={handleCloseCart}>
+          Continue Shopping
+        </Link>
+      </div>
 
       {/* Redirects the user to Stripe */}
       <div className={css.cartActions}>

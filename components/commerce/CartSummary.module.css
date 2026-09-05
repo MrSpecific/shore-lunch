@@ -13,5 +13,12 @@
 .checkoutButton,
 button.checkoutButton {
   min-width: 50%;
+  width: 100%;
   padding: 18px;
+}
+
+.cartSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
