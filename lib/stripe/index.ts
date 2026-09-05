@@ -1,19 +1,5 @@
 import Stripe from 'stripe';
-import { loadStripe, Stripe as StripeJs } from '@stripe/stripe-js';
 import { API_VERSION } from '@config';
-
-// Load Stripe Script
-let stripePromise: Promise<StripeJs | null> | null = null;
-
-const getStripe = () => {
-  if (!stripePromise) {
-    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
-  }
-
-  return stripePromise;
-};
-
-export default getStripe;
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration

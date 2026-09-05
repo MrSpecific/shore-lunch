@@ -11,7 +11,10 @@ import styles from '@styles/page/Result.module.css';
 
 const SuccessMessage = ({ data }: { data: any }) => {
   const { cartCount, clearCart } = useShoppingCart();
-  const { amount_total, currency, shipping_details } = data;
+  const { amount_total, currency, collected_information } = data;
+  // Checkout Session's shipping_details moved to
+  // collected_information.shipping_details as of API version 2025-03-31.basil.
+  const shipping_details = collected_information?.shipping_details;
 
   useEffect(() => {
     if ((cartCount ?? 0) > 0) {

@@ -1,4 +1,4 @@
-import getStripe, { stripe, formatAmountForDisplay, fetchProducts } from '@lib/stripe';
+import { stripe, formatAmountForDisplay, fetchProducts } from '@lib/stripe';
 // import { addOrUpdateProduct, getProducts } from '@lib/sanity';
 import transformProduct from '@lib/stripe/transformProduct';
 

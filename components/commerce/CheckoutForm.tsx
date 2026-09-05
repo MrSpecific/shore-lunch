@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import CustomDonationInput from '@commerce/CustomDonationInput';
 import StripeTestCards from '@commerce/StripeTestCards';
 
-import getStripe, { formatAmountForDisplay } from '@lib/stripe';
+import { formatAmountForDisplay } from '@lib/stripe';
 import { fetchPostJSON } from '@utils/apiHelpers';
 import * as config from '@config';
 
@@ -29,21 +29,15 @@ const CheckoutForm = () => {
       amount: input.customDonation,
     });
 
-    if (response.statusCode === 500) {
+    if (response.statusCode === 500 || !response.url) {
       console.error(response.message);
+      setLoading(false);
       return;
     }
 
-    // Redirect to Checkout.
-    const stripe = await getStripe();
-    const { error } = (await stripe?.redirectToCheckout({
-      sessionId: response.id,
-    })) ?? {};
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `error.message`.
-    if (error) console.warn(error.message);
-    setLoading(false);
+    // Redirect to the Checkout Session's own hosted page -- Stripe.js's
+    // redirectToCheckout() is removed as of API version 2025-09-30.clover.
+    window.location.href = response.url;
   };
 
   return (

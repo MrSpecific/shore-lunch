@@ -5,7 +5,7 @@ import { fetchPostJSON } from '@utils/apiHelpers';
 const useCheckout = (callBack = () => {}) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { cartDetails, redirectToCheckout } = useShoppingCart();
+  const { cartDetails } = useShoppingCart();
 
   // const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (event) => {
   const handleCheckout: any = async (event) => {
@@ -15,16 +15,15 @@ const useCheckout = (callBack = () => {}) => {
 
     const response = await fetchPostJSON('/api/checkout_sessions/cart', cartDetails);
 
-    // console.log('CART cartDetails', cartDetails);
-    // console.log('CART response', response);
-
-    if (response.statusCode > 399) {
-      setErrorMessage(response.message);
+    if (response.statusCode > 399 || !response.url) {
+      setErrorMessage(response.message || 'Unable to start checkout.');
       setLoading(false);
       return;
     }
 
-    redirectToCheckout(response.id);
+    // Redirect to the Checkout Session's own hosted page -- Stripe.js's
+    // redirectToCheckout() is removed as of API version 2025-09-30.clover.
+    window.location.href = response.url;
   };
 
   return { loading, errorMessage, handleCheckout };
