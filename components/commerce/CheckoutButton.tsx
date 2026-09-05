@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 
-import { gtagEvent } from '@lib/google';
+// import { gtagEvent } from '@lib/google';
 import { useCheckout } from '@hooks';
 
 interface CheckoutButtonInterface {
@@ -14,7 +14,7 @@ interface CheckoutButtonInterface {
   includePrice?: boolean;
 }
 
-const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
+export const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
   className,
   includePrice = false,
 }) => {

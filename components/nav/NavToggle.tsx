@@ -2,14 +2,14 @@
 
 import { useNav } from '@hooks';
 import { Hamburger } from '@svg';
-import styles from '@styles/nav/NavToggle.module.css';
+import css from '@styles/nav/NavToggle.module.css';
 
 // Toggle for activating the mobile nav
-const NavToggle = () => {
+export const NavToggle = () => {
   const { navIsActive, toggleNav } = useNav();
 
   return (
-    <button className={styles.navToggle} onClick={toggleNav}>
+    <button className={css.navToggle} onClick={toggleNav}>
       <Hamburger />
       <span className="visually-hidden">{navIsActive ? 'Close' : 'Open'} Nav Menu</span>
     </button>

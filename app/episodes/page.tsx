@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Page } from '@layout';
 import { fetchSanityContent } from '@lib/sanity';
 import { buildMetadata } from '@lib/seo/metadata';
-import EpisodeGrid from '@components/EpisodeGrid';
-import styles from '@styles/page/Home.module.css';
+import { EpisodeGrid } from '@components/EpisodeGrid';
+import styles from '../Home.module.css';
 
 export const revalidate = 60; // REVALIDATE_SECONDS.episodesList
 

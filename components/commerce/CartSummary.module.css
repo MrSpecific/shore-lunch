@@ -1,5 +1,3 @@
-@import "../settings/breakpoints";
-
 .cartActions {
   display: flex;
   gap: var(--spacer-xs);

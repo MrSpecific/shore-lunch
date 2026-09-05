@@ -3,8 +3,8 @@
 import { useShoppingCart } from 'use-shopping-cart';
 
 import { useCheckout } from '@hooks';
-import CheckoutButton from '@commerce/CheckoutButton';
-import styles from '@styles/components/CartSummary.module.css';
+import { CheckoutButton } from '@commerce/CheckoutButton';
+import css from './CartSummary.module.css';
 
 const CartSummary = () => {
   const { formattedTotalPrice } = useShoppingCart();
@@ -23,8 +23,8 @@ const CartSummary = () => {
       </p>
 
       {/* Redirects the user to Stripe */}
-      <div className={styles.cartActions}>
-        <CheckoutButton className={styles.checkoutButton} />
+      <div className={css.cartActions}>
+        <CheckoutButton className={css.checkoutButton} />
         {/* <button className="button-link" type="button" onClick={clearCart}>
           Clear Cart
         </button> */}

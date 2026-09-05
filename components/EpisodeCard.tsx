@@ -6,12 +6,17 @@ import { YouTubeIcon, NewSticker } from '@svg';
 import parseYouTubeUrl from '@utils/parseYouTubeUrl';
 import styles from '@styles/components/EpisodeCard.module.css';
 
-const EpisodeCover = ({ cover, videoUrl }) => {
+export const EpisodeCover = ({ cover, videoUrl, eagerLoad }) => {
   const { videoId } = parseYouTubeUrl(videoUrl);
   //https://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
 
   return cover ? (
-    <SanityImage {...cover} height={'auto'} className={styles.coverImage} />
+    <SanityImage
+      {...cover}
+      height={'auto'}
+      className={styles.coverImage}
+      loading={eagerLoad ? 'eager' : 'lazy'}
+    />
   ) : (
     <Image
       src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
@@ -24,7 +29,25 @@ const EpisodeCover = ({ cover, videoUrl }) => {
   );
 };
 
-const EpisodeCard = ({ episodeNumber, title, slug, videoUrl, cover, label, ...props }) => {
+export const EpisodeCard = ({
+  episodeNumber,
+  title,
+  slug,
+  videoUrl,
+  cover,
+  label,
+  eagerLoad,
+  ...props
+}: {
+  episodeNumber: number;
+  title: string;
+  slug: string;
+  videoUrl: string;
+  cover?: any;
+  label?: string;
+  eagerLoad?: boolean;
+  [key: string]: any;
+}) => {
   // if (!episodes) return null;
 
   // console.log(cover);
@@ -38,7 +61,7 @@ const EpisodeCard = ({ episodeNumber, title, slug, videoUrl, cover, label, ...pr
         className={styles.coverWrapper}
       >
         <>
-          <EpisodeCover cover={cover} videoUrl={videoUrl} slug={slug} />
+          <EpisodeCover cover={cover} videoUrl={videoUrl} eagerLoad={eagerLoad} />
           {label === 'new' && (
             <span className={styles.newLabel}>
               <NewSticker />
