@@ -19,7 +19,7 @@ export const deskStructure = (): StructureResolver => {
       .title('Content')
       .items([
         S.listItem()
-          .title('HomeIcon Page')
+          .title('Home Page')
           .icon(HomeIcon)
           .child(S.document().schemaType('frontPage').documentId('frontPage')),
         ...S.documentTypeListItems().filter((item) => !defined.includes(item.getId() ?? '')),

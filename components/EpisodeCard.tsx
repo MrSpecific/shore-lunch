@@ -13,7 +13,7 @@ export const EpisodeCover = ({ cover, videoUrl, eagerLoad }) => {
   return cover ? (
     <SanityImage
       {...cover}
-      height={'auto'}
+      width={800}
       className={styles.coverImage}
       loading={eagerLoad ? 'eager' : 'lazy'}
     />

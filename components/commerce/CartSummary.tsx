@@ -23,7 +23,7 @@ const CartSummary = () => {
         <p suppressHydrationWarning>
           <strong>Total:</strong> {formattedTotalPrice}
         </p>
-        <Link href="/merch" onClick={handleCloseCart}>
+        <Link href="/merch" onClick={() => handleCloseCart()}>
           Continue Shopping
         </Link>
       </div>

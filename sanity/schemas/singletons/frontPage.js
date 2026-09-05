@@ -21,7 +21,7 @@ export default {
   preview: {
     prepare() {
       return {
-        title: 'HomeIcon Page',
+        title: 'Home Page',
       };
     },
   },
