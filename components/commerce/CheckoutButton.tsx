@@ -37,7 +37,13 @@ export const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = 
       animate={loading ? { x: [0, 4, 0] } : {}}
       transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
     >
-      {includePrice && !loading ? `${formattedTotalPrice} — ` : null}
+      {/* formattedTotalPrice comes from use-shopping-cart's localStorage-persisted
+          cart, which is only available after the client mounts -- the server (and
+          the client's very first paint) always sees an empty cart here, so this
+          text legitimately differs once the real cart rehydrates. */}
+      <span suppressHydrationWarning>
+        {includePrice && !loading ? `${formattedTotalPrice} — ` : null}
+      </span>
       {!loading ? 'Checkout' : 'Loading...'}
     </motion.button>
   );

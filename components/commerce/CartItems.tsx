@@ -4,6 +4,7 @@ import { useShoppingCart } from 'use-shopping-cart';
 import classNames from 'classnames';
 
 import SanityImage from '@components/SanityImage';
+import { useHasMounted } from '@hooks';
 import css from './CartItems.module.css';
 
 const QuantityControls = ({ id, quantity }) => {
@@ -73,7 +74,12 @@ const CartLine = (props) => {
 
 const CartItems = () => {
   const { cartCount, cartDetails } = useShoppingCart();
-  const cartEmpty = !cartCount;
+  // cartCount reflects use-shopping-cart's localStorage-persisted cart, which
+  // isn't known until after the client mounts -- until then, render the same
+  // "empty" state the server sees, to avoid swapping this entire subtree
+  // (empty message vs. the real item list) during hydration.
+  const hasMounted = useHasMounted();
+  const cartEmpty = !hasMounted || !cartCount;
 
   if (cartEmpty) {
     return (
