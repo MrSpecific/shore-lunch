@@ -1,4 +1,4 @@
-import { ImageIcon } from '@sanity/icons';
+import { ImageIcon } from '@sanity/icons/Image';
 
 export default {
   title: 'Hero',
@@ -8,7 +8,7 @@ export default {
   groups: [
     {
       name: 'image',
-      title: 'Image',
+      title: 'ImageIcon',
     },
     {
       name: 'cta',
@@ -17,7 +17,7 @@ export default {
   ],
   fields: [
     {
-      title: 'Image',
+      title: 'ImageIcon',
       name: 'image',
       type: 'imageObject',
       group: 'image',

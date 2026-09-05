@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { useShoppingCart } from 'use-shopping-cart';
 
-import { gtagEvent } from '@lib/google';
+// import { gtagEvent } from '@lib/google';
 import { useCheckout } from '@hooks';
 
 interface CheckoutButtonInterface {
@@ -12,17 +14,13 @@ interface CheckoutButtonInterface {
   includePrice?: boolean;
 }
 
-const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
+export const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
   className,
   includePrice = false,
 }) => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-  const { loading, errorMessage, handleCheckout } = useCheckout();
-  const { currency } = cartDetails;
-
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  const { formattedTotalPrice, cartCount } = useShoppingCart();
+  const { loading, handleCheckout } = useCheckout();
+  const cartEmpty = !cartCount;
 
   return (
     <motion.button
@@ -39,7 +37,13 @@ const CheckoutButton: React.FunctionComponent<CheckoutButtonInterface> = ({
       animate={loading ? { x: [0, 4, 0] } : {}}
       transition={{ ease: 'linear', duration: 2, repeat: Infinity }}
     >
-      {includePrice && !loading ? `${formattedTotalPrice} — ` : null}
+      {/* formattedTotalPrice comes from use-shopping-cart's localStorage-persisted
+          cart, which is only available after the client mounts -- the server (and
+          the client's very first paint) always sees an empty cart here, so this
+          text legitimately differs once the real cart rehydrates. */}
+      <span suppressHydrationWarning>
+        {includePrice && !loading ? `${formattedTotalPrice} — ` : null}
+      </span>
       {!loading ? 'Checkout' : 'Loading...'}
     </motion.button>
   );

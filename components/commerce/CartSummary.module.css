@@ -1,0 +1,24 @@
+.cartActions {
+  display: flex;
+  gap: var(--spacer-xs);
+  padding-top: var(--spacer-xs);
+
+  @media (--small-only) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.checkoutButton,
+button.checkoutButton {
+  min-width: 50%;
+  width: 100%;
+  padding: 18px;
+}
+
+.cartSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

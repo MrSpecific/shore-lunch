@@ -1,4 +1,4 @@
-import createImageUrlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import { dataset, projectId } from '@lib/sanity';
 
 /* Sanity image is more convenient than Next's tbh

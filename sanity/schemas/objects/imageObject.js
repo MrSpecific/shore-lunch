@@ -1,7 +1,7 @@
-import { ImageIcon } from '@sanity/icons';
+import { ImageIcon } from '@sanity/icons/Image';
 
 export default {
-  title: 'Image',
+  title: 'ImageIcon',
   name: 'imageObject',
   type: 'image',
   icon: ImageIcon,

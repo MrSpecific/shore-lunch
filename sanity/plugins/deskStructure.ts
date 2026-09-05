@@ -1,13 +1,16 @@
-import { HomeIcon, RobotIcon, CogIcon, TagIcon } from '@sanity/icons';
+import { HomeIcon } from '@sanity/icons/Home';
+import { RobotIcon } from '@sanity/icons/Robot';
+import { CogIcon } from '@sanity/icons/Cog';
+import { TagIcon } from '@sanity/icons/Tag';
 import { type DocumentDefinition, definePlugin } from 'sanity';
-import { type StructureResolver } from 'sanity/desk';
+import { type StructureResolver } from 'sanity/structure';
 
 // https://www.sanity.io/docs/set-up-structure-builder-to-override-the-default-list-view
 
 const pages = ['frontPage', 'productCollection'];
 const documents = ['faq', 'product'];
 const settings = ['siteSettings'];
-const defined = [].concat(pages, documents, settings);
+const defined: string[] = [...pages, ...documents, ...settings];
 
 // export const deskStructure = (typeDef: DocumentDefinition): StructureResolver => {
 export const deskStructure = (): StructureResolver => {
@@ -19,14 +22,14 @@ export const deskStructure = (): StructureResolver => {
           .title('Home Page')
           .icon(HomeIcon)
           .child(S.document().schemaType('frontPage').documentId('frontPage')),
-        ...S.documentTypeListItems().filter((item) => !defined.includes(item.getId())),
+        ...S.documentTypeListItems().filter((item) => !defined.includes(item.getId() ?? '')),
         S.listItem()
           .title('Collection')
           .icon(TagIcon)
           .child(S.document().schemaType('productCollection').documentId('productCollection')),
         // Documents (global)
         S.divider(),
-        ...S.documentTypeListItems().filter((item) => documents.includes(item.getId())),
+        ...S.documentTypeListItems().filter((item) => documents.includes(item.getId() ?? '')),
         // Settings (global)
         S.divider(),
         S.listItem()

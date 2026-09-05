@@ -18,6 +18,28 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Custom breakpoints in CSS modules
+
+Define shared breakpoints in `styles/settings/breakpoints.css`. They are available
+in every CSS module and global stylesheet without a per-file import:
+
+```css
+.example {
+  display: block;
+
+  @media (--medium) {
+    display: flex;
+  }
+}
+```
+
+Top-level `@media (--medium)` rules also work. PostCSS loads the definitions with
+`@csstools/postcss-global-data` before `postcss-preset-env` transforms custom media
+queries into standard queries, such as `@media (min-width: 768px)`.
+
+Restart `npm run dev` after changing the PostCSS configuration or installing its
+plugins. Existing breakpoint imports are supported but no longer required.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

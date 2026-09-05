@@ -1,5 +1,4 @@
-import {HelpCircleIcon} from '@sanity/icons'
-
+import { HelpCircleIcon } from '@sanity/icons/HelpCircle';
 export default {
   name: 'faq',
   title: 'FAQ',

@@ -1,4 +1,4 @@
-import { BookIcon } from '@sanity/icons';
+import { BookIcon } from '@sanity/icons/Book';
 
 export default {
   title: 'Recipe',

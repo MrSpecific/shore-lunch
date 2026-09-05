@@ -1,64 +1,48 @@
-/* eslint-disable react/display-name */
 import React from 'react';
 
-const getComponent = (node) => {
-  switch (node.type) {
+const Node = ({ type, children, ...rest }) => {
+  const kids = children && children.map((child, index) => <Node key={index} {...child} />);
+
+  switch (type) {
     case 'root':
-      return ({ children }) => <>{children}</>;
+      return <>{kids}</>;
 
     case 'paragraph':
-      return ({ children }) => <p>{children}</p>;
+      return <p>{kids}</p>;
 
     case 'strong':
-      return ({ children }) => <span className="bold">{children}</span>;
+      return <span className="bold">{kids}</span>;
 
     case 'emphasis':
-      return ({ children }) => <em>{children}</em>;
+      return <em>{kids}</em>;
 
-    case 'heading':
-      return ({ children, depth = 2 }) => {
-        const Heading = `h${depth}`;
-        return <Heading>{children}</Heading>;
-      };
+    case 'heading': {
+      const depth = rest.depth || 2;
+      const HeadingTag = `h${depth}`;
+      return <HeadingTag>{kids}</HeadingTag>;
+    }
 
     case 'text':
-      return ({ value }) => <>{value}</>;
+      return <>{rest.value}</>;
 
     case 'link':
-      return ({ url, children }) => <a href={url}>{children}</a>;
+      return <a href={rest.url}>{kids}</a>;
 
     case 'list':
-      return ({ children, ordered = false }) => {
-        return ordered ? <ol>{children}</ol> : <ul>{children}</ul>;
-      };
+      return rest.ordered ? <ol>{kids}</ol> : <ul>{kids}</ul>;
 
     case 'listItem':
-      return ({ children }) => <li>{children}</li>;
+      return <li>{kids}</li>;
 
     // case 'html':
-    //   return ({ value }) => <div dangerouslySetInnerHTML={{ __html: value }} />;
+    //   return <div dangerouslySetInnerHTML={{ __html: rest.value }} />;
 
     /* Handle all types here … */
 
     default:
-      console.log('Unhandled node type', node);
-      return ({ children }) => <>{children}</>;
+      console.log('Unhandled node type', { type, children, ...rest });
+      return <>{kids}</>;
   }
-};
-
-const Node = (node) => {
-  const Component = getComponent(node);
-  const { children } = node;
-
-  return children ? (
-    <Component {...node}>
-      {children.map((child, index) => (
-        <Node key={index} {...child} />
-      ))}
-    </Component>
-  ) : (
-    <Component {...node} />
-  );
 };
 
 const RenderMarkdown = ({ ast }) => <Node {...ast} />;

@@ -1,5 +1,5 @@
+import { CreditCardIcon } from '@sanity/icons/CreditCard';
 /* eslint-disable import/no-anonymous-default-export */
-import { CreditCardIcon } from '@sanity/icons';
 
 export default {
   title: 'Product',

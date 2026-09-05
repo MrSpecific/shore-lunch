@@ -1,44 +1,42 @@
-import { NextPage } from 'next';
-import { useState, useEffect } from 'react';
+'use client';
+
 import { useShoppingCart } from 'use-shopping-cart';
 import classNames from 'classnames';
 
-import { Page } from '@layout';
-import Cart from '@commerce/Cart';
 import SanityImage from '@components/SanityImage';
-import { useCheckout } from '@hooks';
-import styles from '@styles/components/CartItems.module.css';
+import { useHasMounted } from '@hooks';
+import css from './CartItems.module.css';
 
 const QuantityControls = ({ id, quantity }) => {
   const { decrementItem, incrementItem, removeItem } = useShoppingCart();
 
   return (
-    <div className={styles.quantityControlWrapper}>
-      <div className={styles.quantityControls}>
+    <div className={css.quantityControlWrapper}>
+      <div className={css.quantityControls}>
         <button
           type="button"
           onClick={() => {
             decrementItem(id, { count: 1 });
           }}
           aria-label={`Subtract one ${name} from your cart`}
-          className={styles.decrement}
+          className={css.decrement}
         >
           -
         </button>
-        <span className={styles.quantity}>{quantity}</span>
+        <span className={css.quantity}>{quantity}</span>
         <button
           type="button"
           onClick={() => {
             incrementItem(id, { count: 1 });
           }}
           aria-label={`Add ${name} to your cart`}
-          className={styles.increment}
+          className={css.increment}
         >
           +
         </button>
       </div>
       <button
-        className={classNames('button-link', [styles.removeLine])}
+        className={classNames('button-link', [css.removeLine])}
         onClick={() => removeItem(id)}
       >
         Remove
@@ -51,42 +49,41 @@ const CartLine = (props) => {
   const { id, images, name, quantity, formattedValue, formattedPrice, currency } = props;
 
   return (
-    <li className={styles.cartLine}>
+    <li className={css.cartLine}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      {/* <img src={image} className={styles.lineImage} alt="" /> */}
-      <div className={styles.imageWrapper}>
-        <SanityImage {...images[0]} className={styles.lineImage} width={300} height={300} />
+      {/* <img src={image} className={css.lineImage} alt="" /> */}
+      <div className={css.imageWrapper}>
+        <SanityImage {...images[0]} className={css.lineImage} width={300} height={300} />
       </div>
 
-      <div className={styles.lineContent}>
+      <div className={css.lineContent}>
         <div>
-          <h3 className={styles.lineHeadline}>{name}</h3>
+          <h3 className={css.lineHeadline}>{name}</h3>
         </div>
 
         <QuantityControls id={id} quantity={quantity} />
       </div>
 
-      <div className={styles.lineSummary}>
-        <span className={styles.lineTotal}>{formattedValue}</span>
-        <span className={styles.itemPrice}>{formattedPrice} each</span>
+      <div className={css.lineSummary}>
+        <span className={css.lineTotal}>{formattedValue}</span>
+        <span className={css.itemPrice}>{formattedPrice} each</span>
       </div>
     </li>
   );
 };
 
 const CartItems = () => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-  const { loading, handleCheckout } = useCheckout();
-
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
-
-  // console.log(cartDetails);
+  const { cartCount, cartDetails } = useShoppingCart();
+  // cartCount reflects use-shopping-cart's localStorage-persisted cart, which
+  // isn't known until after the client mounts -- until then, render the same
+  // "empty" state the server sees, to avoid swapping this entire subtree
+  // (empty message vs. the real item list) during hydration.
+  const hasMounted = useHasMounted();
+  const cartEmpty = !hasMounted || !cartCount;
 
   if (cartEmpty) {
     return (
-      <div className={styles.emptyCart}>
+      <div className={css.emptyCart}>
         <h3 className="h6">Your cart is empty</h3>
       </div>
     );
@@ -94,8 +91,8 @@ const CartItems = () => {
 
   return (
     <section>
-      <ul className={styles.cartLines}>
-        {Object.values(cartDetails).map((item) => (
+      <ul className={css.cartLines}>
+        {Object.values(cartDetails ?? {}).map((item) => (
           <CartLine key={item.id} {...item} />
         ))}
       </ul>

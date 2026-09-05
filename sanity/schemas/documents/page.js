@@ -1,4 +1,4 @@
-import { EarthAmericasIcon } from '@sanity/icons';
+import { EarthAmericasIcon } from '@sanity/icons/EarthAmericas';
 
 export default {
   title: 'Page',

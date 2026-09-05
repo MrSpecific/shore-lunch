@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons';
+import { CogIcon } from '@sanity/icons/Cog';
 
 //https://www.sanity.io/docs/create-a-link-to-a-single-edit-page-in-your-main-document-type-list
 

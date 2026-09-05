@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
@@ -48,7 +50,7 @@ const Overlay = () => {
 };
 
 // Top-level Nav component
-const NavOverlay = ({ className }) => {
+const NavOverlay = ({ className = '' } = {}) => {
   const { navIsActive } = useNav();
 
   return <AnimatePresence>{navIsActive && <Overlay />}</AnimatePresence>;

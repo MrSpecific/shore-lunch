@@ -1,4 +1,4 @@
-import { RemoveIcon } from '@sanity/icons';
+import { RemoveIcon } from '@sanity/icons/Remove';
 
 // TODO don't render "Add Item" Button when array at max length
 // https://github.com/sanity-io/sanity/pull/3797

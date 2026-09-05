@@ -1,0 +1,10 @@
+/* The marketing site applies a decorative edge padding to <body> (see
+ * styles/base/base.css). Studio shares that same <body>, so without this
+ * it renders inset by that padding on every side, looking like a thick
+ * border. Taking Studio out of normal flow with `fixed` + `inset: 0`
+ * makes it ignore the body's padding box entirely and fill the viewport.
+ */
+.studioViewport {
+  position: fixed;
+  inset: 0;
+}

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -11,11 +10,12 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "paths": {
+      "@/*": ["./*"],
       "@components/*": ["./components/*"],
       "@content/*": ["./content/*"],
       "@context/*": ["./lib/context/*"],
@@ -29,20 +29,26 @@
       "@commerce/*": ["./components/commerce/*"],
       "@images/*": ["./content/images/*"],
       "@lib/*": ["./lib/*"],
-      "@pages/*": ["./pages/*"],
       "@public/*": ["./public/*"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
       "@hooks": ["./hooks/"],
       "@hooks/*": ["./hooks/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "additional.d.ts",
-    "lib/sanity/sanity.image.js"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

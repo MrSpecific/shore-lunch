@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
+'use client';
+
 import { useShoppingCart } from 'use-shopping-cart';
 
 import { useCheckout } from '@hooks';
-import CheckoutButton from '@commerce/CheckoutButton';
-import StripeTestCards from '@commerce/StripeTestCards';
-import styles from '@styles/components/CartSummary.module.css';
+import { CheckoutButton } from '@commerce/CheckoutButton';
+import css from './CartSummary.module.css';
+import Link from 'next/link';
 
 const CartSummary = () => {
-  const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails, redirectToCheckout } =
-    useShoppingCart();
-
-  const { loading, errorMessage, handleCheckout } = useCheckout();
-
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
+  const { formattedTotalPrice, handleCloseCart } = useShoppingCart();
+  const { errorMessage } = useCheckout();
 
   return (
-    // <form onSubmit={handleCheckout}>
     <div className="">
       <h3 className="visually-hidden">Cart summary</h3>
       {errorMessage ? <p style={{ color: 'red' }}>Error: {errorMessage}</p> : null}
@@ -25,13 +19,18 @@ const CartSummary = () => {
       {/* <p suppressHydrationWarning>
         <strong>Number of Items:</strong> {cartCount}
       </p> */}
-      <p suppressHydrationWarning>
-        <strong>Total:</strong> {formattedTotalPrice}
-      </p>
+      <div className={css.cartSummary}>
+        <p suppressHydrationWarning>
+          <strong>Total:</strong> {formattedTotalPrice}
+        </p>
+        <Link href="/merch" onClick={() => handleCloseCart()}>
+          Continue Shopping
+        </Link>
+      </div>
 
       {/* Redirects the user to Stripe */}
-      <div className={styles.cartActions}>
-        <CheckoutButton className={styles.checkoutButton} />
+      <div className={css.cartActions}>
+        <CheckoutButton className={css.checkoutButton} />
         {/* <button className="button-link" type="button" onClick={clearCart}>
           Clear Cart
         </button> */}

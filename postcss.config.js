@@ -20,8 +20,15 @@ module.exports = {
     'postcss-pxtorem': {
       propList: ['*'],
     },
+    // CSS modules are processed separately, so each needs the shared definitions.
+    '@csstools/postcss-global-data': {
+      files: [path.resolve(__dirname, 'styles/settings/breakpoints.css')],
+    },
     'postcss-preset-env': {
       stage: 0,
+      features: {
+        'custom-media-queries': { preserve: false },
+      },
       autoprefixer: {
         grid: true,
       },

@@ -1,4 +1,4 @@
-import { MoonIcon } from '@sanity/icons';
+import { MoonIcon } from '@sanity/icons/Moon';
 
 export default {
   title: 'Currency',

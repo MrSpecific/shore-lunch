@@ -1,4 +1,4 @@
-import { SplitVerticalIcon } from '@sanity/icons';
+import { SplitVerticalIcon } from '@sanity/icons/SplitVertical';
 
 export default {
   title: 'Title & Content',

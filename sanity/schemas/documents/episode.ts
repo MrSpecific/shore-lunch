@@ -1,4 +1,4 @@
-import { DesktopIcon } from '@sanity/icons';
+import { DesktopIcon } from '@sanity/icons/Desktop';
 
 export default {
   title: 'Episode',
@@ -54,6 +54,20 @@ export default {
       group: 'settings',
       description: '(Optional) This will be used as the cover image for the episode.',
       // validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'fishWereCaught',
+      title: 'Were fish caught?',
+      type: 'boolean',
+      group: 'settings',
+    },
+    {
+      name: 'numberOfFishCaught',
+      title: 'Number of Fish Caught',
+      type: 'number',
+      group: 'settings',
+      hidden: ({ parent }) => !parent?.fishWereCaught,
+      validation: (Rule) => Rule.min(0),
     },
     {
       name: 'description',
