@@ -39,14 +39,14 @@ export async function uploadCatchPhoto(formData: FormData): Promise<{ photoId: n
   return { photoId: photo.id };
 }
 
-export async function rateCatchPhoto(photoId: number, stars: number) {
+export async function rateCatchPhoto(photoId: number, hooks: number) {
   const { userId } = await auth();
   if (!userId) throw new Error('You must be signed in to rate a photo.');
-  if (!Number.isInteger(stars) || stars < 1 || stars > 5) {
-    throw new Error('Rating must be between 1 and 5 stars.');
+  if (!Number.isInteger(hooks) || hooks < 1 || hooks > 5) {
+    throw new Error('Rating must be between 1 and 5 hooks.');
   }
 
-  await upsertRating({ photoId, clerkUserId: userId, stars });
+  await upsertRating({ photoId, clerkUserId: userId, stars: hooks });
   revalidatePath(`/rate-my-catch/${photoId}`);
   revalidatePath('/rate-my-catch');
 }

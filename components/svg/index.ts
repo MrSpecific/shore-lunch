@@ -3,6 +3,7 @@ export { default as CaretDown } from './caret-down.svg';
 export { default as CartIcon } from './cart.svg';
 export { default as Close } from './close.svg';
 export { default as CoffeeOutsideMark } from './coffee-outside-mark.svg';
+export { default as FishHookIcon } from './fish-hook.svg';
 export { default as Hamburger } from './hamburger.svg';
 export { default as InstagramIcon } from './instagram.svg';
 export { default as NewSticker } from './new-sticker.svg';

@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import Link from 'next/link';
-import StarRating from './StarRating';
+import HookRating from './HookRating';
 import { rateCatchPhoto } from '@/app/rate-my-catch/actions';
 import styles from '@styles/components/RatingWidget.module.css';
 
@@ -26,18 +26,19 @@ const RatingWidget = ({
   if (!isSignedIn) {
     return (
       <p className={styles.signInPrompt}>
-        <Link href={`/sign-in?redirect_url=/rate-my-catch/${photoId}`}>Sign in</Link> to rate this catch.
+        <Link href={`/sign-in?redirect_url=/rate-my-catch/${photoId}`}>Sign in</Link> to rate this
+        catch.
       </p>
     );
   }
 
-  const handleSelect = (stars: number) => {
+  const handleSelect = (hooks: number) => {
     setError(null);
     const previous = userRating;
-    setUserRating(stars);
+    setUserRating(hooks);
     startTransition(async () => {
       try {
-        await rateCatchPhoto(photoId, stars);
+        await rateCatchPhoto(photoId, hooks);
       } catch (err) {
         setUserRating(previous);
         setError(err instanceof Error ? err.message : 'Something went wrong.');
@@ -47,13 +48,13 @@ const RatingWidget = ({
 
   return (
     <div className={styles.ratingWidget}>
-      <StarRating value={userRating} onSelect={handleSelect} size="large" />
+      <HookRating value={userRating} onSelect={handleSelect} size="large" />
       {isPending && <span className={styles.saving}>Saving…</span>}
       {error && <p className={styles.error}>{error}</p>}
       <p className={styles.summary}>
         {averageRating !== null
           ? `${averageRating.toFixed(1)} average (${ratingCount} rating${ratingCount === 1 ? '' : 's'})`
-          : 'No ratings yet'}
+          : 'No hooks yet'}
       </p>
     </div>
   );

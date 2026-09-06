@@ -18,12 +18,6 @@
   max-width: 40rem;
 }
 
-.photoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--spacer-m, 1.5rem);
-}
-
 .uploadPage {
   display: flex;
   flex-direction: column;

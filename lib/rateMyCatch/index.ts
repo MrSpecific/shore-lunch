@@ -1,4 +1,4 @@
-import { eq, desc, and, inArray, sql } from 'drizzle-orm';
+import { eq, desc, and, or, lt, inArray, sql } from 'drizzle-orm';
 import { getDb } from '@lib/db';
 import { fishPhotos, fishRatings, fishComments } from '@lib/db/schema';
 import { getAuthorsByClerkId, resolveAuthor } from './authors';
@@ -11,11 +11,37 @@ export type PhotoWithStats = {
   imageUrl: string;
   caption: string | null;
   archived: boolean;
-  createdAt: Date;
+  // ISO string, not a Date — this shape is also returned as JSON from the
+  // infinite-scroll API route, so it stays consistent whether it came from
+  // a server-rendered first page or a client-fetched later one.
+  createdAt: string;
   averageRating: number | null;
   ratingCount: number;
   commentCount: number;
 };
+
+export type PhotoPage = {
+  photos: PhotoWithStats[];
+  nextCursor: string | null;
+};
+
+const DEFAULT_PAGE_SIZE = 12;
+
+function encodeCursor(row: { createdAt: Date; id: number }): string {
+  return Buffer.from(`${row.createdAt.toISOString()}|${row.id}`).toString('base64url');
+}
+
+function decodeCursor(cursor: string): { createdAt: Date; id: number } | null {
+  try {
+    const [iso, idPart] = Buffer.from(cursor, 'base64url').toString('utf8').split('|');
+    const createdAt = new Date(iso);
+    const id = Number(idPart);
+    if (Number.isNaN(createdAt.getTime()) || !Number.isInteger(id)) return null;
+    return { createdAt, id };
+  } catch {
+    return null;
+  }
+}
 
 export type CommentWithAuthor = {
   id: number;
@@ -62,6 +88,7 @@ async function attachStats(photos: (typeof fishPhotos.$inferSelect)[]): Promise<
     const author = resolveAuthor(authorMap, photo.clerkUserId);
     return {
       ...photo,
+      createdAt: photo.createdAt.toISOString(),
       authorName: author.name,
       authorAvatarUrl: author.avatarUrl,
       averageRating: ratingRow ? Number(ratingRow.averageRating) : null,
@@ -71,14 +98,44 @@ async function attachStats(photos: (typeof fishPhotos.$inferSelect)[]): Promise<
   });
 }
 
-export async function listPhotosWithStats(): Promise<PhotoWithStats[]> {
+export async function listPhotosPage(
+  options: { clerkUserId?: string; cursor?: string | null; limit?: number } = {},
+): Promise<PhotoPage> {
+  const limit = options.limit ?? DEFAULT_PAGE_SIZE;
   const db = getDb();
-  const photos = await db
+
+  const conditions = [eq(fishPhotos.archived, false)];
+  if (options.clerkUserId) {
+    conditions.push(eq(fishPhotos.clerkUserId, options.clerkUserId));
+  }
+
+  const decodedCursor = options.cursor ? decodeCursor(options.cursor) : null;
+  if (decodedCursor) {
+    conditions.push(
+      or(
+        lt(fishPhotos.createdAt, decodedCursor.createdAt),
+        and(eq(fishPhotos.createdAt, decodedCursor.createdAt), lt(fishPhotos.id, decodedCursor.id)),
+      )!,
+    );
+  }
+
+  const rows = await db
     .select()
     .from(fishPhotos)
-    .where(eq(fishPhotos.archived, false))
-    .orderBy(desc(fishPhotos.createdAt));
-  return attachStats(photos);
+    .where(and(...conditions))
+    .orderBy(desc(fishPhotos.createdAt), desc(fishPhotos.id))
+    .limit(limit + 1);
+
+  const hasMore = rows.length > limit;
+  const pageRows = rows.slice(0, limit);
+  const lastRow = pageRows[pageRows.length - 1];
+
+  const photos = await attachStats(pageRows);
+
+  return {
+    photos,
+    nextCursor: hasMore && lastRow ? encodeCursor(lastRow) : null,
+  };
 }
 
 export async function getPhotoWithStats(photoId: number): Promise<PhotoWithStats | null> {

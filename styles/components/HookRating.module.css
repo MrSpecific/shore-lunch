@@ -1,14 +1,20 @@
-.starRating {
+.hookRating {
   display: inline-flex;
   gap: 0.15em;
 }
 
-.star {
+.hook {
+  display: inline-flex;
   color: var(--color-border, #ccc);
   line-height: 1;
 }
 
-.star.filled {
+.hook svg {
+  width: 1em;
+  height: 1em;
+}
+
+.hook.filled {
   color: var(--color-accent, #f5a623);
 }
 
@@ -24,14 +30,14 @@
   font-size: 1.75rem;
 }
 
-.starButton {
+.hookButton {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
 }
 
-.interactive .starButton:hover,
-.interactive .starButton:focus-visible {
+.interactive .hookButton:hover,
+.interactive .hookButton:focus-visible {
   color: var(--color-accent, #f5a623);
 }

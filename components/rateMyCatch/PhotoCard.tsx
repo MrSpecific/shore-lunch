@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import StarRating from './StarRating';
+import HookRating from './HookRating';
 import type { PhotoWithStats } from '@lib/rateMyCatch';
 import styles from '@styles/components/PhotoCard.module.css';
 
@@ -20,10 +20,10 @@ const PhotoCard = ({ photo }: { photo: PhotoWithStats }) => {
         {photo.caption && <p className={styles.caption}>{photo.caption}</p>}
         <div className={styles.meta}>
           <span className={styles.author}>{photo.authorName}</span>
-          <StarRating value={photo.averageRating} readOnly size="small" />
+          <HookRating value={photo.averageRating} readOnly size="small" />
         </div>
         <p className={styles.stats}>
-          {photo.ratingCount} rating{photo.ratingCount === 1 ? '' : 's'} · {photo.commentCount} comment
+          {photo.ratingCount} hook{photo.ratingCount === 1 ? '' : 's'} · {photo.commentCount} comment
           {photo.commentCount === 1 ? '' : 's'}
         </p>
       </div>
