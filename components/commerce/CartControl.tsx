@@ -7,7 +7,7 @@ import { gtagEvent } from '@lib/google';
 import { useHasMounted } from '@hooks';
 import styles from '@styles/components/CartControl.module.css';
 
-const CartControl = () => {
+export const CartControl = () => {
   const { handleCartClick, shouldDisplayCart, cartCount } = useShoppingCart();
   // cartCount reflects use-shopping-cart's localStorage-persisted cart, which
   // isn't known until after the client mounts. The badge has fixed dimensions
@@ -25,9 +25,7 @@ const CartControl = () => {
     >
       <span className={styles.buttonInner}>
         <CartIcon style={{ height: '30px', width: '30px' }} />
-        {hasMounted && !!cartCount && (
-          <span className={styles.cartCount}>{cartCount} items</span>
-        )}
+        {hasMounted && !!cartCount && <span className={styles.cartCount}>{cartCount} items</span>}
       </span>
       <span className="visually-hidden">{shouldDisplayCart ? 'Close' : 'Open'} Cart</span>
     </button>

@@ -1,0 +1,21 @@
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--spacer-m, 1.5rem);
+}
+
+.sentinel {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacer-m, 1.5rem) 0;
+}
+
+.loading {
+  color: var(--color-text-muted, #777);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: var(--color-error, #c0392b);
+  font-size: 0.9rem;
+}

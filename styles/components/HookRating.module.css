@@ -1,0 +1,43 @@
+.hookRating {
+  display: inline-flex;
+  gap: 0.15em;
+}
+
+.hook {
+  display: inline-flex;
+  color: var(--color-border, #ccc);
+  line-height: 1;
+}
+
+.hook svg {
+  width: 1em;
+  height: 1em;
+}
+
+.hook.filled {
+  color: var(--color-accent, #f5a623);
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.medium {
+  font-size: 1.25rem;
+}
+
+.large {
+  font-size: 1.75rem;
+}
+
+.hookButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.interactive .hookButton:hover,
+.interactive .hookButton:focus-visible {
+  color: var(--color-accent, #f5a623);
+}

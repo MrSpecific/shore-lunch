@@ -5,13 +5,14 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-import siteInfo from '@lib/siteInfo';
+import siteInfo from '@/lib/siteInfo';
 import { useAppContext } from '@context/app';
 import { useBreakpoint } from '@hooks';
-import { Nav, NavOverlay, NavToggle } from '@components/nav';
-import CartControl from '@commerce/CartControl';
+import { Nav, NavOverlay, NavToggle } from '@/components/nav';
+import { CartControl } from '@/components/commerce/CartControl';
+import { AccountControl } from '@/components/account/AccountControl';
 import { ShoreLunchLogoMinimal } from '@svg';
-import styles from '@styles/layout/Header.module.css';
+import css from '@/styles/layout/Header.module.css';
 
 const Header = ({
   className,
@@ -52,11 +53,11 @@ const Header = ({
   }, []);
 
   const headerClass = classNames({
-    [styles.header]: true,
-    [styles.navIsActive]: navIsActive,
-    [styles.notAtTop]: scrollPosition > 600,
-    [styles.scrollDown]: scrollDown,
-    [styles.scrollUp]: !scrollDown,
+    [css.header]: true,
+    [css.navIsActive]: navIsActive,
+    [css.notAtTop]: scrollPosition > 600,
+    [css.scrollDown]: scrollDown,
+    [css.scrollUp]: !scrollDown,
     [className || '']: !!className,
   });
 
@@ -69,21 +70,24 @@ const Header = ({
     <>
       <header className={headerClass} ref={ref}>
         <section className="content header-wrapper">
-          <div className={classNames(['container', styles.headerInner])}>
+          <div className={classNames(['container', css.headerInner])}>
             <Link
               href="/"
-              className={classNames(styles.logoLink, 'header-logo-link')}
+              className={classNames(css.logoLink, 'header-logo-link')}
               onClick={handleHeaderLinkClick}
             >
-              <ShoreLunchLogoMinimal className={styles.headerLogo} />
+              <ShoreLunchLogoMinimal className={css.headerLogo} />
               <span className="visually-hidden">{siteInfo.title}</span>
             </Link>
-            <div className={styles.headerMiddle}>
+            <div className={css.headerMiddle}>
               {children && <div>{children}</div>}
               <Nav />
             </div>
-            <CartControl />
-            <NavToggle />
+            <div className={css.headerControls}>
+              <AccountControl />
+              <CartControl />
+              <NavToggle />
+            </div>
           </div>
         </section>
       </header>

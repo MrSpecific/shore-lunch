@@ -1,0 +1,10 @@
+.accountControl {
+  display: flex;
+  align-items: center;
+}
+
+.signInLink {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
