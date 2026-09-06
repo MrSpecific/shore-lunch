@@ -22,6 +22,13 @@
       "when": 1788641332568,
       "tag": "0002_sparkling_virginia_dare",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1788659605822,
+      "tag": "0003_funny_madame_masque",
+      "breakpoints": true
     }
   ]
 }

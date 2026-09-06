@@ -13,7 +13,7 @@ const RatingWidget = ({
   averageRating,
   ratingCount,
 }: {
-  photoId: number;
+  photoId: string;
   isSignedIn: boolean;
   initialUserRating: number | null;
   averageRating: number | null;

@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { del } from '@vercel/blob';
 import { requireAdminUser } from '@lib/admin/auth';
-import { setPhotoArchived, deletePhoto } from '@lib/rateMyCatch';
+import { setPhotoArchived, deletePhoto, isValidPhotoId } from '@lib/rateMyCatch';
 
-function parsePhotoId(id: string): number | null {
-  const parsed = Number(id);
-  return Number.isInteger(parsed) && parsed > 0 ? parsed : null;
+function parsePhotoId(id: string): string | null {
+  return isValidPhotoId(id) ? id : null;
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {

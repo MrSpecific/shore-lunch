@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { addCatchComment } from '@/app/rate-my-catch/actions';
 import styles from '@styles/components/CommentForm.module.css';
 
-const CommentForm = ({ photoId, isSignedIn }: { photoId: number; isSignedIn: boolean }) => {
+const CommentForm = ({ photoId, isSignedIn }: { photoId: string; isSignedIn: boolean }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();

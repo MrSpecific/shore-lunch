@@ -4,7 +4,13 @@ import { notFound } from 'next/navigation';
 import { auth } from '@clerk/nextjs/server';
 import { Page } from '@layout';
 import { buildMetadata } from '@lib/seo/metadata';
-import { getPhotoWithStats, getCommentsForPhoto, getUserRatingForPhoto } from '@lib/rateMyCatch';
+import siteInfo from '@lib/siteInfo';
+import {
+  getPhotoWithStats,
+  getCommentsForPhoto,
+  getUserRatingForPhoto,
+  isValidPhotoId,
+} from '@lib/rateMyCatch';
 import RatingWidget from '@components/rateMyCatch/RatingWidget';
 import CommentForm from '@components/rateMyCatch/CommentForm';
 import CommentList from '@components/rateMyCatch/CommentList';
@@ -12,9 +18,8 @@ import styles from './CatchPhoto.module.css';
 
 export const revalidate = 60;
 
-function parsePhotoId(id: string): number | null {
-  const parsed = Number(id);
-  return Number.isInteger(parsed) && parsed > 0 ? parsed : null;
+function parsePhotoId(id: string): string | null {
+  return isValidPhotoId(id) ? id : null;
 }
 
 export async function generateMetadata({
@@ -25,9 +30,21 @@ export async function generateMetadata({
   const { id } = await params;
   const photoId = parsePhotoId(id);
   const photo = photoId ? await getPhotoWithStats(photoId) : null;
+
+  if (!photo) {
+    return buildMetadata({ path: `/rate-my-catch/${id}`, pageTitle: 'Rate My Catch' });
+  }
+
+  const title = `${photo.caption || `${photo.authorName}'s catch`} on ${siteInfo.title}`;
+
   return buildMetadata({
     path: `/rate-my-catch/${id}`,
-    pageTitle: photo?.caption || `${photo?.authorName}'s catch` || 'Rate My Catch',
+    tags: {
+      metaTitle: title,
+      openGraphTitle: title,
+      openGraphImage: photo.imageUrl,
+      openGraphImageAlt: photo.caption || `Catch photo by ${photo.authorName}`,
+    },
   });
 }
 

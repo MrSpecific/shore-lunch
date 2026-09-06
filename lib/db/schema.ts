@@ -1,7 +1,7 @@
-import { pgTable, serial, integer, text, timestamp, smallint, boolean, unique, index } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, text, timestamp, smallint, boolean, unique, index } from 'drizzle-orm/pg-core';
 
 export const fishPhotos = pgTable('fish_photos', {
-  id: serial('id').primaryKey(),
+  id: uuid('id').primaryKey().defaultRandom(),
   clerkUserId: text('clerk_user_id').notNull(),
   imageUrl: text('image_url').notNull(),
   caption: text('caption'),
@@ -12,8 +12,8 @@ export const fishPhotos = pgTable('fish_photos', {
 export const fishRatings = pgTable(
   'fish_ratings',
   {
-    id: serial('id').primaryKey(),
-    photoId: integer('photo_id')
+    id: uuid('id').primaryKey().defaultRandom(),
+    photoId: uuid('photo_id')
       .notNull()
       .references(() => fishPhotos.id, { onDelete: 'cascade' }),
     clerkUserId: text('clerk_user_id').notNull(),
@@ -29,8 +29,8 @@ export const fishRatings = pgTable(
 export const fishComments = pgTable(
   'fish_comments',
   {
-    id: serial('id').primaryKey(),
-    photoId: integer('photo_id')
+    id: uuid('id').primaryKey().defaultRandom(),
+    photoId: uuid('photo_id')
       .notNull()
       .references(() => fishPhotos.id, { onDelete: 'cascade' }),
     clerkUserId: text('clerk_user_id').notNull(),

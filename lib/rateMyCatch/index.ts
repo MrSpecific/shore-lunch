@@ -4,7 +4,7 @@ import { fishPhotos, fishRatings, fishComments } from '@lib/db/schema';
 import { getAuthorsByClerkId, resolveAuthor } from './authors';
 
 export type PhotoWithStats = {
-  id: number;
+  id: string;
   clerkUserId: string;
   authorName: string;
   authorAvatarUrl: string | null;
@@ -26,17 +26,21 @@ export type PhotoPage = {
 };
 
 const DEFAULT_PAGE_SIZE = 12;
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-function encodeCursor(row: { createdAt: Date; id: number }): string {
+export function isValidPhotoId(id: string): boolean {
+  return UUID_PATTERN.test(id);
+}
+
+function encodeCursor(row: { createdAt: Date; id: string }): string {
   return Buffer.from(`${row.createdAt.toISOString()}|${row.id}`).toString('base64url');
 }
 
-function decodeCursor(cursor: string): { createdAt: Date; id: number } | null {
+function decodeCursor(cursor: string): { createdAt: Date; id: string } | null {
   try {
-    const [iso, idPart] = Buffer.from(cursor, 'base64url').toString('utf8').split('|');
+    const [iso, id] = Buffer.from(cursor, 'base64url').toString('utf8').split('|');
     const createdAt = new Date(iso);
-    const id = Number(idPart);
-    if (Number.isNaN(createdAt.getTime()) || !Number.isInteger(id)) return null;
+    if (Number.isNaN(createdAt.getTime()) || !id || !UUID_PATTERN.test(id)) return null;
     return { createdAt, id };
   } catch {
     return null;
@@ -44,8 +48,8 @@ function decodeCursor(cursor: string): { createdAt: Date; id: number } | null {
 }
 
 export type CommentWithAuthor = {
-  id: number;
-  photoId: number;
+  id: string;
+  photoId: string;
   clerkUserId: string;
   authorName: string;
   authorAvatarUrl: string | null;
@@ -138,7 +142,7 @@ export async function listPhotosPage(
   };
 }
 
-export async function getPhotoWithStats(photoId: number): Promise<PhotoWithStats | null> {
+export async function getPhotoWithStats(photoId: string): Promise<PhotoWithStats | null> {
   const db = getDb();
   const [photo] = await db
     .select()
@@ -157,7 +161,7 @@ export async function listAllPhotosForAdmin(): Promise<PhotoWithStats[]> {
   return attachStats(photos);
 }
 
-export async function setPhotoArchived(photoId: number, archived: boolean) {
+export async function setPhotoArchived(photoId: string, archived: boolean) {
   const db = getDb();
   const [photo] = await db
     .update(fishPhotos)
@@ -167,13 +171,13 @@ export async function setPhotoArchived(photoId: number, archived: boolean) {
   return photo ?? null;
 }
 
-export async function deletePhoto(photoId: number) {
+export async function deletePhoto(photoId: string) {
   const db = getDb();
   const [photo] = await db.delete(fishPhotos).where(eq(fishPhotos.id, photoId)).returning();
   return photo ?? null;
 }
 
-export async function getCommentsForPhoto(photoId: number): Promise<CommentWithAuthor[]> {
+export async function getCommentsForPhoto(photoId: string): Promise<CommentWithAuthor[]> {
   const db = getDb();
   const comments = await db
     .select()
@@ -189,7 +193,7 @@ export async function getCommentsForPhoto(photoId: number): Promise<CommentWithA
   });
 }
 
-export async function getUserRatingForPhoto(photoId: number, clerkUserId: string) {
+export async function getUserRatingForPhoto(photoId: string, clerkUserId: string) {
   const db = getDb();
   const [rating] = await db
     .select()
@@ -209,7 +213,7 @@ export async function createPhoto(input: {
   return photo;
 }
 
-export async function upsertRating(input: { photoId: number; clerkUserId: string; stars: number }) {
+export async function upsertRating(input: { photoId: string; clerkUserId: string; stars: number }) {
   const db = getDb();
   const [rating] = await db
     .insert(fishRatings)
@@ -223,7 +227,7 @@ export async function upsertRating(input: { photoId: number; clerkUserId: string
 }
 
 export async function createComment(input: {
-  photoId: number;
+  photoId: string;
   clerkUserId: string;
   body: string;
 }) {

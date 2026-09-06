@@ -6,7 +6,7 @@ import { useUser } from '@clerk/nextjs';
 import { definePlugin } from 'sanity';
 
 type AdminPhoto = {
-  id: number;
+  id: string;
   authorName: string;
   imageUrl: string;
   caption: string | null;
@@ -83,8 +83,8 @@ const RateMyCatchTool = () => {
 
   const [photos, setPhotos] = useState<AdminPhoto[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [busyId, setBusyId] = useState<number | null>(null);
-  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   const loadPhotos = useCallback(async () => {
     setError(null);
@@ -120,7 +120,7 @@ const RateMyCatchTool = () => {
     }
   };
 
-  const handleDelete = async (photoId: number) => {
+  const handleDelete = async (photoId: string) => {
     setBusyId(photoId);
     setError(null);
     try {

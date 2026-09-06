@@ -8,7 +8,7 @@ import { createComment, createPhoto, upsertRating } from '@lib/rateMyCatch';
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/heic']);
 
-export async function uploadCatchPhoto(formData: FormData): Promise<{ photoId: number }> {
+export async function uploadCatchPhoto(formData: FormData): Promise<{ photoId: string }> {
   const { userId } = await auth();
   if (!userId) throw new Error('You must be signed in to upload a photo.');
 
@@ -39,7 +39,7 @@ export async function uploadCatchPhoto(formData: FormData): Promise<{ photoId: n
   return { photoId: photo.id };
 }
 
-export async function rateCatchPhoto(photoId: number, hooks: number) {
+export async function rateCatchPhoto(photoId: string, hooks: number) {
   const { userId } = await auth();
   if (!userId) throw new Error('You must be signed in to rate a photo.');
   if (!Number.isInteger(hooks) || hooks < 1 || hooks > 5) {
@@ -51,7 +51,7 @@ export async function rateCatchPhoto(photoId: number, hooks: number) {
   revalidatePath('/rate-my-catch');
 }
 
-export async function addCatchComment(photoId: number, formData: FormData) {
+export async function addCatchComment(photoId: string, formData: FormData) {
   const { userId } = await auth();
   if (!userId) throw new Error('You must be signed in to comment.');
 

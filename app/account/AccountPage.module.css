@@ -1,0 +1,5 @@
+.accountPage {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacer-m, 1.5rem) 1rem;
+}

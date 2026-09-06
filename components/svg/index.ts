@@ -1,3 +1,4 @@
+export { default as AccountIcon } from './account.svg';
 export { default as Arrow } from './arrow.svg';
 export { default as CaretDown } from './caret-down.svg';
 export { default as CartIcon } from './cart.svg';
