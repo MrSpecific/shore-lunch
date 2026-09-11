@@ -1,12 +1,12 @@
 .uploadForm {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.75em;
   align-items: flex-start;
   max-width: 32rem;
 }
 
-.uploadForm input[type='text'] {
+.uploadForm input[type="text"] {
   width: 100%;
   font: inherit;
   padding: 0.5em;

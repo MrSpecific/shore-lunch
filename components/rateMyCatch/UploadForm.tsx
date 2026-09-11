@@ -4,7 +4,7 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { uploadCatchPhoto } from '@/app/rate-my-catch/actions';
 import ImageDropzone from './ImageDropzone';
-import styles from '@styles/components/UploadForm.module.css';
+import css from '@/styles/components/UploadForm.module.css';
 
 const UploadForm = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const UploadForm = () => {
   };
 
   return (
-    <form action={handleSubmit} className={styles.uploadForm}>
+    <form action={handleSubmit} className={css.uploadForm}>
       <ImageDropzone name="image" accept="image/jpeg,image/png,image/webp,image/heic" required />
 
       <label htmlFor="caption">Caption</label>
@@ -36,8 +36,13 @@ const UploadForm = () => {
         placeholder="Tell us about it"
       />
 
-      {error && <p className={styles.error}>{error}</p>}
-      <button type="submit" className="button" disabled={isPending}>
+      {error && <p className={css.error}>{error}</p>}
+      <button
+        type="submit"
+        className="button"
+        disabled={isPending}
+        style={{ width: '100%', fontSize: '1.2em' }}
+      >
         {isPending ? 'Uploading…' : 'Post your catch'}
       </button>
     </form>
