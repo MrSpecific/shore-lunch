@@ -9,6 +9,8 @@ import { buildMetadata } from '@lib/seo/metadata';
 import { NavToggle } from '@components/nav/NavToggle';
 import { SanityImage } from '@components/SanityImage';
 import { ShoreLunchLogoAlt } from '@svg';
+import { listPhotosPage } from '@lib/rateMyCatch';
+import PhotoCard from '@components/rateMyCatch/PhotoCard';
 import css from './Home.module.css';
 
 export const revalidate = 60; // REVALIDATE_SECONDS.home
@@ -16,12 +18,14 @@ export const revalidate = 60; // REVALIDATE_SECONDS.home
 export const metadata: Metadata = buildMetadata({ path: '/', pageTitle: null });
 
 export default async function HomePage() {
-  const [homePageData, latestEpisode] = await Promise.all([
+  const [homePageData, latestEpisode, latestCatchPage] = await Promise.all([
     fetchSanityContent('homePageQuery'),
     fetchSanityContent('latestEpisodeQuery'),
+    listPhotosPage({ limit: 1 }),
   ]);
   const intro = await loadContent('homepageIntro');
   const { hero, heroMobile } = homePageData || {};
+  const latestCatch = latestCatchPage.photos[0] ?? null;
 
   return (
     <Page header={false}>
@@ -60,19 +64,33 @@ export default async function HomePage() {
           <h1>About Us</h1>
           {intro && <Content markdown={intro} className="body-copy-large" />}
         </div>
-        {latestEpisode && (
-          <section className={css.latestEpisodeSection} aria-labelledby="latest-episode-heading">
-            <div className={css.latestEpisodeHeader}>
-              <h2 id="latest-episode-heading">Latest Episode</h2>
-              <Link href="/episodes" className={css.latestEpisodeLink}>
-                View all episodes
-              </Link>
+        <section className={css.lastestSection}>
+          {latestEpisode && (
+            <div className={css.latestEpisodeSection} aria-labelledby="latest-episode-heading">
+              <div className={css.latestEpisodeHeader}>
+                <h2 id="latest-episode-heading">Latest Episode</h2>
+                <Link href="/episodes" className={css.latestEpisodeLink}>
+                  View all episodes
+                </Link>
+              </div>
+              <div className={css.latestEpisodeCard}>
+                <EpisodeCard {...latestEpisode} label="new" />
+              </div>
             </div>
-            <div className={css.latestEpisodeCard}>
-              <EpisodeCard {...latestEpisode} label="new" />
+          )}
+
+          {latestCatch && (
+            <div className={css.latestCatchSection} aria-labelledby="latest-catch-heading">
+              <div className={css.latestEpisodeHeader}>
+                <h2 id="latest-catch-heading">Latest Catch</h2>
+                <Link href="/rate-my-catch" className={css.latestEpisodeLink}>
+                  View all catches
+                </Link>
+              </div>
+              <PhotoCard photo={latestCatch} />
             </div>
-          </section>
-        )}
+          )}
+        </section>
       </section>
     </Page>
   );

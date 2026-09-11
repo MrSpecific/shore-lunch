@@ -1,0 +1,37 @@
+.commentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-s, 0.75rem);
+}
+
+.comment {
+  display: flex;
+  gap: 0.75em;
+}
+
+.avatar {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.commentMeta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #777);
+}
+
+.author {
+  font-weight: 600;
+  color: inherit;
+}
+
+.commentBody {
+  margin: 0.25em 0 0;
+}
+
+.empty {
+  color: var(--color-text-muted, #777);
+}

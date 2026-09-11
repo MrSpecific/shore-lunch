@@ -1,0 +1,24 @@
+.ratingWidget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.saving {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #777);
+}
+
+.summary {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #777);
+}
+
+.error {
+  color: var(--color-error, #c0392b);
+  font-size: 0.9rem;
+}
+
+.signInPrompt {
+  font-size: 0.95rem;
+}

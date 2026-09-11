@@ -5,6 +5,7 @@ import { schemaTypes } from './sanity/schemas';
 import { deskStructure } from './sanity/plugins/deskStructure';
 import { CustomNavbar } from './sanity/components';
 import { syncButton } from './sanity/plugins/syncButton';
+import { rateMyCatchModeration } from './sanity/plugins/rateMyCatchTool';
 
 import { apiVersion, dataset, previewSecretId, projectId } from '@lib/sanity';
 
@@ -47,6 +48,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     syncButton(),
+    rateMyCatchModeration(),
   ],
 
   schema: {

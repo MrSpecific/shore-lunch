@@ -1,0 +1,25 @@
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  font: inherit;
+  padding: 0.5em;
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: 6px;
+}
+
+.error {
+  color: var(--color-error, #c0392b);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.signInPrompt {
+  font-size: 0.95rem;
+}

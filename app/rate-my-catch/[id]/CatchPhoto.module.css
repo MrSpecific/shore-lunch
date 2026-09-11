@@ -1,0 +1,41 @@
+.photoPage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--spacer-l, 2rem);
+}
+
+@media (max-width: 800px) {
+  .photoPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-surface, #f2f2f2);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-m, 1.5rem);
+}
+
+.author {
+  color: var(--color-text-muted, #777);
+  margin: -0.75em 0 0;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-s, 0.75rem);
+}

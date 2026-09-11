@@ -1,0 +1,1 @@
+ALTER TABLE "fish_photos" ADD COLUMN "archived" boolean DEFAULT false NOT NULL;

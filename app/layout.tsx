@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { ClerkProvider } from '@clerk/nextjs';
 import FontImports from '@utils/FontImports';
 import { KlaviyoScriptTag } from '@lib/klaviyoEmbed';
 import siteInfo from '@lib/siteInfo';
@@ -24,7 +25,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <KlaviyoScriptTag />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <ClerkProvider
+          localization={{
+            signIn: {
+              start: {
+                title: `Sign in to ${siteInfo.title}`,
+                titleCombined: `Sign in to ${siteInfo.title}`,
+              },
+            },
+          }}
+        >
+          <Providers>{children}</Providers>
+        </ClerkProvider>
       </body>
     </html>
   );
